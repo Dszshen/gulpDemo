@@ -1,0 +1,34 @@
+// BEGIN HEADER
+.page-header.navbar.navbar-fixed-top(data-ng-include="'/template/header.html'", data-ng-controller='HeaderController')
+// END HEADER
+.clearfix
+// BEGIN CONTAINER
+.page-container
+    // BEGIN SIDEBAR
+    .page-sidebar-wrapper(data-ng-include="'/template/sidebar.html'", data-ng-controller='SidebarController')
+    // END SIDEBAR
+    // BEGIN CONTENT
+    .page-content-wrapper
+        .page-content
+            // BEGIN STYLE CUSTOMIZER(optional)
+            .theme-panel.hidden-xs.hidden-sm(data-ng-include="'/template/theme-panel.html'", data-ng-controller='ThemePanelController')
+            // END STYLE CUSTOMIZER
+            // BEGIN ACTUAL CONTENT
+            .fade-in-up(ui-view='')
+            // END ACTUAL CONTENT
+    // END CONTENT
+    // BEGIN QUICK SIDEBAR
+    a.page-quick-sidebar-toggler(href='javascript:;')
+        i.icon-login
+    .page-quick-sidebar-wrapper(data-ng-include="'/template/quick-sidebar.html'", data-ng-controller='QuickSidebarController')
+    // END QUICK SIDEBAR
+// END CONTAINER
+// BEGIN FOOTER
+.page-footer(data-ng-include="'/template/footer.html'", data-ng-controller='FooterController')
+// END FOOTER
+// BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time)
+// BEGIN CORE JQUERY PLUGINS
+//if lt IE 9
+    script(src='${request.contextPath}/assets/global/plugins/respond.min.js')
+    script(src='${request.contextPath}/assets/global/plugins/excanvas.min.js')
+

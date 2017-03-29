@@ -1,0 +1,78 @@
+.inmodal
+    .modal-header
+        h4
+            | {{treeModal.header}}
+            a.btn.btn-xs.pull-right(title='关闭' ng-click='cancel();')
+                i.fa.fa-close
+    .modal-body
+        .row
+            .col-md-12
+                .portlet.light.bordered
+                    .portlet-title
+                        .caption
+                            i.icon-bubble.font-green-sharp
+                            span.caption-subject.font-green-sharp.bold.uppercase {{treeModal.title}}
+                        //.actions
+                            .btn-group
+                                a.btn.green-haze.btn-outline.btn-circle.btn-sm(href='javascript:;', data-toggle='dropdown', data-hover='dropdown', data-close-others='true')
+                                    | Actions
+                                    i.fa.fa-angle-down
+                                ul.dropdown-menu.pull-right
+                                    li
+                                        a(href='javascript:;')  Option 1
+                                    li.divider
+                                    li
+                                        a(href='javascript:;') Option 2
+                                    li
+                                        a(href='javascript:;') Option 3
+                                    li
+                                        a(href='javascript:;') Option 4
+                    .portlet-body
+                        //form.form-horizontal(novalidate name='form' ng-submit='form.$valid && submit()')
+                        div.jstree(js-tree="treeConfig" ng-model="treeData" should-apply="ignoreModelChanges()" tree="treeInstance" tree-events="ready:readyCB;create_node:createNodeCB")
+    .modal-footer
+        button.btn.btn-primary(type='submit') 确定
+//.modal(tabindex='-1', aria-hidden='true')
+    .modal-dialog
+        .modal-content
+            .modal-header
+                button.close(type='button', data-dismiss='modal', aria-hidden='true')
+                h4.modal-title Responsive & Scrollable
+            .modal-body
+                .scroller(style='height:300px', data-always-visible='1', data-rail-visible1='1')
+                    .row
+                        .col-md-6
+                            h4 Some Input
+                            p
+                                input.col-md-12.form-control(type='text')
+                            p
+                                input.col-md-12.form-control(type='text')
+                            p
+                                input.col-md-12.form-control(type='text')
+                            p
+                                input.col-md-12.form-control(type='text')
+                            p
+                                input.col-md-12.form-control(type='text')
+                            p
+                                input.col-md-12.form-control(type='text')
+                            p
+                                input.col-md-12.form-control(type='text')
+                        .col-md-6
+                            h4 Some More Input
+                            p
+                                input.col-md-12.form-control(type='text')
+                            p
+                                input.col-md-12.form-control(type='text')
+                            p
+                                input.col-md-12.form-control(type='text')
+                            p
+                                input.col-md-12.form-control(type='text')
+                            p
+                                input.col-md-12.form-control(type='text')
+                            p
+                                input.col-md-12.form-control(type='text')
+                            p
+                                input.col-md-12.form-control(type='text')
+            .modal-footer
+                button.btn.dark.btn-outline(type='button', data-dismiss='modal') Close
+                button.btn.green(type='button') Save changes

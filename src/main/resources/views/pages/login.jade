@@ -1,0 +1,41 @@
+.login
+    //.menu-toggler.sidebar-toggler
+    .logo
+        a(ui-sref='main.dashboard')
+            img(src='${request.contextPath}/assets/images/img/logo-big.png', alt='')
+    .content
+        // BEGIN LOGIN FORM
+        form.login-form
+            h3.form-title.font-green 登陆
+            .alert.alert-danger(ng-show="tip.show")
+                button.close(data-close='alert')
+                span  {{tip.message}}
+            .form-group
+                // ie8, ie9 does not support html5 placeholder, so we just show field title for that
+                label.control-label.visible-ie8.visible-ie9 用户名
+                input.form-control.form-control-solid.placeholder-no-fix(type='text' ng-model="username" placeholder='用户名')
+            .form-group
+                label.control-label.visible-ie8.visible-ie9 密码
+                input.form-control.form-control-solid.placeholder-no-fix(type='password' ng-model="password" placeholder='密码')
+            .form-actions
+                button.btn.green.uppercase(type='submit' ng-click="login();") 登陆
+                label.rememberme.check
+                    input(type='checkbox', name='remember', value='1')
+                    | 记住
+                a#forget-password.forget-password(href='javascript:;') 忘记密码?
+            .login-options
+                h4 或者用其他账号登陆
+                ul.social-icons
+                    li
+                        a.social-icon-color.facebook(data-original-title='facebook', href='javascript:;')
+                    li
+                        a.social-icon-color.twitter(data-original-title='Twitter', href='javascript:;')
+                    li
+                        a.social-icon-color.googleplus(data-original-title='Goole Plus', href='javascript:;')
+                    li
+                        a.social-icon-color.linkedin(data-original-title='Linkedin', href='javascript:;')
+            .create-account
+                p
+                    a#register-btn.uppercase(href='javascript:;') 创建一个账号
+            // END login FORM
+    .copyright  2016 © XX管理系统.

@@ -1,0 +1,115 @@
+doctype html
+//
+  Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.5
+  Version: 4.5.1
+  Author: KeenThemes
+  Website: http://www.keenthemes.com/
+  Contact: support@keenthemes.com
+  Follow: www.twitter.com/keenthemes
+  Like: www.facebook.com/keenthemes
+  Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+  License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+//if IE 8
+    html.ie8.no-js(lang='en', data-ng-app='XXAPP')
+//if IE 9
+    html.ie9.no-js(lang='en', data-ng-app='XXAPP')
+//if !IE | [if !IE]
+html(lang='en', data-ng-app='XXAPP')
+    // <![endif]
+    // BEGIN HEAD
+    head
+        - var currTime = new Date().getTime();
+        title(data-ng-bind="'XX管理系统 | ' + $state.current.data.pageTitle")
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(content='width=device-width, initial-scale=1', name='viewport')
+        meta(content='', name='description')
+        meta(content='', name='author')
+        // BEGIN GLOBAL MANDATORY STYLES
+        //link(href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all', rel='stylesheet', type='text/css')
+        link(href='${request.contextPath}/assets/libs/fontawesome/css/font-awesome.min.css?t=#{currTime}', rel='stylesheet', type='text/css')
+        link(href='${request.contextPath}/assets/libs/simple-line-icons/css/simple-line-icons.css?t=#{currTime}', rel='stylesheet', type='text/css')
+        link(href='${request.contextPath}/assets/libs/bootstrap/dist/css/bootstrap.min.css?t=#{currTime}', rel='stylesheet', type='text/css')
+        link(href='${request.contextPath}/assets/libs/jquery-uniform/css/uniform.default.css?t=#{currTime}', rel='stylesheet', type='text/css')
+        link(href='${request.contextPath}/assets/libs/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css?t=#{currTime}', rel='stylesheet', type='text/css')
+        link(href='${request.contextPath}/assets/libs/jstree/dist/themes/default/style.min.css?t=#{currTime}', rel='stylesheet', type='text/css')
+        link(href='${request.contextPath}/assets/libs/angular-ui-tree/dist/angular-ui-tree.min.css?t=#{currTime}', rel='stylesheet', type='text/css')
+        // END GLOBAL MANDATORY STYLES
+        // BEGIN DYMANICLY LOADED CSS FILES(all plugin and page related styles must be loaded between GLOBAL and THEME css files )
+        link#css_lazyload
+        // END DYMANICLY LOADED CSS FILES
+        // BEGIN THEME STYLES
+        // DOC: To use 'rounded corners' style just load 'components-rounded.css' stylesheet instead of 'components.css' in the below style tag
+        link#style_components(href='${request.contextPath}/assets/css/components.min.css?t=#{currTime}', rel='stylesheet', type='text/css')
+        link(href='${request.contextPath}/assets/css/libs.min.css?t=#{currTime}', rel='stylesheet', type='text/css')
+        link(href='${request.contextPath}/assets/css/layouts/layout.min.css?t=#{currTime}', rel='stylesheet', type='text/css')
+        link#style_color(href='${request.contextPath}/assets/css/layouts/themes/darkblue.min.css?t=#{currTime}', rel='stylesheet', type='text/css')
+        link(href='${request.contextPath}/assets/css/layouts/custom.min.css?t=#{currTime}', rel='stylesheet', type='text/css')
+        // END THEME STYLES
+        link(rel='shortcut icon', href='${request.contextPath}/assets/images/favicon.ico?t=#{currTime}')
+    // END HEAD
+    // BEGIN BODY
+    // DOC: Apply "page-header-fixed-mobile" and "page-footer-fixed-mobile" class to body element to force fixed header or footer in mobile devices
+    // DOC: Apply "page-sidebar-closed" class to the body and "page-sidebar-menu-closed" class to the sidebar menu element to hide the sidebar by default
+    // DOC: Apply "page-sidebar-hide" class to the body to make the sidebar completely hidden on toggle
+    // DOC: Apply "page-sidebar-closed-hide-logo" class to the body element to make the logo hidden on sidebar toggle
+    // DOC: Apply "page-sidebar-hide" class to body element to completely hide the sidebar on sidebar toggle
+    // DOC: Apply "page-sidebar-fixed" class to have fixed sidebar
+    // DOC: Apply "page-footer-fixed" class to the body element to have fixed footer
+    // DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side
+    // DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu
+    body.page-header-fixed.page-sidebar-closed-hide-logo(ng-controller='AppController', ng-class="{'page-content-white': settings.layout.pageContentWhite,'page-container-bg-solid': settings.layout.pageBodySolid, 'page-sidebar-closed': settings.layout.pageSidebarClosed}")
+        // BEGIN PAGE SPINNER
+        .page-spinner-bar(ng-spinner-bar='')
+            .bounce1
+            .bounce2
+            .bounce3
+        // END PAGE SPINNER
+        ui-view
+        script.
+            var currTime='#{currTime}';
+            var CONTEXT = '${request.contextPath}';
+        //
+            if lt IE 9
+              script(src='../assets/global/libs/respond.min.js')
+              script(src='../assets/global/libs/excanvas.min.js')
+        script(src='${request.contextPath}/assets/libs/jquery/dist/jquery.min.js?t=#{currTime}', type='text/javascript')
+        script(src='${request.contextPath}/assets/libs/bootstrap/dist/js/bootstrap.min.js?t=#{currTime}', type='text/javascript')
+        script(src='${request.contextPath}/assets/libs/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js?t=#{currTime}', type='text/javascript')
+        script(src='${request.contextPath}/assets/libs/jquery-slimscroll/jquery.slimscroll.min.js?t=#{currTime}', type='text/javascript')
+        script(src='${request.contextPath}/assets/libs/blockUI/jquery.blockUI.js?t=#{currTime}', type='text/javascript')
+        script(src='${request.contextPath}/assets/libs/js-cookie/src/js.cookie.js?t=#{currTime}', type='text/javascript')
+        script(src='${request.contextPath}/assets/libs/jquery-uniform/jquery.uniform.min.js?t=#{currTime}', type='text/javascript')
+        script(src='${request.contextPath}/assets/libs/bootstrap-switch/dist/js/bootstrap-switch.min.js?t=#{currTime}', type='text/javascript')
+        // END CORE JQUERY libs
+        // BEGIN CORE ANGULARJS libs
+        script(src='${request.contextPath}/assets/libs/angular/angular.min.js?t=#{currTime}', type='text/javascript')
+        //script(src='${request.contextPath}/assets/libs/angular-route/angular-route.min.js', type='text/javascript')
+        script(src='${request.contextPath}/assets/libs/angular-sanitize/angular-sanitize.min.js?t=#{currTime}', type='text/javascript')
+        script(src='${request.contextPath}/assets/libs/angular-bootstrap/ui-bootstrap.min.js?t=#{currTime}', type='text/javascript')
+        script(src='${request.contextPath}/assets/libs/angular-touch/angular-touch.min.js?t=#{currTime}', type='text/javascript')
+        script(src='${request.contextPath}/assets/libs/angular-ui-router/release/angular-ui-router.min.js?t=#{currTime}', type='text/javascript')
+        script(src='${request.contextPath}/assets/libs/ocLazyLoad/dist/ocLazyLoad.min.js?t=#{currTime}', type='text/javascript')
+        script(src='${request.contextPath}/assets/libs/angular-bootstrap/ui-bootstrap-tpls.min.js?t=#{currTime}', type='text/javascript')
+        script(src='${request.contextPath}/assets/libs/angular-bootstrap-switch/dist/angular-bootstrap-switch.min.js?t=#{currTime}', type='text/javascript')
+        script(src='${request.contextPath}/assets/libs/angular-scroll/angular-scroll.min.js?t=#{currTime}', type='text/javascript')
+        //script(src='${request.contextPath}/assets/libs/angular-ui-router-tabs/src/ui-router-tabs.js', type='text/javascript')
+        script(src='${request.contextPath}/assets/libs/jstree/dist/jstree.min.js?t=#{currTime}', type='text/javascript')
+        script(src='${request.contextPath}/assets/libs/ng-js-tree/dist/ngJsTree.min.js?t=#{currTime}', type='text/javascript')
+        script(src='${request.contextPath}/assets/libs/angular-ui-tree/dist/angular-ui-tree.min.js?t=#{currTime}', type='text/javascript')
+        // END CORE ANGULARJS libs
+        // BEGIN APP LEVEL ANGULARJS SCRIPTS
+        script#js_lazyload
+        //script(src='${request.contextPath}/assets/js/directives/directives.js', type='text/javascript')
+        // END APP LEVEL ANGULARJS SCRIPTS
+        // BEGIN APP LEVEL JQUERY SCRIPTS
+        script(src='${request.contextPath}/assets/scripts/global/app.js?t=#{currTime}', type='text/javascript')
+        script(src='${request.contextPath}/assets/scripts/global/layout.js?t=#{currTime}', type='text/javascript')
+        script(src='${request.contextPath}/assets/scripts/global/quick-sidebar.js?t=#{currTime}', type='text/javascript')
+        script(src='${request.contextPath}/assets/scripts/global/demo.js?t=#{currTime}', type='text/javascript')
+
+        script(src='${request.contextPath}/assets/js/app.js?t=#{currTime}', type='text/javascript')
+        //script(src='${request.contextPath}/assets/js/directives/directives.js', type='text/javascript')
+        // END APP LEVEL JQUERY SCRIPTS
+        // END JAVASCRIPTS
+    // END BODY
