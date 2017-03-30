@@ -16,6 +16,7 @@
     "gulp-jshint": "^2.0.4",
     "gulp-less": "^3.3.0",
     "gulp-minify-html": "^1.0.6",
+    "gulp-order": "^1.1.1",
     "gulp-rename": "^1.2.2",
     "gulp-rev-append": "^0.1.8",
     "gulp-sequence": "^0.4.6",

@@ -88,7 +88,13 @@ gulp.task(taskName['clean'], function() {
 //编译js文件
 gulp.task(taskName['js'],function(){
     return gulp.src(resourceFilesPath.js)
-        .pipe(order(["main.js","src/main/resources/assets/js/**/**.js"]))
+        .pipe(order([
+            'main.js',
+            'src/main/resources/assets/js/config/globalConfig.js',
+            'src/main/resources/assets/js/config/route.js',
+            'src/main/resources/assets/js/controllers/**/*.js',
+            'src/main/resources/assets/js/directives/**/*.js'
+        ]))
         .pipe(concat("app.js"))
         //.pipe(gulpif(ENV=='products' || OP=='deploy',uglify()))//如果是开发环境或者操作为deploy
         //.pipe(rename("app.js"))
