@@ -103,30 +103,35 @@ gulp.task(taskName['js'],function(){
 
 //编译plugins文件,自己添加的插件
 gulp.task(taskName['scripts'],function(){
+    gutil.log("[logs]"+taskName['scripts']+"正在运行...");
     return gulp.src(resourceFilesPath.scripts)
         .pipe(gulp.dest(destFilesPath.scripts));
 });
 
 //编译images文件
 gulp.task(taskName['images'],function(){
+    gutil.log("[logs]"+taskName['images']+"正在运行...");
     return gulp.src(resourceFilesPath.images)
         .pipe(gulp.dest(destFilesPath.images));
 });
 
 //编译css文件
 gulp.task(taskName['css'],function(){
+    gutil.log("[logs]"+taskName['css']+"正在运行...");
     return gulp.src(resourceFilesPath.css)
         .pipe(gulp.dest(destFilesPath.css))
 });
 
 //编译less文件
 gulp.task(taskName['less'],function(){
+    gutil.log("[logs]"+taskName['less']+"正在运行...");
     return gulp.src(resourceFilesPath.less)
         .pipe(gulp.dest(destFilesPath.css))
 });
 
 //编译jade文件,
 gulp.task(taskName['jade'],function(){
+    gutil.log("[logs]"+taskName['jade']+"正在运行...");
     return gulp.src(resourceFilesPath.jade)
         .pipe(jade({petty: true}))
         .pipe(rename(function(path){
@@ -142,12 +147,14 @@ gulp.task(taskName['jade'],function(){
 
 //编译lib文件,用到的插件库
 gulp.task(taskName['lib'],function(){
+    gutil.log("[logs]"+taskName['lib']+"正在运行...");
     return gulp.src(resourceFilesPath.libs)
         .pipe(gulp.dest(destFilesPath.libs));
 });
 
 //编译plugins文件,自己添加的插件
 gulp.task(taskName['plugins'],function(){
+    gutil.log("[logs]"+taskName['plugins']+"正在运行...");
     return gulp.src(resourceFilesPath.plugins)
         .pipe(gulp.dest(destFilesPath.libs));
 });
@@ -169,12 +176,12 @@ gulp.task(taskName['watch'],function(){
     gulp.watch("./gulpfile.js", ['default']);
     //gulp.watch(destFilesPath, [taskName['copy']]);
 
-    gulp.watch(SRC + '/**/*', { read: false }).on('change', function(event)  {
-        /*browserSync.init({
+    /*gulp.watch(SRC + '/!**!/!*', { read: false }).on('change', function(event)  {
+        browserSync.init({
          server : "./"
-         });*/
-        //browserSync.reload();
-    });
+         })
+        browserSync.reload();
+    });*/
 });
 
 //默认的task
