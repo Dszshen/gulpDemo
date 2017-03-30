@@ -21,6 +21,7 @@ var clean = require('gulp-clean');//清理
 var del = require('del');//与gulp-clean一样，使用一个即可
 var revAppend = require("gulp-rev-append");//给页面引用的静态文件增加hash后缀，避免被浏览器缓存。如果是使用 CDN，这个就不行了
 var sourcemaps = require('gulp-sourcemaps');//
+var order = require("gulp-order");//文件排序
 //定义全局变量
 var projectName = "app";//项目名称
 //task名称
@@ -87,9 +88,10 @@ gulp.task(taskName['clean'], function() {
 //编译js文件
 gulp.task(taskName['js'],function(){
     return gulp.src(resourceFilesPath.js)
-        .pipe(concat())
+        .pipe(order(["main.js","src/main/resources/assets/js/**/**.js"]))
+        .pipe(concat("app.js"))
         //.pipe(gulpif(ENV=='products' || OP=='deploy',uglify()))//如果是开发环境或者操作为deploy
-        .pipe(rename("app.js"))
+        //.pipe(rename("app.js"))
         .pipe(gulp.dest(destFilesPath.js));
 });
 
@@ -129,8 +131,8 @@ gulp.task(taskName['jade'],function(){
 
 //编译html文件
 /*gulp.task(taskName['html'],function(){
-    gulp.src(resourceFilesPath.less)
-});*/
+ gulp.src(resourceFilesPath.less)
+ });*/
 
 //编译lib文件,用到的插件库
 gulp.task(taskName['lib'],function(){
@@ -163,8 +165,8 @@ gulp.task(taskName['watch'],function(){
 
     gulp.watch(SRC + '/**/*', { read: false }).on('change', function(event)  {
         /*browserSync.init({
-            server : "./"
-        });*/
+         server : "./"
+         });*/
         //browserSync.reload();
     });
 });
@@ -185,6 +187,3 @@ gulp.task(taskName['deploy'],function(){
 
 //如果有必要，启动server运行代码，由于这里使用jetty插件，所以不使用server
 gulp.task("server",[]);
-
-
-

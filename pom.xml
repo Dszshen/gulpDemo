@@ -294,38 +294,14 @@
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>${jetty.version}</version>
                 <configuration>
-                    <!-- <webAppSourceDirectory>${project.basedir}/target/assets</webAppSourceDirectory>-->
-                    <!--<war>target/bs3.war</war>-->
+                    <scanIntervalSeconds>10</scanIntervalSeconds>
                     <stopKey>alpha</stopKey>
                     <stopPort>9099</stopPort>
                     <!--热部署，扫描时间，如果启动热部署，静态文件资源是会被锁定并且不可更改的，如果这里启动会跟grunt watch监控有冲突-->
                     <!--<scanIntervalSeconds>10</scanIntervalSeconds>-->
                     <webApp>
                         <contextPath>/</contextPath>
-                        <!--<resourceBases>target/assets</resourceBases>-->
                     </webApp>
-                    <contextHandlers>
-                        <!--此配置可以配置多个APP应用同时运行-->
-                        <contextHandler implementation="org.eclipse.jetty.maven.plugin.JettyWebAppContext">
-                            <war>${project.basedir}/target/assets</war>
-                            <contextPath>/assets</contextPath>
-                        </contextHandler>
-                    </contextHandlers>
-                    <!--<classesDirectory>${project.basedir}/target/bs3</classesDirectory>-->
-                    <!--扫描额外的文件-->
-                    <!--<scanTargets>
-                      <scanTarget>src/main/java</scanTarget>
-                    </scanTargets>-->
-                    <!--通过表达通配符路径配置扫描额外的文件-->
-                    <!--<scanTargetPatterns>
-                      <scanTargetPattern>
-                        <directory>${project.basedir}/src/main/resources</directory>
-                        <includes>
-                          <include>*.xml</include>
-                          <include>*.properties</include>
-                        </includes>
-                      </scanTargetPattern>
-                    </scanTargetPatterns>-->
                 </configuration>
             </plugin>
 
@@ -391,7 +367,7 @@
             </plugin>
 
 
-            <plugin>
+            <!--<plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>3.0.2</version>
                 <executions>
@@ -410,7 +386,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
 
             <!-- Run the JUnit unit tests in an isolated classloader -->
             <plugin>
@@ -420,7 +396,6 @@
                 <configuration>
                     <skipTests>true</skipTests>
                 </configuration>
-
             </plugin>
 
             <plugin>
