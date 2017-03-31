@@ -39,7 +39,7 @@
         <jackson.version>2.5.0</jackson.version>
         <druid.version>1.0.11</druid.version>
         <spring-security.version>3.2.9.RELEASE</spring-security.version>
-        <jetty.version>9.2.10.v20150310</jetty.version>
+        <jetty.version>9.4.3.v20170317</jetty.version>
     </properties>
 
     <dependencies>
