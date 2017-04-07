@@ -1,7 +1,7 @@
 /* 所有页面的路由跳转 */
 XXAPP.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     // 如果没有匹配到url请求就跳转到欢迎页
-    $urlRouterProvider.otherwise("/login");
+    $urlRouterProvider.otherwise("/index/dashboard");
 
     //封装$stateProvider.state方法
     var state = function (name, url, ctrl, tmpl, abs, data, resolve) {

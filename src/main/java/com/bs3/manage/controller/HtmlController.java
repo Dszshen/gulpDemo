@@ -29,7 +29,7 @@ public class HtmlController {
         if(false){
             return "redirect:/main";
         }else{
-            return "login";
+            return "redirect:login.html";
         }
     }
 }
