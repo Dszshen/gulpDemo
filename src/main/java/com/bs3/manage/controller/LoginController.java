@@ -6,6 +6,7 @@ import com.bs3.manage.service.system.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 
@@ -36,6 +37,7 @@ public class LoginController {
      * @return 返回登陆信息
      */
     @RequestMapping("login")
+    @ResponseBody
     public JsonResult<JSONObject> login(@RequestBody JSONObject loginInfo){
         return userService.login(loginInfo);
     }

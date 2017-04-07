@@ -6,6 +6,7 @@ var browserify = require('browserify');//代码自动注入刷新浏览器
 var browserSync = require('browser-sync').create();
 var rename = require("gulp-rename");//文件重命名
 var jshint = require("gulp-jshint");//js代码校验组件
+var eslint = require('gulp-eslint');//js代码校验
 var uglify = require("gulp-uglify");//js代码压缩
 var copy = require("gulp-copy");//文件拷贝
 var concat = require("gulp-concat");//文件合并
@@ -53,8 +54,8 @@ var DEST_ASSETS = "./src/main/webapp/WEB-INF/assets/";//编译后静态文件的
 var resourceFilesPath = {
     jade:SRC+"views/**/*.jade",
     fonts:SRC+"assets/fonts/**",
-    less:SRC+"assets/less/*.less",
-    css:SRC+"assets/css/**/*.css",
+    less:SRC+"assets/less/**/*.less",
+    //css:SRC+"assets/css/**/*.css",
     js:SRC+"assets/js/**/**.js",
     libs:"./bower_components/**",
     plugins:SRC+"assets/plugins/**",
@@ -95,6 +96,10 @@ gulp.task(taskName['js'],function(){
             'src/main/resources/assets/js/controllers/**/*.js',
             'src/main/resources/assets/js/directives/**/*.js'
         ]))
+        .pipe(jshint())
+        .on('error', function(error)  {
+            gutil.log("[jshint logs]:"+error);
+        })
         .pipe(concat("app.js"))
         //.pipe(gulpif(ENV=='products' || OP=='deploy',uglify()))//如果是开发环境或者操作为deploy
         //.pipe(rename("app.js"))
@@ -116,16 +121,21 @@ gulp.task(taskName['images'],function(){
 });
 
 //编译css文件
-gulp.task(taskName['css'],function(){
-    gutil.log("[logs]"+taskName['css']+"正在运行...");
-    return gulp.src(resourceFilesPath.css)
-        .pipe(gulp.dest(destFilesPath.css))
-});
+// gulp.task(taskName['css'],function(){
+//     gutil.log("[logs]"+taskName['css']+"正在运行...");
+//     return gulp.src(resourceFilesPath.css)
+//         .pipe(gulp.dest(destFilesPath.css))
+// });
 
 //编译less文件
 gulp.task(taskName['less'],function(){
     gutil.log("[logs]"+taskName['less']+"正在运行...");
     return gulp.src(resourceFilesPath.less)
+        .pipe(less())
+        .on('error', function(error)  {
+            console.dir(error);
+            this.emit('end');
+        })
         .pipe(gulp.dest(destFilesPath.css))
 });
 
@@ -185,7 +195,7 @@ gulp.task(taskName['watch'],function(){
 });
 
 //默认的task
-gulp.task("default",[taskName['clean'],taskName['less'],taskName['css'],taskName['js'],taskName['images'],taskName['lib'],taskName['plugins'],taskName['scripts'],taskName['jade']]);
+gulp.task("default",[taskName['clean'],taskName['less'],taskName['js'],taskName['images'],taskName['lib'],taskName['plugins'],taskName['scripts'],taskName['jade']]);
 
 //开发
 gulp.task(taskName['dev'],['default'],function(){
