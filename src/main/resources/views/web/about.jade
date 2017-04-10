@@ -1,0 +1,318 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        meta(name='description', content='')
+        meta(name='author', content='Mosaddek')
+        meta(name='keyword', content='FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina')
+        link(rel='shortcut icon', href='img/favicon.png')
+        title FlatLab Frontend | About
+        // Bootstrap core CSS
+        link(href='css/bootstrap.min.css', rel='stylesheet')
+        link(href='css/theme.css', rel='stylesheet')
+        link(href='css/bootstrap-reset.css', rel='stylesheet')
+        // external css
+        link(href='assets/font-awesome/css/font-awesome.css', rel='stylesheet')
+        link(rel='stylesheet', href='css/flexslider.css')
+        link(href='assets/bxslider/jquery.bxslider.css', rel='stylesheet')
+        // Custom styles for this template
+        link(href='css/style.css', rel='stylesheet')
+        link(href='css/style-responsive.css', rel='stylesheet')
+        // HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries
+        //if lt IE 9
+          script(src='js/html5shiv.js')
+          script(src='js/respond.min.js')
+    body
+        // header start
+        header.header-frontend
+            .navbar.navbar-default.navbar-static-top
+                .container
+                    .navbar-header
+                        button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+                            span.icon-bar
+                            span.icon-bar
+                            span.icon-bar
+                        a.navbar-brand(href='index.html')
+                            | Flat
+                            span Lab
+                    .navbar-collapse.collapse
+                        ul.nav.navbar-nav
+                            li
+                                a(href='index.html') Home
+                            li.active
+                                a(href='about.html') About
+                            li
+                                a(href='services.html') Service
+                            li.dropdown
+                                a.dropdown-toggle(href='#', data-toggle='dropdown', data-hover='dropdown', data-delay='0', data-close-others='false')
+                                    | Feature
+                                    b.icon-angle-down
+                                ul.dropdown-menu
+                                    li
+                                        a(href='typography.html') Typography
+                                    li
+                                        a(href='button.html') Buttons
+                            li
+                                a(href='portfolio.html') Portfolio
+                            li
+                                a(href='price.html') Price
+                            li
+                                a(href='blog.html') Blog
+                            li
+                                a(href='contact.html') Contact
+                            li
+                                input.form-control.search(type='text', placeholder=' Search')
+        // header end
+        // breadcrumbs start
+        .breadcrumbs
+            .container
+                .row
+                    .col-lg-4.col-sm-4
+                        h1 About us
+                    .col-lg-8.col-sm-8
+                        ol.breadcrumb.pull-right
+                            li
+                                a(href='#') Home
+                            li
+                                a(href='#') Pages
+                            li.active About
+        // breadcrumbs end
+        // container start
+        .container
+            .row
+                .col-lg-5
+                    .span5.about-carousel
+                        #myCarousel.carousel.slide
+                            // Carousel items
+                            .carousel-inner
+                                .active.item
+                                    img(src='img/about_1.jpg', alt='')
+                                    .carousel-caption
+                                        p Donec luctus ullamcorper nulla
+                                .item
+                                    img(src='img/about_2.jpg', alt='')
+                                    .carousel-caption
+                                        p Blanditiis praesentium voluptatum
+                                .item
+                                    img(src='img/about_1.jpg', alt='')
+                                    .carousel-caption
+                                        p Honest and amazing things that bring positive results
+                            // Carousel nav
+                            a.carousel-control.left(href='#myCarousel', data-slide='prev')
+                                i.icon-angle-left
+                            a.carousel-control.right(href='#myCarousel', data-slide='next')
+                                i.icon-angle-right
+                .col-lg-7.about
+                    h3 Welcome to FlatLab
+                    p
+                        | Welcome To Avada
+                        | Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets.. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore dolore magnm aliquam quaerat voluptatem.
+                    p
+                        | Aenean nibh ante, lacinia non tincidunt nec, lobortis ut tellus. Sed in porta diam. Suspendisse potenti. Donec luctus ullamcorper nulla. Duis nec velit odio.
+            .row
+                .hiring
+                    .col-lg-6.col-sm-6
+                        .icon-wrap.ico-bg.round
+                            i.icon-desktop
+                        .content
+                            h3.title iOS / Mac OS Developer
+                            p
+                                | Suspendisse dignissim in sem eget pulvinar. Mauris aliquam nulla at libero pretium, eu tincidunt nulla molestie pulvinar posuere.
+                    .col-lg-6.col-sm-6
+                        .icon-wrap.ico-bg.round
+                            i.icon-user
+                        .content
+                            h3.title Frontend Developer
+                            p
+                                | Suspendisse dignissim in sem eget pulvinar. Mauris aliquam nulla at libero pretium, eu tincidunt nulla molestie pulvinar posuere.
+        .gray-box
+            .container
+                .row
+                    .col-lg-5
+                        // testimonial start
+                        .about-testimonial.boxed-style.about-flexslider
+                            section.slider
+                                .flexslider
+                                    ul.slides.about-flex-slides
+                                        li
+                                            .about-testimonial-image
+                                                img(alt='', src='img/testimonial-img-1.jpg')
+                                            a.about-testimonial-author(href='#') Ericson Reagan
+                                            span.about-testimonial-company ABC Realestate LLC
+                                            .about-testimonial-content
+                                                p.about-testimonial-quote
+                                                    | Pellentesque et pulvinar enim. Quisque at tempor ligula. Maecenas augue ante, euismod vitae egestas sit amet, accumsan eu nulla. Nullam tempor lectus a ligula lobortis pretium. Donec ut purus sed tortor malesuada venenatis eget eget lorem.
+                                        li
+                                            .about-testimonial-image
+                                                img(alt='', src='img/avatar2.jpg')
+                                            a.about-testimonial-author(href='#') Jonathan Smith
+                                            span.about-testimonial-company DEF LLC
+                                            .about-testimonial-content
+                                                p.about-testimonial-quote
+                                                    | Pellentesque et pulvinar enim. Quisque at tempor ligula. Maecenas augue ante, euismod vitae egestas sit amet, accumsan eu nulla. Nullam tempor lectus a ligula lobortis pretium. Donec ut purus sed tortor malesuada venenatis eget eget lorem.
+                        // testimonial end
+                    .col-lg-7
+                        h3.skills Our Crazy Skills
+                        .about-skill-meter
+                            .progress.progress-xs
+                                .progress-bar.progress-bar-danger(style='width: 60%;', aria-valuemax='100', aria-valuemin='0', aria-valuenow='60', role='progressbar')
+                                    span.sr-only Web Design : 60% Complete
+                        .about-skill-meter
+                            .progress.progress-xs
+                                .progress-bar.progress-bar-danger(style='width: 90%;', aria-valuemax='100', aria-valuemin='0', aria-valuenow='60', role='progressbar')
+                                    span.sr-only Html/CSS : 90% Complete
+                        .about-skill-meter
+                            .progress.progress-xs
+                                .progress-bar.progress-bar-danger(style='width: 70%;', aria-valuemax='100', aria-valuemin='0', aria-valuenow='60', role='progressbar')
+                                    span.sr-only Wordpress : 70% Complete
+                        .about-skill-meter
+                            .progress.progress-xs
+                                .progress-bar.progress-bar-danger(style='width: 55%;', aria-valuemax='100', aria-valuemin='0', aria-valuenow='60', role='progressbar')
+                                    span.sr-only Graphic Design : 55% Complete
+        .container
+            .row
+                .text-center.feature-head
+                    h1  Meet Our Team
+                    p
+                        | We work with forward thinking clients to create beautiful, honest and amazing things that bring positive results.
+                .col-lg-4
+                    .person.text-center
+                        img(src='img/team/team_img1.jpg', alt='')
+                    .person-info.text-center
+                        h4
+                            a(href='javascript:;') Ericson Reagan
+                        p.text-muted  Managing Director
+                        .team-social-link
+                            a(href='#')
+                                i.icon-facebook
+                            a(href='#')
+                                i.icon-twitter
+                            a(href='#')
+                                i.icon-pinterest
+                            a(href='#')
+                                i.icon-linkedin
+                            a(href='#')
+                                i.icon-google-plus
+                        p
+                            | Redantium, totam rem aperiam, eaque ipsa qu ab illo inventore veritatis et quasi architectos beatae vitae dicta sunt explicabo. Nemo enims sadips ipsums un.
+                .col-lg-4
+                    .person.text-center
+                        img(src='img/team/team_img2.jpg', alt='')
+                    .person-info.text-center
+                        h4
+                            a(href='javascript:;') Alicja Colon
+                        p.text-muted  Web Designer
+                        .team-social-link
+                            a(href='#')
+                                i.icon-facebook
+                            a(href='#')
+                                i.icon-twitter
+                            a(href='#')
+                                i.icon-pinterest
+                            a(href='#')
+                                i.icon-linkedin
+                            a(href='#')
+                                i.icon-google-plus
+                        p
+                            | Redantium, totam rem aperiam, eaque ipsa qu ab illo inventore veritatis et quasi architectos beatae vitae dicta sunt explicabo. Nemo enims sadips ipsums un.
+                .col-lg-4
+                    .person.text-center
+                        img(src='img/team/team_img3.jpg', alt='')
+                    .person-info.text-center
+                        h4
+                            a(href='javascript:;') Jonathan Smith
+                        p.text-muted  Web Developer
+                        .team-social-link
+                            a(href='#')
+                                i.icon-facebook
+                            a(href='#')
+                                i.icon-twitter
+                            a(href='#')
+                                i.icon-pinterest
+                            a(href='#')
+                                i.icon-linkedin
+                            a(href='#')
+                                i.icon-google-plus
+                        p
+                            | Redantium, totam rem aperiam, eaque ipsa qu ab illo inventore veritatis et quasi architectos beatae vitae dicta sunt explicabo. Nemo enims sadips ipsums un.
+        // container end
+        // footer start
+        footer.footer
+            .container
+                .row
+                    .col-lg-3.col-sm-3
+                        h1 contact info
+                        address
+                            p Address: No.28-63877 street
+                            p lorem ipsum city, Country
+                            p Phone : (123) 456-7890
+                            p Fax : (123) 456-7890
+                            p
+                                | Email :
+                                a(href='javascript:;') support@vectorlab.com
+                    .col-lg-5.col-sm-5
+                        h1 latest tweet
+                        |                      More Templates
+                        a(href='http://www.cssmoban.com/', target='_blank', title='模板之家') 模板之家
+                        |  - Collect from
+                        a(href='http://www.cssmoban.com/', title='网页模板', target='_blank') 网页模板
+                    .col-lg-3.col-sm-3.col-lg-offset-1
+                        h1 stay connected
+                        ul.social-link-footer.list-unstyled
+                            li
+                                a(href='#')
+                                    i.icon-facebook
+                            li
+                                a(href='#')
+                                    i.icon-google-plus
+                            li
+                                a(href='#')
+                                    i.icon-dribbble
+                            li
+                                a(href='#')
+                                    i.icon-linkedin
+                            li
+                                a(href='#')
+                                    i.icon-twitter
+                            li
+                                a(href='#')
+                                    i.icon-skype
+                            li
+                                a(href='#')
+                                    i.icon-github
+                            li
+                                a(href='#')
+                                    i.icon-youtube
+        // footer end
+        // js placed at the end of the document so the pages load faster
+        script(src='js/jquery.js')
+        script(src='js/bootstrap.min.js')
+        script(type='text/javascript', src='js/hover-dropdown.js')
+        script(type='text/javascript', src='assets/bxslider/jquery.bxslider.js')
+        script(defer='', src='js/jquery.flexslider.js')
+        script(src='js/jquery.easing.min.js')
+        script(src='js/link-hover.js')
+        // common script for all pages
+        script(src='js/common-scripts.js')
+        script.
+            $(window).load(function() {
+                $('[data-zlname = reverse-effect]').mateHover({
+                    position: 'y-reverse',
+                    overlayStyle: 'rolling',
+                    overlayBg: '#fff',
+                    overlayOpacity: 0.7,
+                    overlayEasing: 'easeOutCirc',
+                    rollingPosition: 'top',
+                    popupEasing: 'easeOutBack',
+                    popup2Easing: 'easeOutBack'
+                });
+            });
+            $(window).load(function() {
+                $('.flexslider').flexslider({
+                    animation: "slide",
+                    start: function(slider) {
+                        $('body').removeClass('loading');
+                    }
+                });
+            });

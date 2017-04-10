@@ -1,0 +1,363 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        meta(name='description', content='')
+        meta(name='author', content='Mosaddek')
+        meta(name='keyword', content='FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina')
+        link(rel='shortcut icon', href='img/favicon.png')
+        title FlatLab Frontend | Blog Details
+        // Bootstrap core CSS
+        link(href='css/bootstrap.min.css', rel='stylesheet')
+        link(href='css/theme.css', rel='stylesheet')
+        link(href='css/bootstrap-reset.css', rel='stylesheet')
+        // external css
+        link(href='assets/font-awesome/css/font-awesome.css', rel='stylesheet')
+        link(rel='stylesheet', href='css/flexslider.css')
+        link(href='assets/bxslider/jquery.bxslider.css', rel='stylesheet')
+        // Custom styles for this template
+        link(href='css/style.css', rel='stylesheet')
+        link(href='css/style-responsive.css', rel='stylesheet')
+        // HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries
+        //if lt IE 9
+          script(src='js/html5shiv.js')
+          script(src='js/respond.min.js')
+    body
+        // header start
+        header.header-frontend
+            .navbar.navbar-default.navbar-static-top
+                .container
+                    .navbar-header
+                        button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+                            span.icon-bar
+                            span.icon-bar
+                            span.icon-bar
+                        a.navbar-brand(href='index.html')
+                            | Flat
+                            span Lab
+                    .navbar-collapse.collapse
+                        ul.nav.navbar-nav
+                            li
+                                a(href='index.html') Home
+                            li
+                                a(href='about.html') About
+                            li
+                                a(href='services.html') Service
+                            li.dropdown
+                                a.dropdown-toggle(href='#', data-toggle='dropdown', data-hover='dropdown', data-delay='0', data-close-others='false')
+                                    | Feature
+                                    b.icon-angle-down
+                                ul.dropdown-menu
+                                    li
+                                        a(href='typography.html') Typography
+                                    li
+                                        a(href='button.html') Buttons
+                            li
+                                a(href='portfolio.html') Portfolio
+                            li
+                                a(href='price.html') Price
+                            li.active
+                                a(href='blog.html') Blog
+                            li
+                                a(href='contact.html') Contact
+                            li
+                                input.form-control.search(type='text', placeholder=' Search')
+        // header end
+        // breadcrumbs start
+        .breadcrumbs
+            .container
+                .row
+                    .col-lg-4.col-sm-4
+                        h1 Blog Details
+                    .col-lg-8.col-sm-8
+                        ol.breadcrumb.pull-right
+                            li
+                                a(href='#') Home
+                            li
+                                a(href='#') Pages
+                            li.active Blog Details
+        // breadcrumbs end
+        // container start
+        .container
+            .row
+                // blog start
+                .col-lg-9
+                    .blog-item
+                        .row
+                            .col-lg-2.col-sm-2
+                                .date-wrap
+                                    span.date 10
+                                    span.month September
+                                .comnt-wrap
+                                    span.comnt-ico
+                                        i.icon-comments
+                                    span.value 15
+                            .col-lg-10.col-sm-10
+                                .blog-img
+                                    img(src='img/blog/img1.jpg', alt='')
+                        .row
+                            .col-lg-2.col-sm-2.text-right
+                                .author
+                                    | By
+                                    a(href='#') Admin
+                                ul.list-unstyled
+                                    li
+                                        a(href='javascript:;')
+                                            em travel
+                                    li
+                                        a(href='javascript:;')
+                                            em tour
+                                    li
+                                        a(href='javascript:;')
+                                            em recreation
+                                    li
+                                        a(href='javascript:;')
+                                            em tourism
+                                .shate-view
+                                    ul.list-unstyled
+                                        li
+                                            a(href='javascript:;') 209 View
+                                        li
+                                            a(href='javascript:;') 23 Share
+                            .col-lg-10.col-sm-10
+                                h1
+                                    a(href='blog_detail.html')
+                                        | Suspendisse dignissim in sem eget pulvinar. Mauris aliquam nulla at libero pretium.
+                                p
+                                    | Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets.. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit
+                                blockquote
+                                    p
+                                        | Lorem ipsum dolor sit amet, consectetur adipiscing elit posuere erat a ante.
+                                    small
+                                        | Someone famous
+                                        cite(title='Source Title') Source Title
+                                p
+                                    | Nam sed arcu non tellus fringilla fringilla ut vel ipsum. Aliquam ac magna metus. Nam sed arcu non tellus fringilla fringilla ut vel ipsum. Aliquam ac magna metus. Nam sed arcu non tellus fringilla fringilla ut vel ipsum. Aliquam ac magna metus. Nam sed arcu non tellus fringilla fringilla ut vel ipsum. Aliquam ac magna metus. Nam sed arcu non tellus fringilla fringilla ut vel ipsum. Aliquam ac magna metus. Nam sed arcu non tellus fringilla fringilla ut vel ipsum. Aliquam ac magna metus. Nam sed arcu non tellus fringilla fringilla ut vel ipsum. Aliquam ac magna metus. Nam sed arcu non tellus fringilla fringilla ut vel ipsum. Aliquam ac magna metus.
+                                .media
+                                    h3 Comments
+                                    hr
+                                    a.pull-left(href='javascript:;')
+                                        img.media-object(src='img/avatar1.jpg', alt='')
+                                    .media-body
+                                        h4.media-heading
+                                            | Anjelina Joli
+                                            span |
+                                            span 12 July 2013, 10:20
+                                        p
+                                            | Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+                                        a(href='javascript:;') Reply
+                                        hr
+                                        // Nested media object
+                                        .media
+                                            a.pull-left(href='javascript:;')
+                                                img.media-object(src='img/avatar2.jpg', alt='')
+                                            .media-body
+                                                h4.media-heading
+                                                    | Tom Cruse
+                                                    span |
+                                                    span 12 July 2013, 10:30
+                                                p
+                                                    | Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+                                                a(href='javascript:;') Reply
+                                        // end media
+                                        hr
+                                        .media
+                                            a.pull-left(href='javascript:;')
+                                                img.media-object(src='img/avatar1.jpg', alt='')
+                                            .media-body
+                                                h4.media-heading
+                                                    | Nicol Kidman
+                                                    span |
+                                                    span 12 July 2013, 10:40
+                                                p
+                                                    | Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+                                                a(href='javascript:;') Reply
+                                        hr
+                                        // end media
+                                .media
+                                    a.pull-left(href='javascript:;')
+                                        img.media-object(src='img/avatar2.jpg', alt='')
+                                    .media-body
+                                        h4.media-heading
+                                            | Tom Cruse
+                                            span |
+                                            span 12 July 2013, 11:10
+                                        p
+                                            | Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+                                        a(href='javascript:;') Reply
+                                .post-comment
+                                    h3.skills Post Comments
+                                    form.form-horizontal(role='form')
+                                        .form-group
+                                            .col-lg-4
+                                                input.col-lg-12.form-control(type='text', placeholder='Name')
+                                            .col-lg-4
+                                                input.col-lg-12.form-control(type='text', placeholder='Email')
+                                            .col-lg-4
+                                                input.col-lg-12.form-control(type='text', placeholder='2*five=? *')
+                                        .form-group
+                                            .col-lg-12
+                                                textarea.form-control(placeholder='Message', rows='8')
+                                        p
+                                            button.btn.btn-danger.pull-right(type='submit') Post Comment
+                .col-lg-3
+                    .blog-side-item
+                        .search-row
+                            input.form-control(type='text', placeholder='Search here')
+                        .category
+                            h3 Categories
+                            ul.list-unstyled
+                                li
+                                    a(href='javascript:;')
+                                        i.icon-angle-right
+                                        |  Animals
+                                li
+                                    a(href='javascript:;')
+                                        i.icon-angle-right
+                                        |  Landscape
+                                li
+                                    a(href='javascript:;')
+                                        i.icon-angle-right
+                                        |  Portait
+                                li
+                                    a(href='javascript:;')
+                                        i.icon-angle-right
+                                        |  Wild Life
+                                li
+                                    a(href='javascript:;')
+                                        i.icon-angle-right
+                                        |  Video
+                        .blog-post
+                            h3 Latest Blog Post
+                            .media
+                                a.pull-left(href='javascript:;')
+                                    img(src='img/blog/blog-thumb-1.jpg', alt='')
+.media-body
+    h5.media-heading
+        a(href='javascript:;') 02 May 2013
+    p
+        | Donec id elit non mi porta gravida at eget metus amet int
+.media
+    a.pull-left(href='javascript:;')
+        img(src='img/blog/blog-thumb-2.jpg', alt='')
+.media-body
+    h5.media-heading
+        a(href='javascript:;') 02 May 2013
+    p
+        | Donec id elit non mi porta gravida at eget metus amet int
+.media
+    a.pull-left(href='javascript:;')
+        img(src='img/blog/blog-thumb-3.jpg', alt='')
+.media-body
+    h5.media-heading
+        a(href='javascript:;') 02 May 2013
+    p
+        | Donec id elit non mi porta gravida at eget metus amet int
+.tags
+    h3 Tags
+    ul.list-unstyled.tag
+        li
+            a(href='#') flat
+        li
+            a(href='#')  clean
+        li
+            a(href='#')  admin
+        li
+            a(href='#')  UI
+        li
+            a(href='#')  responsive
+        li
+            a(href='#')  Web Design
+        li
+            a(href='#')  UIX
+        li
+            a(href='#')  Blog
+        li
+            a(href='#') flat Admin
+        li
+            a(href='#')  Dashboard
+.archive
+    h3 Archive
+    ul.list-unstyled
+        li
+            a(href='javascript:;')
+                i.icon-angle-right
+                |  May 2013
+        li
+            a(href='javascript:;')
+                i.icon-angle-right
+                |  April 2013
+        li
+            a(href='javascript:;')
+                i.icon-angle-right
+                |  March 2013
+        li
+            a(href='javascript:;')
+                i.icon-angle-right
+                |  February 2013
+        li
+            a(href='javascript:;')
+                i.icon-angle-right
+                |  January 2013
+// blog end
+// container end
+// footer start
+footer.footer
+    .container
+        .row
+            .col-lg-3.col-sm-3
+                h1 contact info
+                address
+                    p Address: No.28-63877 street
+                    p lorem ipsum city, Country
+                    p Phone : (123) 456-7890
+                    p Fax : (123) 456-7890
+                    p
+                        | Email :
+                        a(href='javascript:;') support@vectorlab.com
+            .col-lg-5.col-sm-5
+                h1 latest tweet
+                |                      More Templates
+                a(href='http://www.cssmoban.com/', target='_blank', title='模板之家') 模板之家
+                |  - Collect from
+                a(href='http://www.cssmoban.com/', title='网页模板', target='_blank') 网页模板
+            .col-lg-3.col-sm-3.col-lg-offset-1
+                h1 stay connected
+                ul.social-link-footer.list-unstyled
+                    li
+                        a(href='#')
+                            i.icon-facebook
+                    li
+                        a(href='#')
+                            i.icon-google-plus
+                    li
+                        a(href='#')
+                            i.icon-dribbble
+                    li
+                        a(href='#')
+                            i.icon-linkedin
+                    li
+                        a(href='#')
+                            i.icon-twitter
+                    li
+                        a(href='#')
+                            i.icon-skype
+                    li
+                        a(href='#')
+                            i.icon-github
+                    li
+                        a(href='#')
+                            i.icon-youtube
+// footer end
+// js placed at the end of the document so the pages load faster
+script(src='js/jquery.js')
+script(src='js/bootstrap.min.js')
+script(type='text/javascript', src='js/hover-dropdown.js')
+script(defer='', src='js/jquery.flexslider.js')
+script(type='text/javascript', src='assets/bxslider/jquery.bxslider.js')
+script(src='js/jquery.easing.min.js')
+script(src='js/link-hover.js')
+// common script for all pages
+script(src='js/common-scripts.js')
+script.
