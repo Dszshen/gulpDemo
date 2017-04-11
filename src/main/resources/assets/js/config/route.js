@@ -1,7 +1,7 @@
 /* 所有页面的路由跳转 */
 XXAPP.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     // 如果没有匹配到url请求就跳转到欢迎页
-    $urlRouterProvider.otherwise("/index/dashboard");
+    $urlRouterProvider.otherwise("/index");
 
     //封装$stateProvider.state方法
     var state = function (name, url, ctrl, tmpl, abs, data, resolve) {
@@ -40,23 +40,10 @@ XXAPP.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
         return {};
     };
 
-    //登录注册
-    state('login', '/login', 'LoginController', '/pages/login.html', false, {pageTitle: '登录'}, {
-        deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-            return $ocLazyLoad.load({
-                name: 'login',
-                insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
-                files: [
-                    CONTEXT + '/assets/css/pages/login.css'
-                ]
-            });
-        }]
-    });
-    state('register', '/register', 'RegisterController', '/pages/register.html', false, {pageTitle: '注册'});
     //欢迎页面
-    state('index', '/index', 'AppController', '/template/index.html', true);
+    //state('index', '/index', 'AppController', '/template/index.html', true);
 
-    state('index.dashboard', '/dashboard', 'DashboardController', '/pages/dashboard.html', false, {pageTitle: '欢迎页'}, {
+    state('index', '/index', 'DashboardController', '/pages/dashboard.html', false, {pageTitle: '欢迎页'}, {
         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
             return $ocLazyLoad.load({
                 name: 'XXAPP',
@@ -76,7 +63,7 @@ XXAPP.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
 
     //----------------------------------------------系统管理  start----------------------------------------
     //系统管理-->>>系统参数设置
-    state('sys', '/system', 'SystemController', '/template/index.html', true);
+    state('sys', '/system', 'SystemController', '<ui-view></ui-view>', true);
     state('sys.setting', '/setting', 'SystemSettingController', '/pages/system/setting.html', false, {pageTitle: '系统参数设置'});
     state('sys.info', '/info', 'SystemInfoController', '/pages/system/info.html', false, {pageTitle: 'XX公司信息'});
 
@@ -164,7 +151,7 @@ XXAPP.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
 
 
     //----------------------------------------------房产信息管理  start--------------------------------------------
-    state('house', '/house', 'HouseController', '/template/index.html', true);
+    state('house', '/house', 'HouseController', '<ui-view></ui-view>', true);
     state('house.add', '/add', 'HouseAddController', '/pages/house/add.html', false, {pageTitle: '新增房产信息'});
     state('house.list', '/list', 'HouseListController', '/pages/house/list.html', false, {pageTitle: '房产信息'}, {
         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
@@ -187,7 +174,7 @@ XXAPP.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
 
 
     //----------------------------------------------业主管理  start--------------------------------------------
-    state('homeowner', '/homeowner', 'HomeownerController', '/template/index.html', true);
+    state('homeowner', '/homeowner', 'HomeownerController', '<ui-view></ui-view>', true);
     state('homeowner.add', '/add', 'OwnerAddController', '/pages/homeowner/add.html', false, {pageTitle: '业主迁入'});
     state('homeowner.out', '/out', 'OwnerOutController', '/pages/homeowner/out.html', false, {pageTitle: '业主迁出'});
     state('homeowner.list', '/list', 'OwnerListController', '/pages/homeowner/list.html', false, {pageTitle: '房间档案信息'}, {
@@ -228,7 +215,7 @@ XXAPP.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
 
     //----------------------------------------------API文档管理  start--------------------------------------------
     //API文档
-    state('api', '/api', 'ApiController', '/template/index.html', true);
+    state('api', '/api', 'ApiController', '<ui-view></ui-view>', true);
     state('api.dev', '/dev', 'ApiDevCtrl', '/pages/api/dev.html', false, {pageTitle: '开发文档'}, {
         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
             return $ocLazyLoad.load([{
@@ -254,7 +241,7 @@ XXAPP.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
     //----------------------------------------------API文档管理  end------------------------------------------------
 
     //----------------------------------------------数据库设计  start----------------------------------------------
-    state('database', '/database', 'DatabaseController', '/template/index.html', true);
+    state('database', '/database', 'DatabaseController', '<ui-view></ui-view>', true);
     state('database.api', '/api', 'DatabaseApiController', '/pages/database/database.html', false, {pageTitle: '数据库设计'}, {
         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
             return $ocLazyLoad.load([{

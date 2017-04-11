@@ -26,10 +26,10 @@ public class HtmlController {
     @RequestMapping("/")
     public String index() {
         //检查是否登陆，如果没有登陆，则跳转到登陆页面
-        if(false){
+        if(true){
             return "redirect:/main";
         }else{
-            return "redirect:login.html";
+            return "redirect:/web/index.html";
         }
     }
 }

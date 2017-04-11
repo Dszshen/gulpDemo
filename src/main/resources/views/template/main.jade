@@ -1,11 +1,5 @@
 doctype html
-//if IE 8
-    html.ie8.no-js(lang='en', data-ng-app='XXAPP')
-//if IE 9
-    html.ie9.no-js(lang='en', data-ng-app='XXAPP')
-//if !IE | [if !IE]
 html(lang='en', data-ng-app='XXAPP')
-    // <![endif]
     // BEGIN HEAD
     head
         - var currTime = new Date().getTime();
@@ -30,21 +24,43 @@ html(lang='en', data-ng-app='XXAPP')
         link(href='${request.contextPath}/assets/css/layouts/custom.css?t=#{currTime}', rel='stylesheet', type='text/css')
         // END THEME STYLES
         link(rel='shortcut icon', href='${request.contextPath}/assets/images/favicon.ico?t=#{currTime}')
-    body.page-header-fixed.page-sidebar-closed-hide-logo(ng-controller='AppController', ng-class="{'page-content-white': settings.layout.pageContentWhite,'page-container-bg-solid': settings.layout.pageBodySolid, 'page-sidebar-closed': settings.layout.pageSidebarClosed}")
+    body.page-header-fixed.page-sidebar-closed-hide-logo.page-on-load(ng-controller='AppController', ng-class="{'page-content-white': settings.layout.pageContentWhite,'page-container-bg-solid': settings.layout.pageBodySolid, 'page-sidebar-closed': settings.layout.pageSidebarClosed}")
         // BEGIN PAGE SPINNER
         .page-spinner-bar(ng-spinner-bar='')
             .bounce1
             .bounce2
             .bounce3
         // END PAGE SPINNER
-        ui-view
+        // BEGIN HEADER
+        .page-header.navbar.navbar-fixed-top(data-ng-include="'/template/header.html'", data-ng-controller='HeaderController')
+        // END HEADER
+        .clearfix
+        // BEGIN CONTAINER
+        .page-container
+            // BEGIN SIDEBAR
+            .page-sidebar-wrapper(data-ng-include="'/template/sidebar.html'", data-ng-controller='SidebarController')
+            // END SIDEBAR
+            // BEGIN CONTENT
+            .page-content-wrapper
+                .page-content
+                    // BEGIN STYLE CUSTOMIZER(optional)
+                    .theme-panel.hidden-xs.hidden-sm(data-ng-include="'/template/theme-panel.html'", data-ng-controller='ThemePanelController')
+                    // END STYLE CUSTOMIZER
+                    // BEGIN ACTUAL CONTENT
+                    .fade-in-up(ui-view='')
+                    // END ACTUAL CONTENT
+            // END CONTENT
+            // BEGIN QUICK SIDEBAR
+            a.page-quick-sidebar-toggler(href='javascript:;')
+                i.icon-login
+            .page-quick-sidebar-wrapper(data-ng-include="'/template/quick-sidebar.html'", data-ng-controller='QuickSidebarController')
+            // END QUICK SIDEBAR
+        // END CONTAINER
+        // BEGIN FOOTER
+        .page-footer(data-ng-include="'/template/footer.html'", data-ng-controller='FooterController')
         script.
             var currTime='#{currTime}';
             var CONTEXT = '${request.contextPath}';
-        //
-            if lt IE 9
-              script(src='../assets/global/libs/respond.min.js')
-              script(src='../assets/global/libs/excanvas.min.js')
         script(src='${request.contextPath}/assets/libs/jquery/dist/jquery.min.js?t=#{currTime}', type='text/javascript')
         script(src='${request.contextPath}/assets/libs/bootstrap/dist/js/bootstrap.min.js?t=#{currTime}', type='text/javascript')
         script(src='${request.contextPath}/assets/libs/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js?t=#{currTime}', type='text/javascript')
