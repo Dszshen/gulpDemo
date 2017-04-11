@@ -7,62 +7,10 @@ html(lang='en')
         meta(name='author', content='Mosaddek')
         meta(name='keyword', content='FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina')
         link(rel='shortcut icon', href='img/favicon.png')
-        title FlatLab Frontend | Contact
-        // Bootstrap core CSS
-        link(href='css/bootstrap.min.css', rel='stylesheet')
-        link(href='css/theme.css', rel='stylesheet')
-        link(href='css/bootstrap-reset.css', rel='stylesheet')
-        // external css
-        link(href='assets/font-awesome/css/font-awesome.css', rel='stylesheet')
-        link(rel='stylesheet', href='css/flexslider.css')
-        link(href='assets/bxslider/jquery.bxslider.css', rel='stylesheet')
-        // Custom styles for this template
-        link(href='css/style.css', rel='stylesheet')
-        link(href='css/style-responsive.css', rel='stylesheet')
-        // HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries
-        //if lt IE 9
-          script(src='js/html5shiv.js')
-          script(src='js/respond.min.js')
+        title XX网站 | 联系我们
+        include common/header
     body
-        // header start
-        header.header-frontend
-            .navbar.navbar-default.navbar-static-top
-                .container
-                    .navbar-header
-                        button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-                            span.icon-bar
-                            span.icon-bar
-                            span.icon-bar
-                        a.navbar-brand(href='index.html')
-                            | Flat
-                            span Lab
-                    .navbar-collapse.collapse
-                        ul.nav.navbar-nav
-                            li
-                                a(href='index.html') Home
-                            li
-                                a(href='about.html') About
-                            li
-                                a(href='services.html') Service
-                            li.dropdown
-                                a.dropdown-toggle(href='#', data-toggle='dropdown', data-hover='dropdown', data-delay='0', data-close-others='false')
-                                    | Feature
-                                    b.icon-angle-down
-                                ul.dropdown-menu
-                                    li
-                                        a(href='typography.html') Typography
-                                    li
-                                        a(href='button.html') Buttons
-                            li
-                                a(href='portfolio.html') Portfolio
-                            li
-                                a(href='price.html') Price
-                            li
-                                a(href='blog.html') Blog
-                            li.active
-                                a(href='contact.html') Contact
-                            li
-                                input.form-control.search(type='text', placeholder=' Search')
+        include common/nav
         // header end
         // breadcrumbs start
         .breadcrumbs
@@ -79,7 +27,7 @@ html(lang='en')
                             li.active Contacts
         // breadcrumbs end
         // google map start
-        .contact-map
+        //.contact-map
             #map-canvas(style='width: 100%; height: 400px')
         // google map end
         // container start
@@ -126,62 +74,7 @@ html(lang='en')
                                 textarea.form-control(placeholder='', rows='5')
                             button.btn.btn-danger(type='submit') Submit
         // container end
-        // footer start
-        footer.footer
-            .container
-                .row
-                    .col-lg-3.col-sm-3
-                        h1 contact info
-                        address
-                            p Address: No.28-63877 street
-                            p lorem ipsum city, Country
-                            p Phone : (123) 456-7890
-                            p Fax : (123) 456-7890
-                            p
-                                | Email :
-                                a(href='javascript:;') support@vectorlab.com
-                    .col-lg-5.col-sm-5
-                        h1 latest tweet
-                        |                      More Templates
-                        a(href='http://www.cssmoban.com/', target='_blank', title='模板之家') 模板之家
-                        |  - Collect from
-                        a(href='http://www.cssmoban.com/', title='网页模板', target='_blank') 网页模板
-                    .col-lg-3.col-sm-3.col-lg-offset-1
-                        h1 stay connected
-                        ul.social-link-footer.list-unstyled
-                            li
-                                a(href='#')
-                                    i.icon-facebook
-                            li
-                                a(href='#')
-                                    i.icon-google-plus
-                            li
-                                a(href='#')
-                                    i.icon-dribbble
-                            li
-                                a(href='#')
-                                    i.icon-linkedin
-                            li
-                                a(href='#')
-                                    i.icon-twitter
-                            li
-                                a(href='#')
-                                    i.icon-skype
-                            li
-                                a(href='#')
-                                    i.icon-github
-                            li
-                                a(href='#')
-                                    i.icon-youtube
-        // footer end
-        // js placed at the end of the document so the pages load faster
-        script(src='js/jquery.js')
-        script(src='js/bootstrap.min.js')
-        script(type='text/javascript', src='js/hover-dropdown.js')
-        script(type='text/javascript', src='assets/bxslider/jquery.bxslider.js')
-        script(src='https://maps.googleapis.com/maps/api/js?v=3.exp&AMP;sensor=false')
-        // common script for all pages
-        script(src='js/common-scripts.js')
+        include common/footer
         script.
             //google map
             function initialize() {
@@ -198,4 +91,5 @@ html(lang='en')
                     title: 'Hello World!'
                 });
             }
-            google.maps.event.addDomListener(window, 'load', initialize);
+
+            //google.maps.event.addDomListener(window, 'load', initialize);

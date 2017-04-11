@@ -6,78 +6,12 @@ html(lang='en')
         meta(name='description', content='')
         meta(name='author', content='Mosaddek')
         meta(name='keyword', content='FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina')
-        link(rel='shortcut icon', href='img/favicon.png')
-        title FlatLab Frontend | About
-        // Bootstrap core CSS
-        link(href='css/bootstrap.min.css', rel='stylesheet')
-        link(href='css/theme.css', rel='stylesheet')
-        link(href='css/bootstrap-reset.css', rel='stylesheet')
-        // external css
-        link(href='assets/font-awesome/css/font-awesome.css', rel='stylesheet')
-        link(rel='stylesheet', href='css/flexslider.css')
-        link(href='assets/bxslider/jquery.bxslider.css', rel='stylesheet')
-        // Custom styles for this template
-        link(href='css/style.css', rel='stylesheet')
-        link(href='css/style-responsive.css', rel='stylesheet')
-        // HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries
-        //if lt IE 9
-          script(src='js/html5shiv.js')
-          script(src='js/respond.min.js')
+        link(rel='shortcut icon', href='/assets/images/web/favicon.png')
+        title XX官网 | 关于我们
+        include common/header
     body
-        // header start
-        header.header-frontend
-            .navbar.navbar-default.navbar-static-top
-                .container
-                    .navbar-header
-                        button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-                            span.icon-bar
-                            span.icon-bar
-                            span.icon-bar
-                        a.navbar-brand(href='index.html')
-                            | Flat
-                            span Lab
-                    .navbar-collapse.collapse
-                        ul.nav.navbar-nav
-                            li
-                                a(href='index.html') Home
-                            li.active
-                                a(href='about.html') About
-                            li
-                                a(href='services.html') Service
-                            li.dropdown
-                                a.dropdown-toggle(href='#', data-toggle='dropdown', data-hover='dropdown', data-delay='0', data-close-others='false')
-                                    | Feature
-                                    b.icon-angle-down
-                                ul.dropdown-menu
-                                    li
-                                        a(href='typography.html') Typography
-                                    li
-                                        a(href='button.html') Buttons
-                            li
-                                a(href='portfolio.html') Portfolio
-                            li
-                                a(href='price.html') Price
-                            li
-                                a(href='blog.html') Blog
-                            li
-                                a(href='contact.html') Contact
-                            li
-                                input.form-control.search(type='text', placeholder=' Search')
-        // header end
-        // breadcrumbs start
-        .breadcrumbs
-            .container
-                .row
-                    .col-lg-4.col-sm-4
-                        h1 About us
-                    .col-lg-8.col-sm-8
-                        ol.breadcrumb.pull-right
-                            li
-                                a(href='#') Home
-                            li
-                                a(href='#') Pages
-                            li.active About
-        // breadcrumbs end
+        include common/nav
+        include common/breadcrumbs
         // container start
         .container
             .row
@@ -87,15 +21,15 @@ html(lang='en')
                             // Carousel items
                             .carousel-inner
                                 .active.item
-                                    img(src='img/about_1.jpg', alt='')
+                                    img(src='/assets/images/web/about_1.jpg', alt='')
                                     .carousel-caption
                                         p Donec luctus ullamcorper nulla
                                 .item
-                                    img(src='img/about_2.jpg', alt='')
+                                    img(src='/assets/images/web/about_2.jpg', alt='')
                                     .carousel-caption
                                         p Blanditiis praesentium voluptatum
                                 .item
-                                    img(src='img/about_1.jpg', alt='')
+                                    img(src='/assets/images/web/about_1.jpg', alt='')
                                     .carousel-caption
                                         p Honest and amazing things that bring positive results
                             // Carousel nav
@@ -137,7 +71,7 @@ html(lang='en')
                                     ul.slides.about-flex-slides
                                         li
                                             .about-testimonial-image
-                                                img(alt='', src='img/testimonial-img-1.jpg')
+                                                img(alt='', src='/assets/images/web/testimonial-img-1.jpg')
                                             a.about-testimonial-author(href='#') Ericson Reagan
                                             span.about-testimonial-company ABC Realestate LLC
                                             .about-testimonial-content
@@ -145,7 +79,7 @@ html(lang='en')
                                                     | Pellentesque et pulvinar enim. Quisque at tempor ligula. Maecenas augue ante, euismod vitae egestas sit amet, accumsan eu nulla. Nullam tempor lectus a ligula lobortis pretium. Donec ut purus sed tortor malesuada venenatis eget eget lorem.
                                         li
                                             .about-testimonial-image
-                                                img(alt='', src='img/avatar2.jpg')
+                                                img(alt='', src='/assets/images/web/avatar2.jpg')
                                             a.about-testimonial-author(href='#') Jonathan Smith
                                             span.about-testimonial-company DEF LLC
                                             .about-testimonial-content
@@ -178,7 +112,7 @@ html(lang='en')
                         | We work with forward thinking clients to create beautiful, honest and amazing things that bring positive results.
                 .col-lg-4
                     .person.text-center
-                        img(src='img/team/team_img1.jpg', alt='')
+                        img(src='/assets/images/web/team/team_img1.jpg', alt='')
                     .person-info.text-center
                         h4
                             a(href='javascript:;') Ericson Reagan
@@ -198,7 +132,7 @@ html(lang='en')
                             | Redantium, totam rem aperiam, eaque ipsa qu ab illo inventore veritatis et quasi architectos beatae vitae dicta sunt explicabo. Nemo enims sadips ipsums un.
                 .col-lg-4
                     .person.text-center
-                        img(src='img/team/team_img2.jpg', alt='')
+                        img(src='/assets/images/web/team/team_img2.jpg', alt='')
                     .person-info.text-center
                         h4
                             a(href='javascript:;') Alicja Colon
@@ -218,7 +152,7 @@ html(lang='en')
                             | Redantium, totam rem aperiam, eaque ipsa qu ab illo inventore veritatis et quasi architectos beatae vitae dicta sunt explicabo. Nemo enims sadips ipsums un.
                 .col-lg-4
                     .person.text-center
-                        img(src='img/team/team_img3.jpg', alt='')
+                        img(src='/assets/images/web/team/team_img3.jpg', alt='')
                     .person-info.text-center
                         h4
                             a(href='javascript:;') Jonathan Smith
@@ -237,64 +171,7 @@ html(lang='en')
                         p
                             | Redantium, totam rem aperiam, eaque ipsa qu ab illo inventore veritatis et quasi architectos beatae vitae dicta sunt explicabo. Nemo enims sadips ipsums un.
         // container end
-        // footer start
-        footer.footer
-            .container
-                .row
-                    .col-lg-3.col-sm-3
-                        h1 contact info
-                        address
-                            p Address: No.28-63877 street
-                            p lorem ipsum city, Country
-                            p Phone : (123) 456-7890
-                            p Fax : (123) 456-7890
-                            p
-                                | Email :
-                                a(href='javascript:;') support@vectorlab.com
-                    .col-lg-5.col-sm-5
-                        h1 latest tweet
-                        |                      More Templates
-                        a(href='http://www.cssmoban.com/', target='_blank', title='模板之家') 模板之家
-                        |  - Collect from
-                        a(href='http://www.cssmoban.com/', title='网页模板', target='_blank') 网页模板
-                    .col-lg-3.col-sm-3.col-lg-offset-1
-                        h1 stay connected
-                        ul.social-link-footer.list-unstyled
-                            li
-                                a(href='#')
-                                    i.icon-facebook
-                            li
-                                a(href='#')
-                                    i.icon-google-plus
-                            li
-                                a(href='#')
-                                    i.icon-dribbble
-                            li
-                                a(href='#')
-                                    i.icon-linkedin
-                            li
-                                a(href='#')
-                                    i.icon-twitter
-                            li
-                                a(href='#')
-                                    i.icon-skype
-                            li
-                                a(href='#')
-                                    i.icon-github
-                            li
-                                a(href='#')
-                                    i.icon-youtube
-        // footer end
-        // js placed at the end of the document so the pages load faster
-        script(src='js/jquery.js')
-        script(src='js/bootstrap.min.js')
-        script(type='text/javascript', src='js/hover-dropdown.js')
-        script(type='text/javascript', src='assets/bxslider/jquery.bxslider.js')
-        script(defer='', src='js/jquery.flexslider.js')
-        script(src='js/jquery.easing.min.js')
-        script(src='js/link-hover.js')
-        // common script for all pages
-        script(src='js/common-scripts.js')
+        include common/footer
         script.
             $(window).load(function() {
                 $('[data-zlname = reverse-effect]').mateHover({
