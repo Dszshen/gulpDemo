@@ -2,7 +2,9 @@ package com.bs3.manage.controller;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @author zhangbin
@@ -23,10 +25,10 @@ public class HtmlController {
         return "template/main";
     }
 
-    @RequestMapping("/")
-    public String index() {
+    @RequestMapping("/{loginStatus}")
+    public String index(@PathVariable("loginStatus") String loginStatus) {
         //检查是否登陆，如果没有登陆，则跳转到登陆页面
-        if(true){
+        if(loginStatus.equals("success")){
             return "redirect:/main";
         }else{
             return "redirect:/web/index.html";
