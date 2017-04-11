@@ -23,7 +23,7 @@
     "bootstrap-hover-dropdown": "v2.2.1",
     "bootstrap-switch": "v3.3.x",
     "counterup": "v1.0.0",
-    "fontawesome": "v4.6.3",
+    "fontawesome": "v4.7.0",
     "fullcalendar": "v2.6.0",
     "jquery": "~2.1.1",
     "jquery-slimscroll": "v1.3.x",
@@ -47,7 +47,8 @@
     "respond": "1.4.2",
     "fancybox": "^3.0.47",
     "bxslider-4": "^4.2.12",
-    "flexslider": "^2.6.3"
+    "flexslider": "^2.6.3",
+    "font-awesome": "fontawesome#^4.7.0"
   },
   "resolutions": {
     "angular": "1.5.x",
