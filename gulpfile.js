@@ -91,10 +91,11 @@ gulp.task(taskName['js'],function(){
     return gulp.src(resourceFilesPath.js)
         .pipe(order([
             'main.js',
-            'src/main/resources/assets/js/config/globalConfig.js',
-            'src/main/resources/assets/js/config/route.js',
-            'src/main/resources/assets/js/controllers/**/*.js',
-            'src/main/resources/assets/js/directives/**/*.js'
+            'src/main/resources/assets/js/config/**/*.js',
+            'src/main/resources/assets/js/factories/**/*.js',
+            //'src/main/resources/assets/js/config/route.js',
+            'src/main/resources/assets/js/directives/**/*.js',
+            'src/main/resources/assets/js/controllers/**/*.js'
         ]))
         .pipe(jshint())
         .on('error', function(error)  {

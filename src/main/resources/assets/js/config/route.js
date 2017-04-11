@@ -43,7 +43,7 @@ XXAPP.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
     //欢迎页面
     //state('index', '/index', 'AppController', '/template/index.html', true);
 
-    state('index', '/index', 'DashboardController', '/pages/dashboard.html', false, {pageTitle: '欢迎页'}, {
+    state('index', '/index', 'IndexController', '/pages/dashboard.html', false, {pageTitle: '欢迎页'}, {
         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
             return $ocLazyLoad.load({
                 name: 'XXAPP',
