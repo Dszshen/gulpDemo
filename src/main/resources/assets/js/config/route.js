@@ -43,7 +43,7 @@ XXAPP.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
     //欢迎页面
     //state('index', '/index', 'AppController', '/template/index.html', true);
 
-    state('index', '/index', 'IndexController', '/pages/dashboard.html', false, {pageTitle: '欢迎页'}, {
+    state('index', '/index', 'IndexController', '/pages/index.html', false, {pageTitle: '欢迎页'}, {
         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
             return $ocLazyLoad.load({
                 name: 'XXAPP',
@@ -68,8 +68,8 @@ XXAPP.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
     state('sys.info', '/info', 'SystemInfoController', '/pages/system/info.html', false, {pageTitle: 'XX公司信息'});
 
     //系统管理-->>>用户管理
-    state('sys.user', '/user', 'SystemUserController', '<ui-view></ui-view>', true);
-    state('sys.user.list', '/list', 'UserListController', '/pages/system/user/manage/list.html', false, {pageTitle: '用户列表'}, {
+    state('user', '/user', 'SystemUserController', '<ui-view></ui-view>', true);
+    state('user.list', '/list', 'UserListController', '/pages/system/user/manage/list.html', false, {pageTitle: '用户列表'}, {
         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
             return $ocLazyLoad.load([{
                 name: 'userListCss',
@@ -91,15 +91,15 @@ XXAPP.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
     });
 
 
-    state('sys.user.add', '/add', 'UserAddController', '/pages/system/user/manage/add.html', false, {pageTitle: '增加用户'});
-    state('sys.user.detail', '/detail', 'UserDetailController', '/pages/system/user/manage/detail.html', false, {pageTitle: '用户资料'});
+    state('user.add', '/add', 'UserAddController', '/pages/system/user/manage/add.html', false, {pageTitle: '增加用户'});
+    state('user.detail', '/detail', 'UserDetailController', '/pages/system/user/manage/detail.html', false, {pageTitle: '用户资料'});
 
     /*用户中心*/
-    state('sys.user.profile', '/profile', 'UserProfileController', '/pages/system/user/personal/profile.html', false, {pageTitle: '个人信息'});
+    state('user.profile', '/profile', 'UserProfileController', '/pages/system/user/personal/profile.html', false, {pageTitle: '个人信息'});
 
     //系统管理-->>>角色管理
-    state('sys.role', '/role', 'SystemRoleController', '<ui-view></ui-view>', true);
-    state('sys.role.list', '/list', 'RoleListController', '/pages/system/role/list.html', false, {pageTitle: '角色列表'}, {
+    state('role', '/role', 'SystemRoleController', '<ui-view></ui-view>', true);
+    state('role.list', '/list', 'RoleListController', '/pages/system/role/list.html', false, {pageTitle: '角色列表'}, {
         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
             return $ocLazyLoad.load([{
                 name: 'roleManage',
@@ -114,13 +114,13 @@ XXAPP.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
             }]);
         }]
     });
-    state('sys.role.add', '/add', 'RoleAddController', '/pages/system/role/add.html', false, {pageTitle: '增加角色'});
-    state('sys.role.detail', '/detail', 'RoleDetailController', '/pages/system/role/detail.html', false, {pageTitle: '角色详情'});
+    state('role.add', '/add', 'RoleAddController', '/pages/system/role/add.html', false, {pageTitle: '增加角色'});
+    state('role.detail', '/detail', 'RoleDetailController', '/pages/system/role/detail.html', false, {pageTitle: '角色详情'});
 
 
     //系统管理-->>>权限管理
-    state('sys.permission', '/permission', 'SystemPermissionController', '<ui-view></ui-view>', true);
-    state('sys.permission.list', '/list', 'PermissionListController', '/pages/system/permission/list.html', false, {pageTitle: '权限列表'}, {
+    state('permission', '/permission', 'SystemPermissionController', '<ui-view></ui-view>', true);
+    state('permission.list', '/list', 'PermissionListController', '/pages/system/permission/list.html', false, {pageTitle: '权限列表'}, {
         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
             return $ocLazyLoad.load([{
                 name: 'permissionManage',
@@ -134,18 +134,18 @@ XXAPP.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
             }]);
         }]
     });
-    state('sys.permission.add', '/add', 'PermissionAddController', '/pages/system/permission/add.html', false, {pageTitle: '增加权限'});
+    state('permission.add', '/add', 'PermissionAddController', '/pages/system/permission/add.html', false, {pageTitle: '增加权限'});
     //菜单管理
     //state('sys.menu','/user','SystemMenuController','<ui-view></ui-view>',true);
-    state('sys.menu', '/menu', 'SystemMenuController', '/pages/system/menu/menu.html', false, {pageTitle: '菜单管理'});
+    state('menu', '/menu', 'SystemMenuController', '/pages/system/menu/menu.html', false, {pageTitle: '菜单管理'});
     //栏目管理
-    state('sys.column', '/column', 'SystemColumnController', '/pages/system/column.html', false, {pageTitle: '栏目管理'});
+    state('column', '/column', 'SystemColumnController', '/pages/system/column.html', false, {pageTitle: '栏目管理'});
     //数据字典
-    state('sys.dictionary', '/dictionary', 'SystemDictionaryController', '/pages/system/dictionary.html', false, {pageTitle: '数据字典'});
+    state('dictionary', '/dictionary', 'SystemDictionaryController', '/pages/system/dictionary.html', false, {pageTitle: '数据字典'});
     //系统日志
-    state('sys.logs', '/logs', 'SystemLogsController', '/pages/system/logs.html', false, {pageTitle: '系统日志'});
+    state('logs', '/logs', 'SystemLogsController', '/pages/system/logs.html', false, {pageTitle: '系统日志'});
     //屏蔽词
-    state('sys.shieldWords', '/shieldWords', 'SystemShieldWordsController', '/pages/system/shieldWords.html', false, {pageTitle: '屏蔽词'});
+    state('shieldWords', '/shieldWords', 'SystemShieldWordsController', '/pages/system/shieldWords.html', false, {pageTitle: '屏蔽词'});
 
     //----------------------------------------------系统管理  end------------------------------------------------
 

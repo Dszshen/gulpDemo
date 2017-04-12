@@ -1,7 +1,7 @@
 /**
 Demo script to handle the theme demo
 **/
-var Demo = function() {
+var Theme = function() {
 
     // Handle Theme Settings
     var handleTheme = function() {
