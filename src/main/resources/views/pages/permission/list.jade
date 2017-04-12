@@ -6,10 +6,10 @@
             a(href='#/dashboard') 首页
             i.fa.fa-angle-right
         li
-            a(href='#/system/user/list') 用户管理
+            a(href='#/permission/list') 权限管理
                 i.fa.fa-angle-right
         li
-            | 用户列表
+            | 权限列表
     //.page-toolbar
         .btn-group.pull-right
             button.btn.btn-sm.btn-default.dropdown-toggle(type='button', data-toggle='dropdown', data-hover='dropdown', data-delay='1000', data-close-others='true')
@@ -41,7 +41,7 @@
                         |  Pending Users
                         span.badge.badge-warning 12
 h3.page-title
-    | 用户管理
+    | 权限管理
 // END PAGE HEADER
 // BEGIN MAIN CONTENT
 .row
@@ -51,7 +51,7 @@ h3.page-title
             .portlet-title
                 .caption.font-dark
                     i.icon-settings.font-dark
-                    span.caption-subject.bold.uppercase  用户列表
+                    span.caption-subject.bold.uppercase  权限列表
                 .actions
                     .btn-group.btn-group-devided(data-toggle='buttons')
                         label.btn.btn-transparent.dark.btn-outline.btn-circle.btn-sm.active
@@ -65,9 +65,9 @@ h3.page-title
                     .row
                         .col-md-6
                             .btn-group
-                                a#addUser.btn.sbold.green(href="#/system/user/add" ng-click="addUser();")
+                                a#addPermission.btn.sbold.green(href="#/permission/add")
                                     i.fa.fa-plus
-                                    | 新增用户
+                                    | 新增权限
 
                         .col-md-6
                             .btn-group.pull-right
@@ -92,28 +92,27 @@ h3.page-title
                         tr
                             th
                                 input.group-checkable(type='checkbox', data-set='#tableList .checkboxes')
-                            th  用户名
-                            th  昵称
-                            th  真实姓名
-                            th  手机号
-                            th  邮箱
-                            th  QQ
-                            th  注册时间
-                            th  添加角色
+                            th  名称
+                            th  英文名称
+                            th  生成时间
+                            th  生效时间
+                            th  禁用时间
+                            th  状态
+                            th  配置权限
                             th  操作
                     tbody
                         tr.odd.gradeX
                             td
                                 input.checkboxes(type='checkbox', value='1')
-                            td  admin
-                            td  超级管理员
-                            td  superman
-                            td  18888888888
-                            td  email@email.com
-                            td  12345678
-                            td  2016-04-05 16:05:06
+                            td  读取
+                            td  read
+                            td  2016-04-05
+                            td  2016-04-05
                             td
-                                button.btn.btn-xs.btn-success(ng-click="addRole();") 添加角色
+                            td
+                                input.make-switch(type='checkbox', checked='', data-size="small",data-on-text="启用", data-off-text="禁用", data-on-color='info', data-off-color='success')
+                            td.center
+                                span.label.label-sm.label-success 配置权限
                             td
                                 span.label.label-sm.label-success 编辑
                                 span.label.label-sm.label-danger 删除

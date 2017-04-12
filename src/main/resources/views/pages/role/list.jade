@@ -6,11 +6,11 @@
             a(href='#/dashboard') 首页
             i.fa.fa-angle-right
         li
-            a(href='#/system/user/list') 用户管理
+            a(href='#/role/list') 角色管理
                 i.fa.fa-angle-right
         li
-            | 用户列表
-    //.page-toolbar
+            | 角色列表
+    .page-toolbar
         .btn-group.pull-right
             button.btn.btn-sm.btn-default.dropdown-toggle(type='button', data-toggle='dropdown', data-hover='dropdown', data-delay='1000', data-close-others='true')
                 | Actions
@@ -41,17 +41,18 @@
                         |  Pending Users
                         span.badge.badge-warning 12
 h3.page-title
-    | 用户管理
+    | 角色管理
 // END PAGE HEADER
 // BEGIN MAIN CONTENT
 .row
+    ui-view
     .col-md-12
         // BEGIN EXAMPLE TABLE PORTLET
         .portlet.light.bordered
             .portlet-title
                 .caption.font-dark
                     i.icon-settings.font-dark
-                    span.caption-subject.bold.uppercase  用户列表
+                    span.caption-subject.bold.uppercase  角色列表
                 .actions
                     .btn-group.btn-group-devided(data-toggle='buttons')
                         label.btn.btn-transparent.dark.btn-outline.btn-circle.btn-sm.active
@@ -65,10 +66,9 @@ h3.page-title
                     .row
                         .col-md-6
                             .btn-group
-                                a#addUser.btn.sbold.green(href="#/system/user/add" ng-click="addUser();")
+                                a#addRole.btn.sbold.green(href="#/role/add")
                                     i.fa.fa-plus
-                                    | 新增用户
-
+                                    | 新增角色
                         .col-md-6
                             .btn-group.pull-right
                                 button.btn.green.btn-outline.dropdown-toggle(data-toggle='dropdown')
@@ -92,31 +92,30 @@ h3.page-title
                         tr
                             th
                                 input.group-checkable(type='checkbox', data-set='#tableList .checkboxes')
-                            th  用户名
-                            th  昵称
-                            th  真实姓名
-                            th  手机号
-                            th  邮箱
-                            th  QQ
-                            th  注册时间
-                            th  添加角色
+                            th  角色名称
+                            th  角色英文名称
+                            th  角色生成时间
+                            th  角色更新时间
+                            th  角色禁用时间
+                            th  角色状态
+                            th  配置权限
                             th  操作
                     tbody
-                        tr.odd.gradeX
+                        tr.odd.gradeX(ng-repeat="role in roles")
                             td
                                 input.checkboxes(type='checkbox', value='1')
-                            td  admin
-                            td  超级管理员
-                            td  superman
-                            td  18888888888
-                            td  email@email.com
-                            td  12345678
-                            td  2016-04-05 16:05:06
+                            td  {{role.role_cn}}
+                            td  {{role.role_en}}
+                            td  {{role.createTime | date:'yyyy-MM-dd HH:mm:ss'}}
+                            td  {{role.updateTime | date:'yyyy-MM-dd HH:mm:ss'}}
+                            td  {{role.forbidTime | date:'yyyy-MM-dd HH:mm:ss'}}
                             td
-                                button.btn.btn-xs.btn-success(ng-click="addRole();") 添加角色
+                                input.make-switch(type='checkbox', checked='', data-size="small", data-on-color='info', data-off-color='success' data-on-text="启用", data-off-text="禁用")
+                            td.center
+                                button.btn.btn-xs.btn-success(ng-click="addPermission();") 配置权限
                             td
-                                span.label.label-sm.label-success 编辑
-                                span.label.label-sm.label-danger 删除
+                                button.btn.btn-xs.btn-success 编辑
+                                button.btn.btn-xs.btn-danger 删除
 // END MAIN CONTENT
 // BEGIN MAIN JS
 script.

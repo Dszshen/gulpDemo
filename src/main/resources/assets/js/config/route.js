@@ -40,9 +40,6 @@ XXAPP.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
         return {};
     };
 
-    //欢迎页面
-    //state('index', '/index', 'AppController', '/template/index.html', true);
-
     state('index', '/index', 'IndexController', '/pages/index.html', false, {pageTitle: '欢迎页'}, {
         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
             return $ocLazyLoad.load({
@@ -53,9 +50,7 @@ XXAPP.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
                     CONTEXT + '/assets/libs/morrisjs/morris.min.js',
                     CONTEXT + '/assets/libs/raphael/raphael-min.js',
                     CONTEXT + '/assets/libs/jquery-sparkline/dist/jquery.sparkline.min.js',
-
                     CONTEXT + '/assets/scripts/pages/dashboard.min.js'
-                    //'/assets/js/controllers/DashboardController.js'
                 ]
             });
         }]
@@ -68,8 +63,8 @@ XXAPP.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
     state('sys.info', '/info', 'SystemInfoController', '/pages/system/info.html', false, {pageTitle: 'XX公司信息'});
 
     //系统管理-->>>用户管理
-    state('user', '/user', 'SystemUserController', '<ui-view></ui-view>', true);
-    state('user.list', '/list', 'UserListController', '/pages/system/user/manage/list.html', false, {pageTitle: '用户列表'}, {
+    state('user', '/user', 'UserController', '<ui-view></ui-view>', true);
+    state('user.list', '/list', 'UserListController', '/pages/user/manage/list.html', false, {pageTitle: '用户列表'}, {
         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
             return $ocLazyLoad.load([{
                 name: 'userListCss',
@@ -91,15 +86,15 @@ XXAPP.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
     });
 
 
-    state('user.add', '/add', 'UserAddController', '/pages/system/user/manage/add.html', false, {pageTitle: '增加用户'});
-    state('user.detail', '/detail', 'UserDetailController', '/pages/system/user/manage/detail.html', false, {pageTitle: '用户资料'});
+    state('user.add', '/add', 'UserAddController', '/pages/user/manage/add.html', false, {pageTitle: '增加用户'});
+    state('user.detail', '/detail', 'UserDetailController', '/pages/user/manage/detail.html', false, {pageTitle: '用户资料'});
 
     /*用户中心*/
-    state('user.profile', '/profile', 'UserProfileController', '/pages/system/user/personal/profile.html', false, {pageTitle: '个人信息'});
+    state('user.profile', '/profile', 'UserProfileController', '/pages/user/personal/profile.html', false, {pageTitle: '个人信息'});
 
     //系统管理-->>>角色管理
-    state('role', '/role', 'SystemRoleController', '<ui-view></ui-view>', true);
-    state('role.list', '/list', 'RoleListController', '/pages/system/role/list.html', false, {pageTitle: '角色列表'}, {
+    state('role', '/role', 'RoleController', '<ui-view></ui-view>', true);
+    state('role.list', '/list', 'RoleListController', '/pages/role/list.html', false, {pageTitle: '角色列表'}, {
         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
             return $ocLazyLoad.load([{
                 name: 'roleManage',
@@ -114,13 +109,13 @@ XXAPP.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
             }]);
         }]
     });
-    state('role.add', '/add', 'RoleAddController', '/pages/system/role/add.html', false, {pageTitle: '增加角色'});
-    state('role.detail', '/detail', 'RoleDetailController', '/pages/system/role/detail.html', false, {pageTitle: '角色详情'});
+    state('role.add', '/add', 'RoleAddController', '/pages/role/add.html', false, {pageTitle: '增加角色'});
+    state('role.detail', '/detail', 'RoleDetailController', '/pages/role/detail.html', false, {pageTitle: '角色详情'});
 
 
     //系统管理-->>>权限管理
-    state('permission', '/permission', 'SystemPermissionController', '<ui-view></ui-view>', true);
-    state('permission.list', '/list', 'PermissionListController', '/pages/system/permission/list.html', false, {pageTitle: '权限列表'}, {
+    state('permission', '/permission', 'PermissionController', '<ui-view></ui-view>', true);
+    state('permission.list', '/list', 'PermissionListController', '/pages/permission/list.html', false, {pageTitle: '权限列表'}, {
         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
             return $ocLazyLoad.load([{
                 name: 'permissionManage',
@@ -134,7 +129,7 @@ XXAPP.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, 
             }]);
         }]
     });
-    state('permission.add', '/add', 'PermissionAddController', '/pages/system/permission/add.html', false, {pageTitle: '增加权限'});
+    state('permission.add', '/add', 'PermissionAddController', '/pages/permission/add.html', false, {pageTitle: '增加权限'});
     //菜单管理
     //state('sys.menu','/user','SystemMenuController','<ui-view></ui-view>',true);
     state('menu', '/menu', 'SystemMenuController', '/pages/system/menu/menu.html', false, {pageTitle: '菜单管理'});

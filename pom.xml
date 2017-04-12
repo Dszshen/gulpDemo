@@ -40,6 +40,7 @@
         <druid.version>1.0.11</druid.version>
         <spring-security.version>3.2.9.RELEASE</spring-security.version>
         <jetty.version>9.4.3.v20170317</jetty.version>
+        <commons-dbutils.version>1.6</commons-dbutils.version>
     </properties>
 
     <dependencies>
@@ -262,12 +263,13 @@
             <version>2.3.23</version>
         </dependency>
 
-        <!-- sitemesh 页面装饰器布局-->
-        <!--    <dependency>
-              <groupId>org.sitemesh</groupId>
-              <artifactId>sitemesh</artifactId>
-              <version>3.0.1</version>
-            </dependency>-->
+        <!-- https://mvnrepository.com/artifact/commons-dbutils/commons-dbutils -->
+        <dependency>
+            <groupId>commons-dbutils</groupId>
+            <artifactId>commons-dbutils</artifactId>
+            <version>${commons-dbutils.version}</version>
+        </dependency>
+
 
     </dependencies>
     <build>
