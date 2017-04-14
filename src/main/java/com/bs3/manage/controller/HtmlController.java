@@ -24,10 +24,12 @@ public class HtmlController {
         return "template/main";
     }
 
-    @RequestMapping("/{loginStatus}")
-    public String index(@PathVariable("loginStatus") String loginStatus) {
+    @RequestMapping("/")
+    public String index() {
+        double random = Math.random();
         //检查是否登陆，如果没有登陆，则跳转到登陆页面
-        if(loginStatus.equals("success")){
+        System.out.println("random:"+random);
+        if(random<0.2){
             return "redirect:/main";
         }else{
             return "redirect:/web/index.html";

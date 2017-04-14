@@ -41,6 +41,8 @@
         <spring-security.version>3.2.9.RELEASE</spring-security.version>
         <jetty.version>9.4.3.v20170317</jetty.version>
         <commons-dbutils.version>1.6</commons-dbutils.version>
+        <commons-lang3.version>3.5</commons-lang3.version>
+        <commons-lang.version>2.6</commons-lang.version>
     </properties>
 
     <dependencies>
@@ -268,6 +270,18 @@
             <groupId>commons-dbutils</groupId>
             <artifactId>commons-dbutils</artifactId>
             <version>${commons-dbutils.version}</version>
+        </dependency>
+
+        <!--<dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>-->
+
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${commons-lang.version}</version>
         </dependency>
 
 
