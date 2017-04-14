@@ -1,6 +1,5 @@
 package com.bs3.manage.service;
 
-import com.bs3.manage.common.util.SqlUtils;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.*;
 import org.slf4j.Logger;
@@ -22,7 +21,7 @@ import java.util.Map;
 public abstract class BaseService<T, ID extends Serializable> {
 
     private static final Logger LOGGER = LoggerFactory
-            .getLogger(SqlUtils.class);
+            .getLogger(BaseService.class);
 
     @Resource
     public DataSource mySqlDataSource;
