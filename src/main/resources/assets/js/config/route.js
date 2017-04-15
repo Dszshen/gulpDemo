@@ -1,5 +1,17 @@
 /* 所有页面的路由跳转 */
-XXAPP.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+XXAPP.config(['$stateProvider', '$urlRouterProvider','NotificationProvider', function ($stateProvider, $urlRouterProvider,NotificationProvider) {
+    //通知样式配置
+    NotificationProvider.setOptions({
+        delay: 3000,
+        startTop: 33,
+        startRight: 10,
+        verticalSpacing: 20,
+        horizontalSpacing: 20,
+        positionX: 'center',
+        positionY: 'top'
+        //templateUrl: "portal-notification.html"
+    });
+
     // 如果没有匹配到url请求就跳转到欢迎页
     $urlRouterProvider.otherwise("/index");
 

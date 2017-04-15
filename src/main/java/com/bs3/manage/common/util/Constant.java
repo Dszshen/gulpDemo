@@ -16,8 +16,11 @@ public interface Constant {
 
     //网站配置常量
     String SYSTEM_CONFIG_BASE="BASE";//基本信息
+    String SYSTEM_CONFIG_SECURITY="SECURITY";//安全设置
     String SYSTEM_CONFIG_WEIXIN="WEIXIN";//weixin配置
+    String SYSTEM_CONFIG_SMS="SMS";//短信配置
     String SYSTEM_CONFIG_EMAIL="EMAIL";//邮件配置
+    String SYSTEM_CONFIG_DATABASE="DATABASE";//数据库配置
     String SYSTEM_CONFIG_SERVER="SERVER";//服务器配置
 
 }

@@ -90,55 +90,63 @@ h3.page-title
                                         .form-group
                                             label.col-md-2.control-label 名称:
                                             .col-md-6
-                                                input.form-control(type='text', placeholder='名称' ng-model="config.name")
+                                                input.form-control(type='text', placeholder='名称' ng-model="companyInfo.name")
                                                 //span.help-block  数据库地址.
                                         .form-group
                                             label.col-md-2.control-label 地址:
                                             .col-md-6
-                                                input.form-control(type='text', placeholder='地址' ng-model="config.addr")
+                                                input.form-control(type='text', placeholder='地址' ng-model="companyInfo.addr")
                                                 //span.help-block  数据库地址.
                                         .form-group
                                             label.col-md-2.control-label 规模:
                                             .col-md-6
-                                                input.form-control(type='text', placeholder='公司规模' ng-model="config.employees")
+                                                input.form-control(type='text', placeholder='公司规模' ng-model="companyInfo.employees")
                                         .form-group
                                             label.col-md-2.control-label 主营业务:
                                             .col-md-6
-                                                input.form-control(type='text', placeholder='主营业务' ng-model="config.main_business")
+                                                input.form-control(type='text', placeholder='主营业务' ng-model="companyInfo.main_business")
                                         .form-group
                                             label.col-md-2.control-label 座机:
                                             .col-md-6
-                                                input.form-control(type='text', placeholder='座机' )
+                                                input.form-control(type='text', placeholder='座机' ng-model="companyInfo.tel")
+                                        .form-group
+                                            label.col-md-2.control-label 电话号码:
+                                            .col-md-6
+                                                input.form-control(type='text', placeholder='电话号码' ng-model="companyInfo.mobile_number")
                                         .form-group
                                             label.col-md-2.control-label 法人:
                                             .col-md-6
-                                                input.form-control(type='text', placeholder='法人' ng-model="config.legal_person")
+                                                input.form-control(type='text', placeholder='法人' ng-model="companyInfo.legal_person")
                                         .form-group
                                             label.col-md-2.control-label 年限:
                                             .col-md-6
-                                                input.form-control(type='text', placeholder='年限' ng-model="config.create_date")
+                                                input.form-control(type='text', placeholder='年限' ng-model="companyInfo.create_date")
                                         .form-group
                                             label.col-md-2.control-label 备注:
                                             .col-md-6
-                                                textarea.form-control(rows="5" placeholder='备注' ng-model="config.desc")
+                                                textarea.form-control(rows="5" placeholder='备注' ng-model="companyInfo.description")
                                     .form-actions
-                                        button.btn.blue(type='button' ng-click="setConfig()") 确定
+                                        button.btn.blue(type='button' ng-click="config.company.update();") 确定
                                         button.btn.default(type='button') 取消
                         #tab_security.tab-pane
                             .form
                                 .form-horizontal(role='form')
                                     .form-body
                                         .form-group
-                                            label.col-md-2.control-label 允许访问后台的IP列表:
+                                            label.col-md-2.control-label IP白名单列表:
                                             .col-md-8
-                                                textarea.form-control(rows="5" placeholder='允许访问后台的IP列表')
+                                                textarea.form-control(rows="5" placeholder='IP白名单列表' ng-model="securityInfo.white_list")
                                                 //span.help-block  数据库地址.
+                                        .form-group
+                                            label.col-md-2.control-label IP黑名单列表:
+                                            .col-md-8
+                                                textarea.form-control(rows="5" placeholder='IP黑名单列表' ng-model="securityInfo.forbid_list")
                                         .form-group
                                             label.col-md-2.control-label 后台登陆失败最大次数:
                                             .col-md-2
-                                                input.form-control(type='text', placeholder='后台登陆失败最大次数')
+                                                input.form-control(type='text', placeholder='后台登陆失败最大次数' ng-model="securityInfo.max_conn")
                                     .form-actions
-                                        button.btn.blue(type='submit') 确定
+                                        button.btn.blue(type='button' ng-click="config.security.update();") 确定
                                         button.btn.default(type='button') 取消
                         #tab_SMTP.tab-pane
                             .form
@@ -147,29 +155,29 @@ h3.page-title
                                         .form-group
                                             label.col-md-2.control-label 邮件发送模式:
                                             .col-md-6
-                                                input.form-control(type='text', placeholder='邮件发送模式')
+                                                input.form-control(type='text', placeholder='邮件发送模式' ng-model="emailInfo.model")
                                                 //span.help-block  数据库地址.
                                         .form-group
                                             label.col-md-2.control-label SMTP服务器:
                                             .col-md-6
-                                                input.form-control(type='text', placeholder='SMTP服务器')
+                                                input.form-control(type='text', placeholder='SMTP服务器' ng-model="emailInfo.smtp_server")
                                                 //span.help-block  数据库地址.
                                         .form-group
                                             label.col-md-2.control-label 端口:
                                             .col-md-2
-                                                input.form-control(type='text', placeholder='端口')
+                                                input.form-control(type='text', placeholder='端口' ng-model="emailInfo.port")
                                         .form-group
                                             label.col-md-2.control-label 邮箱账号:
                                             .col-md-6
-                                                input.form-control(type='text', placeholder='邮箱账号')
+                                                input.form-control(type='text', placeholder='邮箱账号' ng-model="emailInfo.account")
                                         .form-group
                                             label.col-md-2.control-label 邮箱密码:
                                             .col-md-6
-                                                input.form-control(type='text', placeholder='邮箱密码')
+                                                input.form-control(type='text', placeholder='邮箱密码' ng-model="emailInfo.password")
                                         .form-group
                                             label.col-md-2.control-label 收件邮箱地址:
                                             .col-md-6
-                                                input.form-control(type='text', placeholder='收件邮箱地址')
+                                                input.form-control(type='text', placeholder='收件邮箱地址' ng-model="emailInfo.receive_addr")
                                     .form-actions
                                         button.btn.blue(type='submit') 确定
                                         button.btn.default(type='button') 取消

@@ -184,6 +184,7 @@ gulp.task(taskName['watch'],function(){
     gulp.watch(resourceFilesPath.images, [taskName['images']]);
     gulp.watch(resourceFilesPath.plugins, [taskName['plugins']]);
     gulp.watch(resourceFilesPath.scripts, [taskName['scripts']]);
+    gulp.watch(resourceFilesPath.scripts, [taskName['lib']]);
     gulp.watch("./gulpfile.js", ['default']);
     //gulp.watch(destFilesPath, [taskName['copy']]);
 
