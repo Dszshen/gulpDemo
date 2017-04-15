@@ -1,11 +1,12 @@
 package com.bs3.manage.service.system;
 
+import com.alibaba.fastjson.JSONObject;
 import com.bs3.manage.common.util.Constant;
-import com.bs3.manage.common.util.SqlUtils;
 import com.bs3.manage.service.BaseService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 /**
@@ -22,7 +23,7 @@ public class SystemService extends BaseService{
      * @param params 设置参数
      * @param opType 操作数据库类型，默认为update
      */
-    public int  setConfig(String type, String[] params,String opType){
+    public int setConfig(String type, JSONObject params, String opType){
         if(StringUtils.isBlank(opType)){
             opType = Constant.DATABASE_OP_UPDATE;
         }
@@ -33,9 +34,22 @@ public class SystemService extends BaseService{
             if(type.equals(Constant.SYSTEM_CONFIG_BASE)){
 
                 if(opType.equals(Constant.DATABASE_OP_INSERT)){
-                    sql = "insert into sys_config(id,name) values ('"+ UUID.randomUUID()+"','公司名称')";
+                    sql = "insert into company_info(id,name,addr,employees,main_business,legal_person,create_date,description) values (?,?,?,?,?,?,?,?)";
                     //sqlUtils.update(sql,params);
-                    return insert(sql,params);
+                    String[] baseParams = new String[]{
+                            UUID.randomUUID().toString(),
+                            params.getString("name"),
+                            params.getString("addr"),
+                            params.getString("employees"),
+                            params.getString("main_business"),
+                            params.getString("legal_person"),
+                            params.getString("create_date"),
+                            params.getString("desc")
+                    };
+
+                    //System.out.println(baseParams.toString());
+
+                    return insert(sql,baseParams);
                 }
 
             }else if(type.equals(Constant.SYSTEM_CONFIG_WEIXIN)){
@@ -47,4 +61,6 @@ public class SystemService extends BaseService{
         return 0;
         //sqlUtils.insert(sql,params);
     }
+
+
 }

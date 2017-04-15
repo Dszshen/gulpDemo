@@ -1,9 +1,28 @@
-XXAPP.controller('SystemSettingController', function($scope,$window) {
-    $scope.tabs = [
-        {title : 'jquery' ,content : '我是jquery内容'},
-        {title : 'angular' ,content : '我是angular内容'}
-    ];
-    $scope.alertMe = function(){
-        $window.alert('html5jq-FE学习平台欢迎您!');
+XXAPP.controller('SystemSettingController',['$scope','$http',function($scope,$http) {
+
+    $scope.config = {
+        name:"",
+        addr:"",
+        employees:"",
+        main_business:"",
+        legal_person:"",
+        create_date:"",
+        desc:""
     };
-});
+
+    //设置基本信息
+    $scope.setConfig = function () {
+        var params = $scope.config;
+        console.log(params);
+
+        $http({
+            method:'post',
+            url:'sys/base/add',
+            data:angular.toJson($scope.config)
+        }).success(function (data) {
+            alert(data);
+        });
+    };
+
+
+}]);

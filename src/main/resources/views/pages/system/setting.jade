@@ -90,39 +90,39 @@ h3.page-title
                                         .form-group
                                             label.col-md-2.control-label 名称:
                                             .col-md-6
-                                                input.form-control(type='text', placeholder='名称')
+                                                input.form-control(type='text', placeholder='名称' ng-model="config.name")
                                                 //span.help-block  数据库地址.
                                         .form-group
                                             label.col-md-2.control-label 地址:
                                             .col-md-6
-                                                input.form-control(type='text', placeholder='地址')
+                                                input.form-control(type='text', placeholder='地址' ng-model="config.addr")
                                                 //span.help-block  数据库地址.
                                         .form-group
                                             label.col-md-2.control-label 规模:
                                             .col-md-6
-                                                input.form-control(type='text', placeholder='公司规模')
+                                                input.form-control(type='text', placeholder='公司规模' ng-model="config.employees")
                                         .form-group
                                             label.col-md-2.control-label 主营业务:
                                             .col-md-6
-                                                input.form-control(type='text', placeholder='主营业务')
+                                                input.form-control(type='text', placeholder='主营业务' ng-model="config.main_business")
                                         .form-group
                                             label.col-md-2.control-label 座机:
                                             .col-md-6
-                                                input.form-control(type='text', placeholder='座机')
+                                                input.form-control(type='text', placeholder='座机' )
                                         .form-group
                                             label.col-md-2.control-label 法人:
                                             .col-md-6
-                                                input.form-control(type='text', placeholder='法人')
+                                                input.form-control(type='text', placeholder='法人' ng-model="config.legal_person")
                                         .form-group
                                             label.col-md-2.control-label 年限:
                                             .col-md-6
-                                                input.form-control(type='text', placeholder='年限')
+                                                input.form-control(type='text', placeholder='年限' ng-model="config.create_date")
                                         .form-group
                                             label.col-md-2.control-label 备注:
                                             .col-md-6
-                                                textarea.form-control(rows="5" placeholder='备注')
+                                                textarea.form-control(rows="5" placeholder='备注' ng-model="config.desc")
                                     .form-actions
-                                        button.btn.blue(type='submit') 确定
+                                        button.btn.blue(type='button' ng-click="setConfig()") 确定
                                         button.btn.default(type='button') 取消
                         #tab_security.tab-pane
                             .form
