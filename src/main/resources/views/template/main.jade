@@ -23,6 +23,7 @@ html(lang='en', data-ng-app='XXAPP')
         link(href='${request.contextPath}/assets/css/layouts/layout.css?t=#{currTime}', rel='stylesheet', type='text/css')
         link#style_color(href='${request.contextPath}/assets/css/layouts/themes/darkblue.css?t=#{currTime}', rel='stylesheet', type='text/css')
         link(href='${request.contextPath}/assets/css/layouts/custom.css?t=#{currTime}', rel='stylesheet', type='text/css')
+        link(href='${request.contextPath}/assets/css/style.css?t=#{currTime}', rel='stylesheet', type='text/css')
         // END THEME STYLES
         link(rel='shortcut icon', href='${request.contextPath}/assets/images/favicon.ico?t=#{currTime}')
     body.page-header-fixed.page-sidebar-closed-hide-logo.page-on-load(ng-controller='AppController', ng-class="{'page-content-white': settings.layout.pageContentWhite,'page-container-bg-solid': settings.layout.pageBodySolid, 'page-sidebar-closed': settings.layout.pageSidebarClosed}")

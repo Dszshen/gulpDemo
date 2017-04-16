@@ -6,19 +6,11 @@ XXAPP.controller('UserListController', function($rootScope, $scope,$state,$uibMo
 
 
     $scope.addRole = function () {
-        $scope.treeModal ={
-            header:"添加角色",
-            title:"角色树列表"
-        };
         $uibModal.open({
-            //templateUrl: CONTEXT+'/pages/system/role/modal/role_pms.html?version=' + version,
-            templateUrl:CONTEXT+'/common/modal/tree_modal.html',
-            controller: 'TreeModalCtrl',
-            resolve: {
-                treeModal: function () {
-                    return $scope.treeModal;
-                }
-            }
+            templateUrl:CONTEXT+'/pages/user/manage/add_role_modal.html',
+            controller: 'UserRoleAddCtrl',
+            size: 'lg',
+            backdrop: 'static'
         });
     };
 

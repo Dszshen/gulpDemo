@@ -20,6 +20,7 @@ XXAPP.controller('RoleListController',function($rootScope,$scope,$http,$uibModal
             header:"为角色授权",
             title:"权限树列表"
         };
+
         $uibModal.open({
             //templateUrl: CONTEXT+'/pages/system/role/modal/role_pms.html?version=' + version,
             templateUrl:CONTEXT+'/common/modal/tree_modal.html',
