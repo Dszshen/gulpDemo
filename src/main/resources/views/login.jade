@@ -31,13 +31,16 @@ html(lang='')
             };
     body
         .login
-            .logo
-                a(href='/main')
-                    img(src='${request.contextPath}/assets/images/img/logo-big.png')
+            .logo-bg
+            .login-header
+                .login-header-top
+                .login-header-bottom
+                    .login-logo
+                        a(href='/main') 网站LOGO
+                            //img(src="${request.contextPath}/assets/images/img/logo-big.png")
             .content
                 // BEGIN LOGIN FORM
                 form.login-form
-                    h3.form-title.font-green 登陆
                     .alert.alert-danger(style="display:none;")
                         button.close(data-close='alert')
                         span 报错信息
@@ -48,26 +51,27 @@ html(lang='')
                     .form-group
                         label.control-label.visible-ie8.visible-ie9 密码
                         input.form-control.form-control-solid.placeholder-no-fix(type='password' id="password" name="password" placeholder='密码')
+                    .form-group
+                        a.forget-pwd(href='javascript:;') 忘记密码?
                     .form-actions
-                        button.btn.green(type='button' onclick="login();") 登陆
-                        label.rememberme.check
-                            input(type='checkbox', name='remember', value='1')
-                            | 记住
-                        a#forget-password.forget-password(href='javascript:;') 忘记密码?
-                    .login-options
-                        h4 或者用其他账号登陆
-                        ul.social-icons
-                            li
-                                a.social-icon-color.facebook(data-original-title='facebook', href='javascript:;')
-                            li
-                                a.social-icon-color.twitter(data-original-title='Twitter', href='javascript:;')
-                            li
-                                a.social-icon-color.googleplus(data-original-title='Goole Plus', href='javascript:;')
-                            li
-                                a.social-icon-color.linkedin(data-original-title='Linkedin', href='javascript:;')
-                    .create-account
-                        p
-                            a#register-btn.uppercase(href='/register.html') 创建一个账号
+                        button.btn.login-btn(type='button' onclick="login();") 登陆
+                        h5.reg-now
+                            | 还没有网站账号？
+                            a(href="/register.html")
+                                span 立即注册
+                                i.fa.fa-arrow-circle-o-right
+                    //.login-options
+                        h4 或者使用其他账号直接登陆
+                        .social-icons-wrap.text-center
+                            ul.social-icons
+                                li
+                                    a.weibo(data-original-title='facebook', href='javascript:;')
+                                li
+                                    a.qq(data-original-title='Twitter', href='javascript:;')
+                                li
+                                    a.weixin(data-original-title='Goole Plus', href='javascript:;')
                     // END login FORM
-            .copyright  2016 © XX管理系统.
+            .web-description
+                h5 — 专注于管理系统研发 —
+            //.copyright  2016 © XX管理系统.
 

@@ -1,107 +1,57 @@
 .modal-header
     h4
-        | 为用户添加角色
+        | 为角色添加权限
         a.btn.btn-xs.pull-right(title='关闭' ng-click='cancel();')
             i.fa.fa-close
 .modal-body
+    .row
+        .col-md-12
+            .form-md-line-input
+                .md-checkbox-inline
+                    .md-checkbox
+                        input#checkbox33.md-check(type='checkbox')
+                        label(for='checkbox33')
+                            span
+                            span.check
+                            span.box
+                            |  查询权限
+                    .md-checkbox
+                        input#checkbox37.md-check(type='checkbox')
+                        label(for='checkbox37')
+                            span
+                            span.check
+                            span.box
+                            |  新增权限
+                    .md-checkbox
+                        input#checkbox34.md-check(type='checkbox')
+                        label(for='checkbox34')
+                            span
+                            span.check
+                            span.box
+                            |  修改权限
+                    .md-checkbox
+                        input#checkbox35.md-check(type='checkbox')
+                        label(for='checkbox35')
+                            span
+                            span.check
+                            span.box
+                            |  删除权限
     .category-wrap
         .category-heading
-            .md-checkbox.has-info
-                input#checkbox1111.md-check(type='checkbox')
-                label(for='checkbox1111')
-                    span
-                    span.check
-                    span.box
-                    |  管理角色
-        .category-content
-            .row
-                .col-md-12
-                    .form-md-line-input
-                        .md-checkbox-inline
-                            .md-checkbox
-                                input#checkbox33.md-check(type='checkbox')
-                                label(for='checkbox33')
-                                    span
-                                    span.check
-                                    span.box
-                                    |  超级管理员
-                            .md-checkbox
-                                input#checkbox34.md-check(type='checkbox')
-                                label(for='checkbox34')
-                                    span
-                                    span.check
-                                    span.box
-                                    |  其他角色1
-                            .md-checkbox
-                                input#checkbox35.md-check(type='checkbox')
-                                label(for='checkbox35')
-                                    span
-                                    span.check
-                                    span.box
-                                    |  其他角色2
-    .category-wrap
-        .category-heading
-            .md-checkbox.has-success
-                input#checkbox0001.md-check(type='checkbox')
-                label(for='checkbox0001')
-                    span
-                    span.check
-                    span.box
-                    | 其他角色
-        .category-content
-            .row
-                .col-md-12
-                    .form-md-line-input
-                        .md-checkbox-inline
-                            .md-checkbox
-                                input#checkbox001.md-check(type='checkbox')
-                                label(for='checkbox001')
-                                    span
-                                    span.check
-                                    span.box
-                                    |  角色1
-                            .md-checkbox
-                                input#checkbox002.md-check(type='checkbox')
-                                label(for='checkbox002')
-                                    span
-                                    span.check
-                                    span.box
-                                    |  角色2
-                            .md-checkbox
-                                input#checkbox003.md-check(type='checkbox')
-                                label(for='checkbox003')
-                                    span
-                                    span.check
-                                    span.box
-                                    |  角色3
-    .category-wrap
-        .category-heading
-            h3 已经赋予的角色
+            h3 已经赋予的权限
         .category-content
             .row
                 .col-md-2.col-xs-2
-                    span 角色1
+                    span 权限1
                 .col-md-2.col-xs-2
-                    span 角色2
+                    span 权限2
                 .col-md-2.col-xs-2
-                    span 角色3
+                    span 权限3
                 .col-md-2.col-xs-2
-                    span 角色4
+                    span 权限4
                 .col-md-2.col-xs-2
-                    span 角色5
+                    span 权限5
                 .col-md-2.col-xs-2
-                    span 角色6
-                .col-md-2.col-xs-2
-                    span 角色7
-                .col-md-2.col-xs-2
-                    span 角色8
-                .col-md-2.col-xs-2
-                    span 角色9
-                .col-md-2.col-xs-2
-                    span 角色10
-                .col-md-2.col-xs-2
-                    span 角色11
-                .col-md-2.col-xs-2
-                    span 角色12
+                    span 权限6
 .modal-footer
     button.btn.btn-primary(type='button') 确定
