@@ -16,7 +16,7 @@ XXAPP.controller('SystemSettingController',['$scope','$http','Notification',func
 
     //安全config
     $scope.securityInfo = {
-        id:"",
+        id:"d8d5a656-2410-11e7-93ae-92361f002671",
         white_list:"",
         forbid_list:"",
         max_conn:""
@@ -34,22 +34,32 @@ XXAPP.controller('SystemSettingController',['$scope','$http','Notification',func
 
     $scope.config = {
         company:{
+            add:function(){
+              var params = $scope.companyInfo;
+              $http({
+                method:'post',
+                url:'sys/base',
+                data:angular.toJson($scope.companyInfo)
+              }).success(function (resp) {
+                console.log(resp);
+                if(resp.flag="success") {
+                  Notification.success({title: '新增公司', message: "新增公司信息成功", positionY: 'top', positionX: 'center'});
+                }
+              });
+            },
             get:function(){
                 $http({
                     method:'get',
                     url:'sys/base',
                     params:{id:$scope.companyInfo.id}
                 }).success(function (resp) {
-                    console.log(resp);
                     if(resp.flag="success"){
                         $scope.companyInfo = resp.data[0];
                     }
-
                 });
             },
             update:function(){
                 var params = $scope.companyInfo;
-                console.log(params);
                 $http({
                     method:'PUT',
                     url:'sys/base',
@@ -57,7 +67,7 @@ XXAPP.controller('SystemSettingController',['$scope','$http','Notification',func
                 }).success(function (resp) {
                     console.log(resp);
                     if(resp.flag="success") {
-                        Notification.success({title: '提交表单', message: "提交成功", positionY: 'top', positionX: 'center'});
+                        Notification.success({title: '更新公司信息', message: "更新公司信息成功", positionY: 'top', positionX: 'center'});
                     }
                 });
             }
@@ -66,7 +76,7 @@ XXAPP.controller('SystemSettingController',['$scope','$http','Notification',func
             get:function(){
                 $http({
                     method:'get',
-                    url:'sys/base',
+                    url:'sys/security',
                     params:{id:$scope.securityInfo.id}
                 }).success(function (resp) {
                     $scope.securityInfo = resp.data[0];
@@ -76,7 +86,7 @@ XXAPP.controller('SystemSettingController',['$scope','$http','Notification',func
                 var params = $scope.securityInfo;
                 $http({
                     method:'PUT',
-                    url:'sys/base',
+                    url:'sys/security',
                     data:angular.toJson($scope.securityInfo)
                 }).success(function (resp) {
                     console.log(resp);
@@ -101,6 +111,7 @@ XXAPP.controller('SystemSettingController',['$scope','$http','Notification',func
     };
 
     $scope.config.company.get();
+    $scope.config.security.get();
 
     //添加基本信息
     $scope.addCompanyInfo = function () {

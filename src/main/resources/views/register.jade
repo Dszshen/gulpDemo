@@ -8,51 +8,41 @@ html(lang='')
         link(href='${request.contextPath}/assets/libs/bootstrap/dist/css/bootstrap.css?t=#{currTime}', rel='stylesheet', type='text/css')
         link(href='${request.contextPath}/assets/css/pages/register.css', rel='stylesheet', type='text/css')
         script(src='${request.contextPath}/assets/libs/jquery/dist/jquery.min.js?t=#{currTime}', type='text/javascript')
+        script.
+            var regTab = function(e){
+              $(".register-tabs >li").removeClass("active");
+              $(e).addClass("active");
+            };
     body
         .register
+            .register-bg
+            .register-headding
+                .register-logo
+                    a(href="/main") 网站LOGO
             .container
-                .register-headding
-                    h2.register-title 请注册
-                .register-form
-                    .form-horizontal(role='form')
+                .register-steps
+                .register-form-wrap.text-center
+                    .register-form.form-horizontal(role='form')
+                        ul.register-tabs.clearfix
+                            li.active(onclick="regTab(this);")
+                                span.register-tab-active
+                                i.fa.fa-mobile-phone
+                                | 商家注册
+                            li(onclick="regTab(this);")
+                                span.register-tab-active
+                                i.fa.fa-mail-forward
+                                | 个人用户
                         .form-body
                             .form-group
-                                label.col-md-2.control-label 名称:
-                                .col-md-6
-                                    input.form-control(type='text', placeholder='名称')
-                                    // span.help-block  数据库地址.
+                                input.form-control(type='text', placeholder='手机号码')
                             .form-group
-                                label.col-md-2.control-label 地址:
-                                .col-md-6
-                                    input.form-control(type='text', placeholder='地址')
-                                    // span.help-block  数据库地址.
+                                input.form-control(type='text', placeholder='验证码')
                             .form-group
-                                label.col-md-2.control-label 规模:
-                                .col-md-6
-                                    input.form-control(type='text', placeholder='公司规模')
-                            .form-group
-                                label.col-md-2.control-label 主营业务:
-                                .col-md-6
-                                    input.form-control(type='text', placeholder='主营业务')
-                            .form-group
-                                label.col-md-2.control-label 座机:
-                                .col-md-6
-                                    input.form-control(type='text', placeholder='座机')
-                            .form-group
-                                label.col-md-2.control-label 法人:
-                                .col-md-6
-                                    input.form-control(type='text', placeholder='法人')
-                            .form-group
-                                label.col-md-2.control-label 年限:
-                                .col-md-6
-                                    input.form-control(type='text', placeholder='年限')
-                            .form-group
-                                label.col-md-2.control-label 备注:
-                                .col-md-6
-                                    textarea.form-control(rows='5', placeholder='备注')
+                                input.form-control(type='text', placeholder='密码')
                         .form-actions
-                            button.btn.blue(type='submit') 确定
-                            button.btn.default(type='button') 取消
+                            button.btn.register-btn(type='submit') 注册
+                .web-description.text-center
+                    h5 — 专注于管理系统研发 —
 
 
 
