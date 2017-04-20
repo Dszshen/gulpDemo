@@ -1,7 +1,11 @@
 package com.bs3.manage.service;
 
+import com.alibaba.fastjson.JSONObject;
+import com.bs3.manage.common.util.Constant;
+import com.bs3.manage.common.util.JsonResult;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.*;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -13,6 +17,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * Created by zhangbin on 2016/7/28.
@@ -33,6 +38,73 @@ public abstract class BaseService<T, ID extends Serializable> {
     protected QueryRunner getQueryRunner() {
         return new QueryRunner(mySqlDataSource);
     }
+
+    /**
+     * 组装sql，并执行
+     * @param opType 操作数据库方式（insert ，update）
+     * @param tableName 数据库表的名称
+     * @param fields 表字段
+     * @param params 参数
+     * @return
+     */
+    /*public Integer createInsertSql(String opType, String tableName, List fields, JSONObject params){
+        String sql = "";
+        String opStr = "(";
+        String valuesStr = " values (";
+        ArrayList<String> arrayList = new ArrayList<String>();
+        arrayList.add(0, UUID.randomUUID().toString());
+        for (int i=0;i<fields.size();i++){
+            opStr+=fields.get(i).toString();
+            valuesStr+="?";
+            if((i+1)==fields.size()){
+                opStr+=")";
+                valuesStr+=")";
+            }else{
+                arrayList.add(i+1,params.getString(fields.get(i+1).toString()));
+                opStr+=",";
+                valuesStr+=",";
+            }
+        }
+        sql = "INSERT INTO "+tableName+opStr+valuesStr;
+        Object[] opParams = arrayList.toArray();
+        return insert(sql,opParams);
+    }*/
+
+    /**
+     *
+     * @param opType
+     * @param tableName
+     * @param fields
+     * @param params
+     * @param updateFields
+     * @return
+     */
+    /*public Integer createUpdateSql(String opType, String tableName, List fields, JSONObject params,List<String> updateFields){
+        String sql = "";
+        String opStr = "";
+        ArrayList<String> arrayList = new ArrayList<String>();
+        for (int i=0;i<fields.size();i++){
+            if((i+1)!=fields.size()){
+                opStr+=fields.get(i+1).toString()+"=?,";
+                arrayList.add(i,params.getString(fields.get(i+1).toString()));
+            }
+        }
+        opStr=opStr.substring(0,opStr.length()-1);
+        sql = "UPDATE "+tableName+" SET "+opStr+" WHERE ";
+        String whereStr = " 1=1 AND";
+        if(updateFields!=null&&updateFields.size()>0){
+            for (int j=0;j<updateFields.size();j++){
+                whereStr+= updateFields.get(j)+"="+params.getString(updateFields.get(j));
+                if((j+1)!=updateFields.size()){
+                    whereStr+=" AND ";
+                }
+            }
+        }
+
+        sql+= whereStr;
+        Object[] opParams = arrayList.toArray();
+        return update(sql,opParams);
+    }*/
 
     /**
      *
