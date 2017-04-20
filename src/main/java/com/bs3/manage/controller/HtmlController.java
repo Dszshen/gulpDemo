@@ -29,11 +29,12 @@ public class HtmlController {
         double random = Math.random();
         //检查是否登陆，如果没有登陆，则跳转到登陆页面
         System.out.println("random:"+random);
-        if(random<0.2){
+        /*if(random<0.2){
             return "redirect:/main";
         }else{
-            return "redirect:/web/index.html";
-        }
+            return "redirect:/navweb/nav.html";
+        }*/
+        return "redirect:/navweb/nav.html";
     }
 }
 
