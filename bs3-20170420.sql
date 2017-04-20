@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : bs3
-Source Server Version : 50714
+Source Server         : 本地数据库
+Source Server Version : 50716
 Source Host           : localhost:3306
 Source Database       : bs3
 
 Target Server Type    : MYSQL
-Target Server Version : 50714
+Target Server Version : 50716
 File Encoding         : 65001
 
-Date: 2017-04-16 23:38:56
+Date: 2017-04-20 22:56:00
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -139,18 +139,17 @@ INSERT INTO `auth_user_group` VALUES ('1', '1', '1');
 -- ----------------------------
 DROP TABLE IF EXISTS `auth_user_role`;
 CREATE TABLE `auth_user_role` (
-  `id` varchar(36) NOT NULL,
-  `userid` varchar(36) DEFAULT NULL,
-  `roleid` varchar(36) DEFAULT NULL COMMENT '具体角色id',
-  `default` int(1) DEFAULT NULL COMMENT '是否为默认角色',
-  `role_group` varchar(255) DEFAULT NULL COMMENT '角色group',
+  `id` int(5) NOT NULL AUTO_INCREMENT COMMENT '自增长id',
+  `user_id` varchar(64) NOT NULL COMMENT '用户id',
+  `role_id` varchar(256) DEFAULT NULL COMMENT '角色id',
+  `default_role` varchar(20) DEFAULT NULL COMMENT '默认角色：1、是。2、否',
+  `role_group` varchar(20) DEFAULT NULL COMMENT '角色组',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of auth_user_role
 -- ----------------------------
-INSERT INTO `auth_user_role` VALUES ('1', '1', '1', null, null);
 
 -- ----------------------------
 -- Table structure for company_users
@@ -190,10 +189,12 @@ CREATE TABLE `config_company` (
 -- ----------------------------
 INSERT INTO `config_company` VALUES ('1a2f1ca7-f3f5-4334-93fb-9877d99af4a2', '名称1', '地址111', '2', '主营业务1', '法人1', '2', '备注1', null, null);
 INSERT INTO `config_company` VALUES ('37f5263a-1558-47e7-9f03-372aaae0e234', '油气集团', '油气集团地址', '22人', '油气业务', '油气集团法人', '1', '油气集团油气集团油气集团油气集团油气集团油气集团油气集团备注备注备注备注', '023-88888888', '15888888888');
+INSERT INTO `config_company` VALUES ('53d64782-3e3d-4281-af18-960c412cc3e7', '名称qqqq', '地址', '2222', '主营业务1', '法人1', '2', '备注啊啊啊啊啊啊啊', '333333333', '33333333333');
 INSERT INTO `config_company` VALUES ('6cd4d32d-87f7-4120-be1d-92c96f2f1f56', 'mmmmm', 'mmmmm', '2', 'mmmmm', 'mmmmm', '3', 'mmmmmmmmmmmmmmmmmmmm', '11111111', '11111111');
 INSERT INTO `config_company` VALUES ('7f564782-ca39-4634-8255-5ed41a790970', '名称', '地址', '2', '主营业务', '法人', '2', '备注', null, null);
+INSERT INTO `config_company` VALUES ('b8327cf7-1f2e-4642-93b1-4635f8131aab', '名称000111777', '地址', '2222', '主营业务1', '法人1', '2', '备注1111122223333', '333333333', '33333333333');
 INSERT INTO `config_company` VALUES ('c258cf57-d721-43a6-9fbe-0dcf5573e8d6', '油气集团', '油气集团地址', '22人', '油气业务', '油气集团法人', '1', '油气集团油气集团油气集团油气集团油气集团油气集团油气集团', '023-88888888', '15888888888');
-INSERT INTO `config_company` VALUES ('e1eae6d3-6fff-42e7-a793-051aff817d9a', '名称1111', '地址111112222', '2', '主营业务1', '法人1', '2', '备注1111122223333', '333333333', '33333333333');
+INSERT INTO `config_company` VALUES ('e1eae6d3-6fff-42e7-a793-051aff817d9a', '名称名称', '地址444', '2222', '主营业务1', '法人1', '2', '备注1111122223333', '333333333', '33333333333');
 INSERT INTO `config_company` VALUES ('e452fbb7-3bd9-4190-bd01-3373fa9303a2', '名称1', '地址111', '2', '主营业务1', '法人1', '2', '备注1', null, null);
 INSERT INTO `config_company` VALUES ('fc04692c-799c-46c9-860c-c815dca3a55d', '名称1', '地址111', '2', '主营业务1', '法人1', '2', '备注1', null, null);
 
@@ -230,6 +231,26 @@ CREATE TABLE `config_security` (
 
 -- ----------------------------
 -- Records of config_security
+-- ----------------------------
+INSERT INTO `config_security` VALUES ('d8d5a656-2410-11e7-93ae-92361f002671', '129.9.9.88,129.9.9.99,129.9.9.100', '129.9.9.8', '8');
+
+-- ----------------------------
+-- Table structure for menus
+-- ----------------------------
+DROP TABLE IF EXISTS `menus`;
+CREATE TABLE `menus` (
+  `id` varchar(36) NOT NULL,
+  `name` varchar(50) DEFAULT NULL COMMENT '菜单名称',
+  `pId` int(11) DEFAULT NULL COMMENT '父节点id',
+  `url` varchar(255) DEFAULT NULL COMMENT '菜单链接',
+  `icon` varchar(255) DEFAULT NULL COMMENT '菜单图标',
+  `show` int(1) DEFAULT NULL COMMENT '是否启用',
+  `flag` varchar(20) DEFAULT NULL COMMENT '英文名称',
+  `desc` varchar(255) DEFAULT NULL COMMENT '描述'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of menus
 -- ----------------------------
 
 -- ----------------------------
@@ -3824,3 +3845,21 @@ CREATE TABLE `user` (
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('1', 'admin', '123456', '张三', '22', '0', '1992-01-01 11:00:47', '三娃子', null, '13800000000', '123456@email.com', '142427199509103011', '12345678', 'weixin', '1', '1', '1', '2016-05-13 11:02:03', '2016-05-13 11:02:08', null, null);
+
+-- ----------------------------
+-- Table structure for user_relation
+-- ----------------------------
+DROP TABLE IF EXISTS `user_relation`;
+CREATE TABLE `user_relation` (
+  `id` int(5) NOT NULL AUTO_INCREMENT COMMENT '自增长id',
+  `user_id` varchar(20) NOT NULL COMMENT '用户id',
+  `user_status` int(1) NOT NULL COMMENT '用户状态',
+  `table_name` varchar(20) NOT NULL COMMENT '用户关联的表名',
+  `table_key` varchar(20) NOT NULL COMMENT '与用户关联表的主键名称',
+  `table_val` varchar(64) DEFAULT NULL COMMENT '与用户关联表的主键值',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user_relation
+-- ----------------------------
