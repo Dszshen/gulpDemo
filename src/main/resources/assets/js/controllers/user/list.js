@@ -44,7 +44,7 @@ XXAPP.controller('UserListController',['$rootScope', '$scope','$state','$uibModa
         addRoleModal.result.then(function (resp) {
             //获取data
             //console.log(data);
-            console.info("角色选择data-->：",resp);
+            //console.info("角色选择data-->：",resp);
         }, function () {
             $log.info('Modal dismissed at: ' + new Date());
         });

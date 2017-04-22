@@ -12,8 +12,8 @@ XXAPP.controller('UserRoleAddCtrl', ['$rootScope', '$scope', '$state', '$uibModa
             //$uibModalInstance.dismiss();
             angular.forEach($scope.roles,function(groupObj){
                 console.log("group选择："+groupObj.checked);
-                angular.forEach(groupObj,function(roleObj){
-                    console.log("group选择："+roleObj.checked);
+                angular.forEach(groupObj.items,function(roleObj){
+                    console.log("role选择："+roleObj.checked);
                 });
             });
 
