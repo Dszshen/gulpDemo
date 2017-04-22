@@ -1,9 +1,11 @@
 package com.bs3.manage.controller.system;
 
 import com.bs3.manage.bean.User;
+import com.bs3.manage.common.util.JsonResult;
 import com.bs3.manage.service.system.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,18 +15,23 @@ import org.springframework.web.bind.annotation.RestController;
  *
  */
 @RestController
-@RequestMapping("system/user")
+@RequestMapping("user")
 public class UserController {
 
     @Autowired
     UserService userService;
 
-    @RequestMapping("add")
-    public User addUser(@RequestParam("user") User user){
+    @RequestMapping(method = RequestMethod.GET,value="add")
+    public JsonResult addUser(@RequestParam("user") User user){
 
         User u = userService.add(user);
 
-        return u;
+        return JsonResult.success(u);
+    }
+
+    @RequestMapping(method = RequestMethod.GET,value="list")
+    public JsonResult list(){
+        return JsonResult.success(userService.findAll());
     }
 
 }

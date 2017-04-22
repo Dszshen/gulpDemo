@@ -1,4 +1,4 @@
-XXAPP.controller('IndexController', function($rootScope, $scope, $http, $timeout) {
+XXAPP.controller('IndexController', ['$rootScope', '$scope', '$http', '$timeout',function($rootScope, $scope, $http, $timeout) {
     $scope.$on('$viewContentLoaded', function() {   
         // initialize core components
         App.initAjax();
@@ -8,4 +8,4 @@ XXAPP.controller('IndexController', function($rootScope, $scope, $http, $timeout
     $rootScope.settings.layout.pageContentWhite = true;
     $rootScope.settings.layout.pageBodySolid = false;
     $rootScope.settings.layout.pageSidebarClosed = false;
-});
+}]);

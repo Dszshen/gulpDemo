@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 本地数据库
-Source Server Version : 50716
+Source Server         : bs3
+Source Server Version : 50714
 Source Host           : localhost:3306
 Source Database       : bs3
 
 Target Server Type    : MYSQL
-Target Server Version : 50716
+Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-04-20 22:56:00
+Date: 2017-04-22 23:44:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -85,7 +85,7 @@ INSERT INTO `auth_permission` VALUES ('5', 'ALL', null, null, null, null, null, 
 -- ----------------------------
 DROP TABLE IF EXISTS `auth_role`;
 CREATE TABLE `auth_role` (
-  `id` varchar(64) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `en` varchar(25) DEFAULT NULL COMMENT '角色英文名称',
   `cn` varchar(60) DEFAULT NULL COMMENT '角色中文名称',
   `state` int(1) DEFAULT '0' COMMENT '角色状态',
@@ -93,15 +93,22 @@ CREATE TABLE `auth_role` (
   `createTime` datetime DEFAULT NULL COMMENT '角色创建时间',
   `updateTime` datetime DEFAULT NULL COMMENT '角色更新时间',
   `forbidTime` datetime DEFAULT NULL COMMENT '角色禁止使用时间',
+  `roleGroup` varchar(20) DEFAULT NULL COMMENT '角色组',
+  `roleGroupDesc` varchar(60) DEFAULT NULL COMMENT '角色组描述',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of auth_role
 -- ----------------------------
-INSERT INTO `auth_role` VALUES ('1', 'ADMIN', '管理员', '0', '超级管理员，拥有至高无上的权利', '2016-07-04 15:27:27', '2016-07-04 15:27:30', '2016-07-04 15:27:32');
-INSERT INTO `auth_role` VALUES ('2', 'USER', '用户', '0', '普通用户', '2016-07-18 15:27:57', '2016-07-04 15:28:02', null);
-INSERT INTO `auth_role` VALUES ('3', 'COMPANY', '单位', '1', '企业用户', '2016-07-04 15:29:14', '2016-07-04 15:29:16', null);
+INSERT INTO `auth_role` VALUES ('1', 'ADMIN', '管理角色1', '0', '超级管理员，拥有至高无上的权利', '2016-07-04 15:27:27', '2016-07-04 15:27:30', '2016-07-04 15:27:32', 'manage', '管理角色');
+INSERT INTO `auth_role` VALUES ('2', 'USER', '管理角色2', '0', '普通用户', '2016-07-18 15:27:57', '2016-07-04 15:28:02', null, 'manage', '管理角色');
+INSERT INTO `auth_role` VALUES ('3', 'COMPANY', '管理角色3', '1', '企业用户', '2016-07-04 15:29:14', '2016-07-04 15:29:16', null, 'manage', '管理角色');
+INSERT INTO `auth_role` VALUES ('4', 'role1', '用户角色1', '0', null, null, null, null, 'user', '用户角色');
+INSERT INTO `auth_role` VALUES ('5', 'role2', '用户角色2', '0', 'description', '2017-04-22 21:13:35', null, null, 'user', '用户角色');
+INSERT INTO `auth_role` VALUES ('6', 'role3', '用户角色3', '0', 'description', '2017-04-22 21:15:35', null, null, 'user', '用户角色');
+INSERT INTO `auth_role` VALUES ('7', 'role4', '用户角色4', '0', 'description', '2017-04-22 21:15:35', null, null, 'user', '用户角色');
+INSERT INTO `auth_role` VALUES ('8', 'role4', '其他角色1', '0', 'description', '2017-04-22 21:15:35', '2017-04-22 22:45:37', '2017-04-22 22:45:43', 'other', '其他角色');
 
 -- ----------------------------
 -- Table structure for auth_role_permission
@@ -3820,11 +3827,11 @@ CREATE TABLE `user` (
   `id` varchar(64) NOT NULL,
   `username` varchar(32) DEFAULT NULL COMMENT '用户名',
   `password` varchar(16) DEFAULT NULL COMMENT '密码',
-  `realname` varchar(32) DEFAULT NULL COMMENT '真实姓名',
+  `realName` varchar(32) DEFAULT NULL COMMENT '真实姓名',
   `age` int(3) DEFAULT NULL,
   `sex` int(1) DEFAULT NULL,
   `birthday` datetime DEFAULT NULL,
-  `nickname` varchar(32) DEFAULT NULL COMMENT '昵称',
+  `nickName` varchar(32) DEFAULT NULL COMMENT '昵称',
   `headimage` varchar(255) DEFAULT NULL COMMENT '头像',
   `mobile` varchar(11) DEFAULT NULL COMMENT '手机号',
   `email` varchar(64) DEFAULT NULL COMMENT '邮箱',

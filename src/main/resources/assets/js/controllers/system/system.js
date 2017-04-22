@@ -1,3 +1,3 @@
-XXAPP.controller('SystemController', function($scope) {
+XXAPP.controller('SystemController', ['$scope',function($scope) {
 
-});
+}]);

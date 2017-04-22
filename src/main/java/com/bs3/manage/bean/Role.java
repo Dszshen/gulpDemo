@@ -20,6 +20,8 @@ public class Role {
     private String id;
     private String en;
     private String cn;
+    private String roleGroup;
+    private String roleGroupDesc;
     private Integer state;
     private String description;
     private Date createTime;
@@ -48,6 +50,22 @@ public class Role {
 
     public void setCn(String cn) {
         this.cn = cn;
+    }
+
+    public String getRoleGroup() {
+        return roleGroup;
+    }
+
+    public void setRoleGroup(String roleGroup) {
+        this.roleGroup = roleGroup;
+    }
+
+    public String getRoleGroupDesc() {
+        return roleGroupDesc;
+    }
+
+    public void setRoleGroupDesc(String roleGroupDesc) {
+        this.roleGroupDesc = roleGroupDesc;
     }
 
     public Integer getState() {

@@ -84,7 +84,7 @@ public class UserService implements UserDetailsService {
     }
 
     public List<User> findAll() {
-        return null;
+        return userDao.findAll();
     }
 
     public void persist(User entity) {

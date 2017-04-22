@@ -40,7 +40,7 @@ XXAPP.controller('SystemSettingController',['$scope','$http','Notification',func
                 method:'post',
                 url:'sys/base',
                 data:angular.toJson($scope.companyInfo)
-              }).success(function (resp) {
+              }).then(function (resp) {
                 console.log(resp);
                 if(resp.flag="success") {
                   Notification.success({title: '新增公司', message: "新增公司信息成功", positionY: 'top', positionX: 'center'});
@@ -52,9 +52,10 @@ XXAPP.controller('SystemSettingController',['$scope','$http','Notification',func
                     method:'get',
                     url:'sys/base',
                     params:{id:$scope.companyInfo.id}
-                }).success(function (resp) {
-                    if(resp.flag="success"){
-                        $scope.companyInfo = resp.data[0];
+                }).then(function (resp) {
+                    console.log(resp);
+                    if(resp.status==200&&resp.data.flag=="success"){
+                        $scope.companyInfo = resp.data.data[0];
                     }
                 });
             },
@@ -64,7 +65,7 @@ XXAPP.controller('SystemSettingController',['$scope','$http','Notification',func
                     method:'PUT',
                     url:'sys/base',
                     data:angular.toJson($scope.companyInfo)
-                }).success(function (resp) {
+                }).then(function (resp) {
                     console.log(resp);
                     if(resp.flag="success") {
                         Notification.success({title: '更新公司信息', message: "更新公司信息成功", positionY: 'top', positionX: 'center'});
@@ -78,8 +79,9 @@ XXAPP.controller('SystemSettingController',['$scope','$http','Notification',func
                     method:'get',
                     url:'sys/security',
                     params:{id:$scope.securityInfo.id}
-                }).success(function (resp) {
-                    $scope.securityInfo = resp.data[0];
+                }).then(function (resp) {
+                    console.log(resp);
+                    $scope.securityInfo = resp.data.data[0];
                 });
             },
             update:function(){
@@ -88,7 +90,7 @@ XXAPP.controller('SystemSettingController',['$scope','$http','Notification',func
                     method:'PUT',
                     url:'sys/security',
                     data:angular.toJson($scope.securityInfo)
-                }).success(function (resp) {
+                }).then(function (resp) {
                     console.log(resp);
                 });
             }

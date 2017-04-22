@@ -1,3 +1,3 @@
-XXAPP.controller('SystemInfoController', function($scope) {
+XXAPP.controller('SystemInfoController',['$scope',function($scope) {
 
-});
+}]);

@@ -5,6 +5,7 @@ import com.bs3.manage.bean.Role;
 import com.bs3.manage.common.util.JsonResult;
 import com.bs3.manage.dao.RoleDao;
 import com.bs3.manage.service.BaseService;
+import com.mongodb.util.JSON;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,8 +29,49 @@ public class RoleService extends BaseService{
      */
     public JsonResult<List<Role>> list(){
         List<Role> list = roleDao.findAll();
+
         JsonResult<List<Role>> jsonResult = JsonResult.success(list);
         return  jsonResult;
+    }
+
+    /**
+     * 按照用户组获取用户角色
+     * @return
+     */
+    public JsonResult getGroupRoles(){
+        List<Role> list = roleDao.findAll();
+        String roleGroupFlag = "",roleGroupName="";
+        JSONObject rolesGroup = new JSONObject();
+        List<Role> roleList = new ArrayList<Role>();
+        List rolesGroupResult = new ArrayList();
+        for(int i=0;i<list.size();i++){
+            if(i==0){
+                roleGroupFlag = list.get(i).getRoleGroup();
+                roleGroupName = list.get(i).getRoleGroupDesc();
+            }
+
+            if(list.get(i).getRoleGroup().equals(roleGroupFlag)){
+                roleList.add(list.get(i));
+            }else{
+                rolesGroup.put("roleGroup",roleGroupFlag);
+                rolesGroup.put("roleGroupName",roleGroupName);
+                rolesGroup.put("items",roleList);
+                rolesGroupResult.add(rolesGroup);
+                roleList = new ArrayList<Role>();
+                roleList.add(list.get(i));
+                roleGroupFlag = list.get(i).getRoleGroup();
+                roleGroupName = list.get(i).getRoleGroupDesc();
+                rolesGroup = new JSONObject();
+            }
+
+            if((i+1)==list.size()){
+                rolesGroup.put("roleGroup",roleGroupFlag);
+                rolesGroup.put("roleGroupName",roleGroupName);
+                rolesGroup.put("items",roleList);
+                rolesGroupResult.add(rolesGroup);
+            }
+        }
+        return JsonResult.success(rolesGroupResult);
     }
 
     /**
