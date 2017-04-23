@@ -57,8 +57,8 @@ public class RoleController {
      * @param params
      * @return
      */
-    @RequestMapping("getRoleOfUser")
-    public JsonResult getRoleOfUser(@RequestBody JSONObject params){
+    @RequestMapping("getRolesOfUser")
+    public JsonResult getRolesOfUser(@RequestBody JSONObject params){
         String userId = params.getString("userId");
         return JsonResult.success(roleService.getRolesOfUser(userId));
     }

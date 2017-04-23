@@ -31,7 +31,20 @@ XXAPP.controller('UserListController',['$rootScope', '$scope','$state','$uibModa
                         method:'get',
                         url:'role/rolesGroupList?t='+new Date().getTime()
                     }).then(function (resp, status, headers, config) {
-                        console.info("角色选择：",resp);
+                        console.info("角色组--：",resp);
+                        deferred.resolve(resp);
+                    },function(resp, status, headers, config) {
+                        deferred.reject(resp);   // 声明执行失败，即服务器返回错误
+                    });
+                    return deferred.promise;
+                },
+                rolesOfuser:function(){
+                    var deferred = $q.defer();
+                    $http({
+                        method:'get',
+                        url:'role/getRolesOfUser?t='+new Date().getTime()
+                    }).then(function (resp, status, headers, config) {
+                        console.info("用户拥有角色：",resp);
                         deferred.resolve(resp);
                     },function(resp, status, headers, config) {
                         deferred.reject(resp);   // 声明执行失败，即服务器返回错误
