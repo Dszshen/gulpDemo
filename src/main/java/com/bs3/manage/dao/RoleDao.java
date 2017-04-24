@@ -20,12 +20,11 @@ public interface RoleDao extends JpaRepository<Role, String>, JpaSpecificationEx
      * @param roleGroup
      * @return
      */
-    @Query("INSERT INTO auth_user_role(user_id,role_id,default_role,role_group) values (:id,:userId,:roleId,:defaultRole,:roleGroup)")
-    public Integer addRoleToUser(String userId,String roleId,Integer defaultRole,String roleGroup);
+    @Query(value="INSERT INTO auth_user_role(user_id,role_id,default_role,role_group) values (:id,:userId,:roleId,:defaultRole,:roleGroup)",nativeQuery = true)
+    Integer addRoleToUser(String userId,String roleId,Integer defaultRole,String roleGroup);
 
     /**
      * 更新用户角色
-     * @param id
      * @param userId
      * @param roleId
      * @param defaultRole
@@ -33,16 +32,16 @@ public interface RoleDao extends JpaRepository<Role, String>, JpaSpecificationEx
      * @return
      */
     @Modifying
-    @Query("UPDATE auth_user_role SET user_id=:userId,role_id=:roleId,default_role=:defaultRole,role_group=:roleGroup WHERE user_id=:userId")
-    public Integer updateRoleToUser(String userId,String roleId,Integer defaultRole,String roleGroup);
+    @Query(value="UPDATE auth_user_role SET user_id=:userId,role_id=:roleId,default_role=:defaultRole,role_group=:roleGroup WHERE user_id=:userId",nativeQuery = true)
+    Integer updateRoleToUser(String userId,String roleId,Integer defaultRole,String roleGroup);
 
     /**
      * 通过id查询用户角色
      * @param userId
      * @return
      */
-    @Query("SELECT role_id FROM auth_user_role WHERE user_id=:userId")
-    public String getRolesOfUser(String userId);
+    @Query(value="SELECT role_id FROM auth_user_role WHERE user_id=:userId",nativeQuery = true)
+    String getRolesOfUser(String userId);
 
 
 }
