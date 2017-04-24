@@ -10,7 +10,7 @@
                 i.fa.fa-angle-right
         li
             | 用户列表
-    //.page-toolbar
+    .page-toolbar
         .btn-group.pull-right
             button.btn.btn-sm.btn-default.dropdown-toggle(type='button', data-toggle='dropdown', data-hover='dropdown', data-delay='1000', data-close-others='true')
                 | Actions
@@ -102,18 +102,18 @@ h3.page-title
                             th  添加角色
                             th  操作
                     tbody
-                        tr.odd.gradeX
+                        tr.odd.gradeX(ng-repeat="user in userList")
                             td
                                 input.checkboxes(type='checkbox', value='1')
-                            td  admin
-                            td  超级管理员
-                            td  superman
-                            td  18888888888
-                            td  email@email.com
-                            td  12345678
-                            td  2016-04-05 16:05:06
+                            td  {{user.username}}
+                            td  {{user.nickName}}
+                            td  {{user.realName}}
+                            td  {{user.mobile}}
+                            td  {{user.email}}
+                            td  {{user.qq}}
+                            td  {{user.createTime}}
                             td
-                                button.btn.btn-xs.btn-success(ng-click="addRole();") 添加角色
+                                button.btn.btn-xs.btn-success(ng-click="addRole('{{user.id}}');") 添加角色
                             td
                                 span.label.label-sm.label-success 编辑
                                 span.label.label-sm.label-danger 删除

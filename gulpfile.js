@@ -1,7 +1,10 @@
+'use strict';
 //引入gulp，项目文件中安装的gulp的引入方式
 var gulp =require('gulp');
 //引入组件
 var watchify = require('watchify');//持续监视文件的改动
+var watch = require('gulp-watch');//只重新编译更改过的文件
+var changed = require('gulp-changed');//只重新编译更改过的文件
 var browserify = require('browserify');//代码自动注入刷新浏览器
 var browserSync = require('browser-sync').create();
 var rename = require("gulp-rename");//文件重命名
@@ -144,6 +147,7 @@ gulp.task(taskName['less'],function(){
 gulp.task(taskName['jade'],function(){
     gutil.log("[logs]"+taskName['jade']+"正在运行...");
     return gulp.src(resourceFilesPath.jade)
+        .pipe(changed(destFilesPath.html,{hasChanged:changed.compareSha1Digest,extension:".ftl"}))
         .pipe(jade({petty: true}))
         .pipe(rename(function(path){
             path.extname = ".ftl";

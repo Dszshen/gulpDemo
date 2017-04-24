@@ -22,10 +22,25 @@ public class RoleController {
     @Autowired
     public RoleService roleService;
 
+    /**
+     * 获取角色列表
+     * @return
+     */
     @RequestMapping("list")
     public JsonResult<List<Role>> list(){
         return roleService.list();
     }
+
+    /**
+     * 获取分组角色信息
+     * @return
+     */
+    @RequestMapping("rolesGroupList")
+    public JsonResult rolesGroupList(){
+        return roleService.getGroupRoles();
+    }
+
+
 
     /**
      * 更新角色
@@ -42,8 +57,8 @@ public class RoleController {
      * @param params
      * @return
      */
-    @RequestMapping("getRoleOfUser")
-    public JsonResult getRoleOfUser(@RequestBody JSONObject params){
+    @RequestMapping("getRolesOfUser")
+    public JsonResult getRolesOfUser(@RequestBody JSONObject params){
         String userId = params.getString("userId");
         return JsonResult.success(roleService.getRolesOfUser(userId));
     }

@@ -1,5 +1,6 @@
 /* 所有页面的路由跳转 */
-XXAPP.config(['$stateProvider', '$urlRouterProvider','NotificationProvider', function ($stateProvider, $urlRouterProvider,NotificationProvider) {
+XXAPP.config(['$stateProvider', '$urlRouterProvider','NotificationProvider','$locationProvider', function ($stateProvider, $urlRouterProvider,NotificationProvider,$locationProvider) {
+    $locationProvider.hashPrefix('');
     //通知样式配置
     NotificationProvider.setOptions({
         delay: 3000,

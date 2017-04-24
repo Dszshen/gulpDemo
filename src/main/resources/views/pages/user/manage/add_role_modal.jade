@@ -1,107 +1,29 @@
 .modal-header
     h4
         | 为用户添加角色
-        a.btn.btn-xs.pull-right(title='关闭' ng-click='cancel();')
+        a.btn.btn-xs.pull-right(title='关闭' ng-click='closeModal();')
             i.fa.fa-close
 .modal-body
-    .category-wrap
+    .category-wrap(ng-repeat="roleGroup in roles")
         .category-heading
             .md-checkbox.has-info
-                input#checkbox1111.md-check(type='checkbox')
-                label(for='checkbox1111')
+                input.md-check(type='checkbox' id="{{roleGroup.roleGroup}}" ng-true-value="'yes'" ng-false-value="'no'" ng-model="roleGroup.checked")
+                label(for='{{roleGroup.roleGroup}}')
                     span
                     span.check
                     span.box
-                    |  管理角色
+                    |  {{roleGroup.roleGroupName}}
         .category-content
             .row
                 .col-md-12
                     .form-md-line-input
                         .md-checkbox-inline
-                            .md-checkbox
-                                input#checkbox33.md-check(type='checkbox')
-                                label(for='checkbox33')
+                            .md-checkbox(ng-repeat="roleItem in roleGroup.items")
+                                input.md-check(type='checkbox' id="{{roleItem.id}}" ng-true-value="'yes'" ng-false-value="'no'" ng-model="roleItem.checked")
+                                label(for='{{roleItem.id}}')
                                     span
                                     span.check
                                     span.box
-                                    |  超级管理员
-                            .md-checkbox
-                                input#checkbox34.md-check(type='checkbox')
-                                label(for='checkbox34')
-                                    span
-                                    span.check
-                                    span.box
-                                    |  其他角色1
-                            .md-checkbox
-                                input#checkbox35.md-check(type='checkbox')
-                                label(for='checkbox35')
-                                    span
-                                    span.check
-                                    span.box
-                                    |  其他角色2
-    .category-wrap
-        .category-heading
-            .md-checkbox.has-success
-                input#checkbox0001.md-check(type='checkbox')
-                label(for='checkbox0001')
-                    span
-                    span.check
-                    span.box
-                    | 其他角色
-        .category-content
-            .row
-                .col-md-12
-                    .form-md-line-input
-                        .md-checkbox-inline
-                            .md-checkbox
-                                input#checkbox001.md-check(type='checkbox')
-                                label(for='checkbox001')
-                                    span
-                                    span.check
-                                    span.box
-                                    |  角色1
-                            .md-checkbox
-                                input#checkbox002.md-check(type='checkbox')
-                                label(for='checkbox002')
-                                    span
-                                    span.check
-                                    span.box
-                                    |  角色2
-                            .md-checkbox
-                                input#checkbox003.md-check(type='checkbox')
-                                label(for='checkbox003')
-                                    span
-                                    span.check
-                                    span.box
-                                    |  角色3
-    .category-wrap
-        .category-heading
-            h3 已经赋予的角色
-        .category-content
-            .row
-                .col-md-2.col-xs-2
-                    span 角色1
-                .col-md-2.col-xs-2
-                    span 角色2
-                .col-md-2.col-xs-2
-                    span 角色3
-                .col-md-2.col-xs-2
-                    span 角色4
-                .col-md-2.col-xs-2
-                    span 角色5
-                .col-md-2.col-xs-2
-                    span 角色6
-                .col-md-2.col-xs-2
-                    span 角色7
-                .col-md-2.col-xs-2
-                    span 角色8
-                .col-md-2.col-xs-2
-                    span 角色9
-                .col-md-2.col-xs-2
-                    span 角色10
-                .col-md-2.col-xs-2
-                    span 角色11
-                .col-md-2.col-xs-2
-                    span 角色12
+                                    |  {{roleItem.cn}}
 .modal-footer
-    button.btn.btn-primary(type='button') 确定
+    button.btn.btn-primary(type='button' ng-click="updateRoleToUser();") 确定
