@@ -1,5 +1,5 @@
-XXAPP.controller('UserRoleAddCtrl', ['$rootScope', '$scope', '$state', '$uibModal', '$uibModalInstance', '$http', 'rolesList', 'modalData',
-  function ($rootScope, $scope, $state, $uibModal, $uibModalInstance, $http, rolesList, modalData) {
+XXAPP.controller('UserRoleAddCtrl', ['$rootScope', '$scope', '$state', '$uibModal', '$uibModalInstance', '$http','Notification', 'rolesList', 'modalData',
+  function ($rootScope, $scope, $state, $uibModal, $uibModalInstance, $http, Notification,rolesList, modalData) {
     $scope.userId = modalData.userId;
     $scope.roles = rolesList.data.data;
 
@@ -9,14 +9,6 @@ XXAPP.controller('UserRoleAddCtrl', ['$rootScope', '$scope', '$state', '$uibModa
 
 
     $scope.closeModal = function () {
-      //$uibModalInstance.dismiss();
-      angular.forEach($scope.roles,function(groupObj){
-        console.log("group选择："+groupObj+","+groupObj.checked);
-        angular.forEach(groupObj.items,function(roleObj){
-          console.log("roleid："+roleObj.id+"，选择："+roleObj.checked);
-        });
-      });
-
       $uibModalInstance.close($scope.roleManage);
     };
 
@@ -34,6 +26,38 @@ XXAPP.controller('UserRoleAddCtrl', ['$rootScope', '$scope', '$state', '$uibModa
 
     //更新用户角色
     $scope.updateRoleToUser = function () {
+      var rolesParams = {
+        userId:"1",
+        rolesIds:"",
+        rolesGroup:""
+      };//角色params
+
+      var rolesIds=[],rolesGroup = [];
+
+      for(var i=0;i<$scope.roles.length;i++){
+        if($scope.roles[i].checked==="yes"){
+          rolesGroup.push($scope.roles[i].roleGroup);
+          continue;
+        }else{
+          for(var j=0;j<$scope.roles[i].items.length;j++){
+            if($scope.roles[i].items[j].checked==="yes"){
+              rolesIds.push($scope.roles[i].items[j].id);
+            }
+          }
+        }
+      }
+      rolesParams.rolesIds = rolesIds.join(",");
+      rolesParams.rolesGroup = rolesGroup.join(",");
+      //---------发送更新角色请求的数据-------
+      $http({
+        method:'post',
+        url:'role/updateRoleOfUser',
+        data:angular.toJson(rolesParams)
+      }).success(function (resp) {
+        if(resp.flag="success") {
+          Notification.success({title: '设置用户角色', message: "设置用户角色成功", positionY: 'top', positionX: 'center'});
+        }
+      });
 
     };
 

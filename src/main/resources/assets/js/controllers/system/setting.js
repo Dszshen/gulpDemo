@@ -92,6 +92,9 @@ XXAPP.controller('SystemSettingController',['$scope','$http','Notification',func
                     data:angular.toJson($scope.securityInfo)
                 }).then(function (resp) {
                     console.log(resp);
+                  if(resp.flag="success") {
+                    Notification.success({title: '安全设置更新', message: "安全设置更新成功", positionY: 'top', positionX: 'center'});
+                  }
                 });
             }
         },

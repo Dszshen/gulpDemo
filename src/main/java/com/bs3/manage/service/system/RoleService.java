@@ -9,6 +9,7 @@ import com.mongodb.util.JSON;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -153,8 +154,9 @@ public class RoleService extends BaseService{
      * @param roleGroup 暂时不用，保留字段
      * @return
      */
-    public Integer updateRoleOfUser(String userId,String roleId,String defaultRole,String roleGroup){
-        return roleDao.updateRoleToUser(userId,roleId,null,null);
+    @Transactional
+    public Integer updateRoleOfUser(String userId,String roleId,Integer defaultRole,String roleGroup){
+        return roleDao.updateRoleToUser(userId,roleId,0,roleGroup);
     }
 
 }

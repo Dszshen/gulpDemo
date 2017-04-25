@@ -29,7 +29,7 @@ var order = require("gulp-order");//文件排序
 //定义全局变量
 var projectName = "app";//项目名称
 //task名称
-var taskName = {
+var task = {
     clean:projectName+"-clean",
     js:projectName+"-js",
     css:projectName+"-css",
@@ -84,13 +84,13 @@ var OP = "deploy";//发布
 
 //task配置
 //--每次运行gulp的时候清理target文件
-gulp.task(taskName['clean'], function() {
-    gutil.log("[logs]"+taskName['clean']);
+gulp.task(task.clean, function() {
+    gutil.log("[logs]"+task.clean);
     return del.sync([DEST_ASSETS,'./src/main/webapp/WEB-INF/views/']);
 });
 
 //编译js文件
-gulp.task(taskName['js'],function(){
+gulp.task(task.js,function(){
     return gulp.src(resourceFilesPath.js)
         .pipe(order([
             'main.js',
@@ -105,35 +105,33 @@ gulp.task(taskName['js'],function(){
             gutil.log("[jshint logs]:"+error);
         })
         .pipe(concat("app.js"))
-        //.pipe(gulpif(ENV=='products' || OP=='deploy',uglify()))//如果是开发环境或者操作为deploy
-        //.pipe(rename("app.js"))
         .pipe(gulp.dest(destFilesPath.js));
 });
 
 //编译plugins文件,自己添加的插件
-gulp.task(taskName['scripts'],function(){
-    gutil.log("[logs]"+taskName['scripts']+"正在运行...");
+gulp.task(task.scripts,function(){
+    gutil.log("[logs]"+task.scripts+"正在运行...");
     return gulp.src(resourceFilesPath.scripts)
         .pipe(gulp.dest(destFilesPath.scripts));
 });
 
 //编译images文件
-gulp.task(taskName['images'],function(){
-    gutil.log("[logs]"+taskName['images']+"正在运行...");
+gulp.task(task.images,function(){
+    gutil.log("[logs]"+task.images+"正在运行...");
     return gulp.src(resourceFilesPath.images)
         .pipe(gulp.dest(destFilesPath.images));
 });
 
 //编译css文件
-// gulp.task(taskName['css'],function(){
-//     gutil.log("[logs]"+taskName['css']+"正在运行...");
+// gulp.task(task['css'],function(){
+//     gutil.log("[logs]"+task['css']+"正在运行...");
 //     return gulp.src(resourceFilesPath.css)
 //         .pipe(gulp.dest(destFilesPath.css))
 // });
 
 //编译less文件
-gulp.task(taskName['less'],function(){
-    gutil.log("[logs]"+taskName['less']+"正在运行...");
+gulp.task(task.less,function(){
+    gutil.log("[logs]"+task.less+"正在运行...");
     return gulp.src(resourceFilesPath.less)
         .pipe(less())
         .on('error', function(error)  {
@@ -144,8 +142,8 @@ gulp.task(taskName['less'],function(){
 });
 
 //编译jade文件,
-gulp.task(taskName['jade'],function(){
-    gutil.log("[logs]"+taskName['jade']+"正在运行...");
+gulp.task(task.jade,function(){
+    gutil.log("[logs]"+task.jade+"正在运行...");
     return gulp.src(resourceFilesPath.jade)
         .pipe(changed(destFilesPath.html,{hasChanged:changed.compareSha1Digest,extension:".ftl"}))
         .pipe(jade({petty: true}))
@@ -156,41 +154,41 @@ gulp.task(taskName['jade'],function(){
 });
 
 //编译html文件
-/*gulp.task(taskName['html'],function(){
+/*gulp.task(task['html'],function(){
  gulp.src(resourceFilesPath.less)
  });*/
 
 //编译lib文件,用到的插件库
-gulp.task(taskName['lib'],function(){
-    gutil.log("[logs]"+taskName['lib']+"正在运行...");
+gulp.task(task.lib,function(){
+    gutil.log("[logs]"+task.lib+"正在运行...");
     return gulp.src(resourceFilesPath.libs)
         .pipe(gulp.dest(destFilesPath.libs));
 });
 
 //编译plugins文件,自己添加的插件
-gulp.task(taskName['plugins'],function(){
-    gutil.log("[logs]"+taskName['plugins']+"正在运行...");
+gulp.task(task.plugins,function(){
+    gutil.log("[logs]"+task.plugins+"正在运行...");
     return gulp.src(resourceFilesPath.plugins)
         .pipe(gulp.dest(destFilesPath.libs));
 });
 
 //编译plugins文件,自己添加的插件
-gulp.task(taskName['copy'],function(){
+gulp.task(task.copy,function(){
     return gulp.src(DEST_ASSETS)
         .pipe(gulp.dest("./target"));
 });
 
 //watch监控文件变化并刷新浏览器
-gulp.task(taskName['watch'],function(){
-    gulp.watch(resourceFilesPath.less, [taskName['less']]);
-    gulp.watch(resourceFilesPath.jade, [taskName['jade']]);
-    gulp.watch(resourceFilesPath.js, [taskName['js']]);
-    gulp.watch(resourceFilesPath.images, [taskName['images']]);
-    gulp.watch(resourceFilesPath.plugins, [taskName['plugins']]);
-    gulp.watch(resourceFilesPath.scripts, [taskName['scripts']]);
-    gulp.watch(resourceFilesPath.scripts, [taskName['lib']]);
+gulp.task(task.watch,function(){
+    gulp.watch(resourceFilesPath.less, [task.less]);
+    gulp.watch(resourceFilesPath.jade, [task.jade]);
+    gulp.watch(resourceFilesPath.js, [task.js]);
+    gulp.watch(resourceFilesPath.images, [task.images]);
+    gulp.watch(resourceFilesPath.plugins, [task.plugins]);
+    gulp.watch(resourceFilesPath.scripts, [task.scripts]);
+    gulp.watch(resourceFilesPath.scripts, [task.lib]);
     gulp.watch("./gulpfile.js", ['default']);
-    //gulp.watch(destFilesPath, [taskName['copy']]);
+    //gulp.watch(destFilesPath, [task['copy']]);
 
     /*gulp.watch(SRC + '/!**!/!*', { read: false }).on('change', function(event)  {
         browserSync.init({
@@ -201,16 +199,16 @@ gulp.task(taskName['watch'],function(){
 });
 
 //默认的task
-gulp.task("default",[taskName['clean'],taskName['less'],taskName['js'],taskName['images'],taskName['lib'],taskName['plugins'],taskName['scripts'],taskName['jade']]);
+gulp.task("default",[task.clean,task.less,task.js,task.images,task.lib,task.plugins,task.scripts,task.jade]);
 
 //开发
-gulp.task(taskName['dev'],['default'],function(){
+gulp.task(task.dev,['default'],function(){
     gutil.log("dev-----------------");
-    //return gulp.watch(taskName['watch']);
+    //return gulp.watch(task['watch']);
 });
 
 //发布
-gulp.task(taskName['deploy'],function(){
+gulp.task(task.deploy,function(){
 
 });
 

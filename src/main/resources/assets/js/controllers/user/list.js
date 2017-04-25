@@ -37,8 +37,8 @@ XXAPP.controller('UserListController',['$rootScope', '$scope','$state','$uibModa
                         deferred.reject(resp);   // 声明执行失败，即服务器返回错误
                     });
                     return deferred.promise;
-                },
-                rolesOfuser:function(){
+                }
+                /*rolesOfuser:function(){
                     var deferred = $q.defer();
                     $http({
                         method:'get',
@@ -50,7 +50,7 @@ XXAPP.controller('UserListController',['$rootScope', '$scope','$state','$uibModa
                         deferred.reject(resp);   // 声明执行失败，即服务器返回错误
                     });
                     return deferred.promise;
-                }
+                }*/
             }
         });
 
@@ -59,7 +59,7 @@ XXAPP.controller('UserListController',['$rootScope', '$scope','$state','$uibModa
             //console.log(data);
             //console.info("角色选择data-->：",resp);
         }, function () {
-            $log.info('Modal dismissed at: ' + new Date());
+            //$log.info('Modal dismissed at: ' + new Date());
         });
     };
 

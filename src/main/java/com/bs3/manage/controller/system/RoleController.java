@@ -1,5 +1,6 @@
 package com.bs3.manage.controller.system;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.bs3.manage.bean.Role;
 import com.bs3.manage.common.util.JsonResult;
@@ -83,8 +84,10 @@ public class RoleController {
     @RequestMapping("updateRoleOfUser")
     public JsonResult updateRoleOfUser(@RequestBody JSONObject params){
         String userId = params.getString("userId");
-        String roleIds = params.getString("roleIds");
-        return JsonResult.success(roleService.updateRoleOfUser(userId,roleIds,null,null));
+        String rolesIds = params.getString("rolesIds");
+        String rolesGroup = params.getString("rolesGroup");
+        //String roleIds = rolesIds.toString();
+        return JsonResult.success(roleService.updateRoleOfUser(userId,rolesIds,0,rolesGroup));
     }
 
 }
