@@ -29,11 +29,14 @@ XXAPP.controller('UserRoleAddCtrl', ['$rootScope', '$scope', '$state', '$uibModa
         }
       }
     };
+
     initRolesOfUser();
 
+    /*********************************************
+     --------->角色选择事件
+     *********************************************/
     //----------------------全选/反选---------------------
     $scope.checkAll = function(roleGroup){
-      console.log(roleGroup);
       angular.forEach($scope.roles,function(rolesGroup){
         if(rolesGroup.roleGroup===roleGroup.roleGroup){
           angular.forEach(rolesGroup.items,function(item){
@@ -43,6 +46,25 @@ XXAPP.controller('UserRoleAddCtrl', ['$rootScope', '$scope', '$state', '$uibModa
               item.checked="no";
             }
           });
+        }
+      });
+    };
+
+    //----------------------选择单个角色-----------------------
+    $scope.checkSingle = function(group){
+      angular.forEach($scope.roles,function(rolesGroup){
+        var yesCount = 0;
+        if(rolesGroup.roleGroup===group.roleGroup){
+          for(var i=0;i<rolesGroup.items.length;i++){
+            if(rolesGroup.items[i].checked==="yes"){
+              yesCount++;
+              if(yesCount===rolesGroup.items.length){
+                group.checked="yes";
+              }
+            }else{
+              group.checked="no";
+            }
+          }
         }
       });
     };
@@ -98,8 +120,10 @@ XXAPP.controller('UserRoleAddCtrl', ['$rootScope', '$scope', '$state', '$uibModa
         url:'role/updateRoleOfUser',
         data:angular.toJson(rolesParams)
       }).success(function (resp) {
-        if(resp.flag="success") {
+        if(resp.flag==="success") {
           Notification.success({title: '设置用户角色', message: "设置用户角色成功", positionY: 'top', positionX: 'center'});
+          //关闭模态框
+          $scope.closeModal();
         }
       });
 
