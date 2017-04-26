@@ -8,6 +8,9 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by zhangbin on 2016/7/4.
  */
@@ -41,8 +44,8 @@ public interface RoleDao extends JpaRepository<Role, String>, JpaSpecificationEx
      * @param userId
      * @return
      */
-    @Query(value="SELECT role_id FROM auth_user_role WHERE user_id=:userId",nativeQuery = true)
-    String getRolesOfUser(@Param("userId") String userId);
+    @Query(value="SELECT user_id,role_id,default_role,role_group FROM auth_user_role WHERE user_id=:userId",nativeQuery = true)
+    List getRolesOfUser(@Param("userId") String userId);
 
 
 }

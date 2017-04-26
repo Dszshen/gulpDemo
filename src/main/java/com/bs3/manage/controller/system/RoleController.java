@@ -8,9 +8,11 @@ import com.bs3.manage.service.system.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by zhangbin on 2016/6/26.
@@ -59,8 +61,8 @@ public class RoleController {
      * @return
      */
     @RequestMapping("getRolesOfUser")
-    public JsonResult getRolesOfUser(@RequestBody JSONObject params){
-        String userId = params.getString("userId");
+    public JsonResult getRolesOfUser(@RequestParam Map<String,String> params){
+        String userId = params.get("userId");
         return JsonResult.success(roleService.getRolesOfUser(userId));
     }
 

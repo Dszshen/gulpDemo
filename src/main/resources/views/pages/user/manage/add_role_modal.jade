@@ -7,7 +7,7 @@
     .category-wrap(ng-repeat="roleGroup in roles")
         .category-heading
             .md-checkbox.has-info
-                input.md-check(type='checkbox' id="{{roleGroup.roleGroup}}" ng-true-value="'yes'" ng-false-value="'no'" ng-model="roleGroup.checked")
+                input.md-check(type='checkbox' id="{{roleGroup.roleGroup}}" ng-true-value="'yes'" ng-false-value="'no'" ng-model="roleGroup.checked" ng-click="checkAll(roleGroup);")
                 label(for='{{roleGroup.roleGroup}}')
                     span
                     span.check

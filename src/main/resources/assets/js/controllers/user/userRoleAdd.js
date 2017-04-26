@@ -1,7 +1,51 @@
-XXAPP.controller('UserRoleAddCtrl', ['$rootScope', '$scope', '$state', '$uibModal', '$uibModalInstance', '$http','Notification', 'rolesList', 'modalData',
-  function ($rootScope, $scope, $state, $uibModal, $uibModalInstance, $http, Notification,rolesList, modalData) {
+XXAPP.controller('UserRoleAddCtrl', ['$rootScope', '$scope', '$state', '$uibModal', '$uibModalInstance', '$http','Notification', 'rolesList','rolesOfuser', 'modalData',
+  function ($rootScope, $scope, $state, $uibModal, $uibModalInstance, $http, Notification,rolesList,rolesOfuser, modalData) {
     $scope.userId = modalData.userId;
-    $scope.roles = rolesList.data.data;
+    $scope.roles = rolesList.data.data || [];
+    $scope.rolesOfuser = rolesOfuser.data.data || {};
+    /*********************************************
+     --------->初始化角色
+     *********************************************/
+    var initRolesOfUser = function(){
+      var userRoleGroup = $scope.rolesOfuser.groupRoles.split(",");
+      var userRolesIds = $scope.rolesOfuser.rolesIds.split(",");
+      for(var m=0;m<$scope.roles.length;m++){
+        angular.forEach(userRoleGroup,function(item){
+          if($scope.roles[m].roleGroup===item){
+            $scope.roles[m].checked="yes";
+          }
+        });
+
+        for(var n=0;n<$scope.roles[m].items.length;n++){
+          if($scope.roles[m].checked==="yes"){
+            $scope.roles[m].items[n].checked="yes";
+          }else{
+            angular.forEach(userRolesIds,function(item){
+              if($scope.roles[m].items[n].id===item){
+                $scope.roles[m].items[n].checked="yes";
+              }
+            });
+          }
+        }
+      }
+    };
+    initRolesOfUser();
+
+    //----------------------全选/反选---------------------
+    $scope.checkAll = function(roleGroup){
+      console.log(roleGroup);
+      angular.forEach($scope.roles,function(rolesGroup){
+        if(rolesGroup.roleGroup===roleGroup.roleGroup){
+          angular.forEach(rolesGroup.items,function(item){
+            if(roleGroup.checked==="yes"){
+              item.checked="yes";
+            }else{
+              item.checked="no";
+            }
+          });
+        }
+      });
+    };
 
     $scope.roleManage = {
       rolesSel:{}

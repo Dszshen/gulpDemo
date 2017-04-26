@@ -11,9 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.lang.reflect.Array;
+import java.lang.reflect.Field;
+import java.util.*;
 
 /**
  * Created by zhangbin on 2016/6/15.
@@ -36,7 +36,7 @@ public class RoleService extends BaseService{
     }
 
     /**
-     * 按照用户组获取用户角色
+     * 按照角色组获取分组角色
      * @return
      */
     public JsonResult getGroupRoles(){
@@ -138,12 +138,15 @@ public class RoleService extends BaseService{
      * @param userId
      * @return
      */
-    public String[] getRolesOfUser(String userId){
-        String[] roleIdList = roleDao.getRolesOfUser(userId).split(",");
-        /*for(int i=0;i<roleIdList.length;i++){
-            Role role = roleDao.findOne(roleIdList[i]);
-        }*/
-        return roleIdList;
+    public JSONObject getRolesOfUser(String userId){
+        List rolesOfUser = roleDao.getRolesOfUser(userId);
+        JSONObject jsonObject = new JSONObject();
+        Object[] list = (Object[])rolesOfUser.get(0);
+        jsonObject.put("userId",list[0]);
+        jsonObject.put("rolesIds",list[1]);
+        jsonObject.put("defaultRole",list[2]);
+        jsonObject.put("groupRoles",list[3]);
+        return jsonObject;
     }
 
     /**
