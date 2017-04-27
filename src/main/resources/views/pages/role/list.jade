@@ -48,7 +48,7 @@ h3.page-title
     ui-view
     .col-md-12
         // BEGIN EXAMPLE TABLE PORTLET
-        .portlet.light.bordered
+        .portlet.light.bordered.app-role
             .portlet-title
                 .caption.font-dark
                     i.icon-settings.font-dark
@@ -103,19 +103,21 @@ h3.page-title
                     tbody
                         tr.odd.gradeX(ng-repeat="role in roles")
                             td
-                                input.checkboxes(type='checkbox', value='1')
-                            td  {{role.role_cn}}
-                            td  {{role.role_en}}
+                                input.checkboxes(type='checkbox')
+                            td  {{role.cn}}
+                            td  {{role.en}}
                             td  {{role.createTime | date:'yyyy-MM-dd HH:mm:ss'}}
                             td  {{role.updateTime | date:'yyyy-MM-dd HH:mm:ss'}}
                             td  {{role.forbidTime | date:'yyyy-MM-dd HH:mm:ss'}}
                             td
-                                input.make-switch(type='checkbox', checked='', data-size="small", data-on-color='info', data-off-color='success' data-on-text="启用", data-off-text="禁用")
+                                switch#enabled.green.small(name='enabled', ng-model='role.state', on='启用', off='禁用')
+
                             td.center
                                 button.btn.btn-xs.btn-success(ng-click="addPermission();") 配置权限
                             td
-                                button.btn.btn-xs.btn-success 编辑
-                                button.btn.btn-xs.btn-danger 删除
+                                .table-op-wrap
+                                    button.btn.btn-xs.btn-success(type="button" ng-click="edit();") 编辑
+                                    button.btn.btn-xs.btn-danger(type="button" ng-click="del();") 删除
 // END MAIN CONTENT
 // BEGIN MAIN JS
 script.

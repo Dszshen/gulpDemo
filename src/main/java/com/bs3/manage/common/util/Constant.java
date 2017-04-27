@@ -23,4 +23,10 @@ public interface Constant {
     String SYSTEM_CONFIG_DATABASE="DATABASE";//数据库配置
     String SYSTEM_CONFIG_SERVER="SERVER";//服务器配置
 
+
+    //用户类型
+    String USER_TYPE_MANAGER = "MANAGER";//系统管理使用者
+    String USER_TYPE_MALL = "MALL";//商城用户
+    String USER_TYPE_MANAGE_USER= "MANAGE_USER";//物管系统使用者
+
 }

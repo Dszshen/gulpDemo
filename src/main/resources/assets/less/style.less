@@ -1,3 +1,15 @@
+
+/**
+table样式
+ */
+.table-op-wrap{
+  white-space: nowrap;
+}
+
+
+/**
+分类panel
+ */
 .category-wrap{
   border:1px solid #f2f2f2;
   padding:5px;
@@ -9,5 +21,40 @@
   }
   .category-content{
     padding:5px;
+  }
+}
+
+/**
+.app-role
+ */
+.app-role{
+  /**
+  angular-ui-switch样式
+ */
+  .switch {
+    width: 50px;
+    height: 20px;
+    background: rgb(154, 160, 154);
+    border-color: rgb(172, 175, 172);
+    border-radius:20px !important;
+    small {
+      width: 20px;
+      height: 20px;
+    }
+    .on{
+      top: 15%;
+      left: 10%;
+    }
+
+    .off{
+      top: 15%;
+      right: 10%;
+      color:#fff;
+    }
+  }
+  .switch.checked {
+    small {
+      left:30px;
+    }
   }
 }

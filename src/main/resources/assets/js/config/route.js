@@ -77,7 +77,7 @@ XXAPP.config(['$stateProvider', '$urlRouterProvider', 'NotificationProvider', '$
 
   //系统管理-->>>用户管理
   state('user', '/user', 'UserController', '<ui-view></ui-view>', true);
-  state('user.list', '/list', 'UserListController', '/pages/user/manage/list.html', false, {pageTitle: '用户列表'}, {
+  state('user.list', '/list', 'UserListController', '/pages/system/manager/list.html', false, {pageTitle: '用户列表'}, {
     deps: ['$ocLazyLoad', function ($ocLazyLoad) {
       return $ocLazyLoad.load([{
         name: 'userListCss',
@@ -99,8 +99,8 @@ XXAPP.config(['$stateProvider', '$urlRouterProvider', 'NotificationProvider', '$
   });
 
 
-  state('user.add', '/add', 'UserAddController', '/pages/user/manage/add.html', false, {pageTitle: '增加用户'});
-  state('user.detail', '/detail', 'UserDetailController', '/pages/user/manage/detail.html', false, {pageTitle: '用户资料'});
+  state('user.add', '/add', 'UserAddController', '/pages/system/manager/add.html', false, {pageTitle: '增加用户'});
+  state('user.detail', '/detail', 'UserDetailController', '/pages/system/manager/detail.html', false, {pageTitle: '用户资料'});
 
   /*用户中心*/
   state('user.profile', '/profile', 'UserProfileController', '/pages/user/personal/profile.html', false, {pageTitle: '个人信息'});
@@ -113,6 +113,8 @@ XXAPP.config(['$stateProvider', '$urlRouterProvider', 'NotificationProvider', '$
         name: 'roleManage',
         insertBefore: '#ng_load_plugins_before',
         files: [
+          CONTEXT + '/assets/libs/angular-ui-switch/angular-ui-switch.css',
+          CONTEXT + '/assets/libs/angular-ui-switch/angular-ui-switch.js',
           CONTEXT + '/assets/libs/DataTables/datatables.min.css',
           CONTEXT + '/assets/libs/DataTables/plugins/bootstrap/datatables.bootstrap.css',
           CONTEXT + '/assets/libs/DataTables/datatables.all.min.js',

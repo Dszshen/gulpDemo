@@ -6,10 +6,7 @@ import com.bs3.manage.bean.Role;
 import com.bs3.manage.common.util.JsonResult;
 import com.bs3.manage.service.system.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -24,6 +21,11 @@ public class RoleController {
 
     @Autowired
     public RoleService roleService;
+
+    @RequestMapping(method = RequestMethod.GET,value="add")
+    public JsonResult add(@RequestBody Role role){
+        return JsonResult.success(roleService.addRole(role));
+    }
 
     /**
      * 获取角色列表
