@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : bs3
-Source Server Version : 50714
+Source Server         : 本地数据库
+Source Server Version : 50716
 Source Host           : localhost:3306
 Source Database       : bs3
 
 Target Server Type    : MYSQL
-Target Server Version : 50714
+Target Server Version : 50716
 File Encoding         : 65001
 
-Date: 2017-04-22 23:44:53
+Date: 2017-04-27 18:23:37
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -88,7 +88,7 @@ CREATE TABLE `auth_role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `en` varchar(25) DEFAULT NULL COMMENT '角色英文名称',
   `cn` varchar(60) DEFAULT NULL COMMENT '角色中文名称',
-  `state` int(1) DEFAULT '0' COMMENT '角色状态',
+  `state` int(1) DEFAULT '1' COMMENT '角色状态',
   `description` varchar(128) DEFAULT NULL COMMENT '角色描述',
   `createTime` datetime DEFAULT NULL COMMENT '角色创建时间',
   `updateTime` datetime DEFAULT NULL COMMENT '角色更新时间',
@@ -96,19 +96,19 @@ CREATE TABLE `auth_role` (
   `roleGroup` varchar(20) DEFAULT NULL COMMENT '角色组',
   `roleGroupDesc` varchar(60) DEFAULT NULL COMMENT '角色组描述',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of auth_role
 -- ----------------------------
-INSERT INTO `auth_role` VALUES ('1', 'ADMIN', '管理角色1', '0', '超级管理员，拥有至高无上的权利', '2016-07-04 15:27:27', '2016-07-04 15:27:30', '2016-07-04 15:27:32', 'manage', '管理角色');
-INSERT INTO `auth_role` VALUES ('2', 'USER', '管理角色2', '0', '普通用户', '2016-07-18 15:27:57', '2016-07-04 15:28:02', null, 'manage', '管理角色');
+INSERT INTO `auth_role` VALUES ('1', 'ADMIN', '管理角色1', '1', '超级管理员，拥有至高无上的权利', '2016-07-04 15:27:27', '2016-07-04 15:27:30', '2016-07-04 15:27:32', 'manage', '管理角色');
+INSERT INTO `auth_role` VALUES ('2', 'USER', '管理角色2', '1', '普通用户', '2016-07-18 15:27:57', '2016-07-04 15:28:02', null, 'manage', '管理角色');
 INSERT INTO `auth_role` VALUES ('3', 'COMPANY', '管理角色3', '1', '企业用户', '2016-07-04 15:29:14', '2016-07-04 15:29:16', null, 'manage', '管理角色');
 INSERT INTO `auth_role` VALUES ('4', 'role1', '用户角色1', '0', null, null, null, null, 'user', '用户角色');
-INSERT INTO `auth_role` VALUES ('5', 'role2', '用户角色2', '0', 'description', '2017-04-22 21:13:35', null, null, 'user', '用户角色');
-INSERT INTO `auth_role` VALUES ('6', 'role3', '用户角色3', '0', 'description', '2017-04-22 21:15:35', null, null, 'user', '用户角色');
-INSERT INTO `auth_role` VALUES ('7', 'role4', '用户角色4', '0', 'description', '2017-04-22 21:15:35', null, null, 'user', '用户角色');
-INSERT INTO `auth_role` VALUES ('8', 'role4', '其他角色1', '0', 'description', '2017-04-22 21:15:35', '2017-04-22 22:45:37', '2017-04-22 22:45:43', 'other', '其他角色');
+INSERT INTO `auth_role` VALUES ('5', 'role2', '用户角色2', '1', 'description', '2017-04-22 21:13:35', null, null, 'user', '用户角色');
+INSERT INTO `auth_role` VALUES ('6', 'role3', '用户角色3', '1', 'description', '2017-04-22 21:15:35', null, null, 'user', '用户角色');
+INSERT INTO `auth_role` VALUES ('7', 'role4', '用户角色4', '1', 'description', '2017-04-22 21:15:35', null, null, 'user', '用户角色');
+INSERT INTO `auth_role` VALUES ('8', 'role4', '其他角色1', '1', 'description', '2017-04-22 21:15:35', '2017-04-22 22:45:37', '2017-04-22 22:45:43', 'other', '其他角色');
 
 -- ----------------------------
 -- Table structure for auth_role_permission
@@ -152,11 +152,12 @@ CREATE TABLE `auth_user_role` (
   `default_role` varchar(20) DEFAULT NULL COMMENT '默认角色：1、是。2、否',
   `role_group` varchar(20) DEFAULT NULL COMMENT '角色组',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of auth_user_role
 -- ----------------------------
+INSERT INTO `auth_user_role` VALUES ('1', '1', '', '0', 'manage,user,other');
 
 -- ----------------------------
 -- Table structure for company_users
@@ -3820,6 +3821,41 @@ CREATE TABLE `sys_config` (
 INSERT INTO `sys_config` VALUES ('5964104f-df0a-4ab0-8134-d9360794b1ef', '公司名称');
 
 -- ----------------------------
+-- Table structure for sys_user
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_user`;
+CREATE TABLE `sys_user` (
+  `id` varchar(64) NOT NULL,
+  `username` varchar(32) DEFAULT NULL COMMENT '用户名',
+  `password` varchar(16) DEFAULT NULL COMMENT '密码',
+  `realName` varchar(32) DEFAULT NULL COMMENT '真实姓名',
+  `age` int(3) DEFAULT NULL,
+  `sex` int(1) DEFAULT NULL,
+  `birthday` datetime DEFAULT NULL,
+  `nickName` varchar(32) DEFAULT NULL COMMENT '昵称',
+  `headimage` varchar(255) DEFAULT NULL COMMENT '头像',
+  `mobile` varchar(11) DEFAULT NULL COMMENT '手机号',
+  `email` varchar(64) DEFAULT NULL COMMENT '邮箱',
+  `idcard` varchar(18) DEFAULT NULL,
+  `qq` varchar(32) DEFAULT NULL COMMENT 'qq号',
+  `weixin` varchar(32) DEFAULT NULL COMMENT '微信号',
+  `city` varchar(64) DEFAULT NULL COMMENT '所在城市',
+  `address` varchar(128) DEFAULT NULL COMMENT '地址',
+  `description` varchar(128) DEFAULT NULL COMMENT '备注',
+  `createTime` datetime DEFAULT NULL COMMENT '创建时间',
+  `updateTime` datetime DEFAULT NULL COMMENT '更新时间',
+  `lockTime` datetime DEFAULT NULL COMMENT '锁定时间',
+  `lock` int(1) DEFAULT NULL COMMENT '是否锁定',
+  `userFlag` int(1) DEFAULT '0' COMMENT '0：系统用户。1：普通用户。',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sys_user
+-- ----------------------------
+INSERT INTO `sys_user` VALUES ('1', 'admin', '123456', '张三', '22', '0', '1992-01-01 11:00:47', '三娃子', null, '13800000000', '123456@email.com', '142427199509103011', '12345678', 'weixin', '1', '1', '1', '2016-05-13 11:02:03', '2016-05-13 11:02:08', null, null, null);
+
+-- ----------------------------
 -- Table structure for user
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
@@ -3845,13 +3881,14 @@ CREATE TABLE `user` (
   `updateTime` datetime DEFAULT NULL COMMENT '更新时间',
   `lockTime` datetime DEFAULT NULL COMMENT '锁定时间',
   `lock` int(1) DEFAULT NULL COMMENT '是否锁定',
+  `userFlag` int(1) DEFAULT '0' COMMENT '0：系统用户。1：普通用户。',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'admin', '123456', '张三', '22', '0', '1992-01-01 11:00:47', '三娃子', null, '13800000000', '123456@email.com', '142427199509103011', '12345678', 'weixin', '1', '1', '1', '2016-05-13 11:02:03', '2016-05-13 11:02:08', null, null);
+INSERT INTO `user` VALUES ('1', 'admin', '123456', '张三', '22', '0', '1992-01-01 11:00:47', '三娃子', null, '13800000000', '123456@email.com', '142427199509103011', '12345678', 'weixin', '1', '1', '1', '2016-05-13 11:02:03', '2016-05-13 11:02:08', null, null, null);
 
 -- ----------------------------
 -- Table structure for user_relation
