@@ -1,22 +1,14 @@
-XXAPP.controller('ApiDevCtrl', function($rootScope, $scope, $http,$sce, $timeout) {
-
-    // node.js, "classic" way:
-    //var MarkdownIt = require('markdown-it'),
-    //    md = new MarkdownIt();
-    //var result = md.render('# markdown-it rulezz!');
-    // node.js, the same, but with sugar:
-    //var md = require('markdown-it')();
-    //var result = md.render('# markdown-it rulezz!');
-    // browser without AMD, added to "window" on script load
-    // Note, there is no dash in "markdownit".
-    var md = window.markdownit();
-    $http.get("/assets/md/api/dev.md?t="+currTime).success(function(data){
-        var result = md.render(data);
+XXAPP.controller('ApiDevCtrl', ['$rootScope', '$scope', '$http','$sce', '$timeout',function($rootScope, $scope, $http,$sce, $timeout) {
+    var markDown = window.markdownit();
+    $http({method:"get",url:"/md/api/dev/dev.md?t="+new Date().getTime()}).then(function(data){
+        var result = markDown.render(data.data);
         $scope.devApi= $sce.trustAsHtml(result);
-
-
-    }).error(function(error){
-        console.log(error);
+    },function(error){
+      console.log(error);
     });
 
-});
+  $scope.$on('$viewContentLoaded', function() {
+    $('#menu').metisMenu();
+  });
+
+}]);

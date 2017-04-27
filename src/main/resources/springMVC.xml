@@ -73,5 +73,6 @@
     </bean>
 
     <mvc:resources mapping="/assets/**" location="/WEB-INF/assets/"/>
+    <mvc:resources mapping="/md/**" location="/WEB-INF/md/"/>
 
 </beans>

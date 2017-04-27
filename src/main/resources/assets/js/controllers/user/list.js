@@ -7,7 +7,7 @@ XXAPP.controller('UserListController',['$rootScope', '$scope','$state','$uibModa
     $scope.userList = [];
     $http({
         method:'get',
-        url:'user/list?t='+new Date().getTime()
+        url:'sysUser/list?t='+new Date().getTime()
     }).then(function (resp, status, headers, config) {
         console.log(resp);
         $scope.userList = resp.data.data;

@@ -31,6 +31,7 @@ var projectName = "app";//项目名称
 //task名称
 var task = {
     clean:projectName+"-clean",
+    api:projectName+"-api",
     js:projectName+"-js",
     css:projectName+"-css",
     sass:projectName+"-sass",
@@ -89,6 +90,14 @@ gulp.task(task.clean, function() {
     return del.sync([DEST_ASSETS,'./src/main/webapp/WEB-INF/views/']);
 });
 
+//api   md文件
+gulp.task(task.api,function(){
+  gutil.log("[logs]"+task.api+"正在运行...");
+  return gulp.src(resourceFilesPath.md)
+      .pipe(gulp.dest(destFilesPath.md));
+});
+
+
 //编译js文件
 gulp.task(task.js,function(){
     return gulp.src(resourceFilesPath.js)
@@ -138,7 +147,7 @@ gulp.task(task.less,function(){
             console.dir(error);
             this.emit('end');
         })
-        .pipe(gulp.dest(destFilesPath.css))
+        .pipe(gulp.dest(destFilesPath.css));
 });
 
 //编译jade文件,
@@ -187,6 +196,7 @@ gulp.task(task.watch,function(){
     gulp.watch(resourceFilesPath.plugins, [task.plugins]);
     gulp.watch(resourceFilesPath.scripts, [task.scripts]);
     gulp.watch(resourceFilesPath.scripts, [task.lib]);
+    gulp.watch(resourceFilesPath.md, [task.api]);
     gulp.watch("./gulpfile.js", ['default']);
     //gulp.watch(destFilesPath, [task['copy']]);
 
@@ -199,7 +209,7 @@ gulp.task(task.watch,function(){
 });
 
 //默认的task
-gulp.task("default",[task.clean,task.less,task.js,task.images,task.lib,task.plugins,task.scripts,task.jade]);
+gulp.task("default",[task.clean,task.less,task.js,task.images,task.lib,task.plugins,task.scripts,task.jade,task.api]);
 
 //开发
 gulp.task(task.dev,['default'],function(){

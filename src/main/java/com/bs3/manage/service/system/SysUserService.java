@@ -2,9 +2,11 @@ package com.bs3.manage.service.system;
 
 
 import com.alibaba.fastjson.JSONObject;
-import com.bs3.manage.common.util.JsonResult;
-import com.bs3.manage.dao.UserDao;
+import com.bs3.manage.bean.SysUser;
 import com.bs3.manage.bean.User;
+import com.bs3.manage.common.util.JsonResult;
+import com.bs3.manage.dao.SysUserDao;
+import com.bs3.manage.dao.UserDao;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -16,11 +18,11 @@ import java.util.List;
 /**
  * @Author zhangbin
  */
-@Service("userService")
-public class UserService implements UserDetailsService {
+@Service("sysUserService")
+public class SysUserService implements UserDetailsService {
 
     @Resource
-    private UserDao userDao;
+    private SysUserDao sysUserDao;
 
     /**
      * 通过Id查询user对象
@@ -28,8 +30,8 @@ public class UserService implements UserDetailsService {
      * @return
      * @throws UsernameNotFoundException
      */
-    public User loadUserByUsername(String userid) throws UsernameNotFoundException {
-        User  user  = userDao.findOne(userid);
+    public SysUser loadUserByUsername(String userid) throws UsernameNotFoundException {
+        SysUser user  = sysUserDao.findOne(userid);
         return user;
     }
 
@@ -49,7 +51,7 @@ public class UserService implements UserDetailsService {
             //String pwd = 加密密码然后在进行判断--以后增加
             if(!StringUtils.isEmpty(username) && !StringUtils.isEmpty(password)){
                 //从数据库中查询出的user
-                User user = userDao.getUserByUsername(username);
+                SysUser user = sysUserDao.getUserByUsername(username);
 
                 if(!StringUtils.isEmpty(user)){
                     if(password.equals(user.getPassword())){
@@ -75,19 +77,19 @@ public class UserService implements UserDetailsService {
     }
 
 
-    public User load(String id) {
+    public SysUser load(String id) {
         return null;
     }
 
-    public User get(String id) {
+    public SysUser get(String id) {
         return null;
     }
 
-    public List<User> findAll() {
-        return userDao.findAll();
+    public List<SysUser> findAll() {
+        return sysUserDao.findAll();
     }
 
-    public void persist(User entity) {
+    public void persist(SysUser entity) {
 
     }
 
@@ -96,19 +98,19 @@ public class UserService implements UserDetailsService {
      * @param user
      * @return
      */
-    public String save(User user) {
+    public String save(SysUser user) {
 
-        User u = userDao.save(user);
+        SysUser u = sysUserDao.save(user);
         return u.getId();
     }
 
-    public User add(User user) {
+    public SysUser add(SysUser user) {
 
-        User u = userDao.save(user);
+        SysUser u = sysUserDao.save(user);
         return u;
     }
 
-    public void saveOrUpdate(User entity) {
+    public void saveOrUpdate(SysUser entity) {
 
     }
 
