@@ -16,6 +16,10 @@ import java.util.Map;
  */
 public interface RoleDao extends JpaRepository<Role, String>, JpaSpecificationExecutor<Role> {
 
+
+    @Query(value="SELECT roleGroup,roleGroupDesc FROM auth_role GROUP BY roleGroup",nativeQuery = true)
+    List getRoleGroups();
+
     /**
      * 添加用户角色
      * @param userId
@@ -46,6 +50,4 @@ public interface RoleDao extends JpaRepository<Role, String>, JpaSpecificationEx
      */
     @Query(value="SELECT user_id,role_id,default_role,role_group FROM auth_user_role WHERE user_id=:userId",nativeQuery = true)
     List getRolesOfUser(@Param("userId") String userId);
-
-
 }

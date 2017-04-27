@@ -46,7 +46,7 @@ h3.page-title
 // BEGIN MAIN CONTENT
 .row
     .col-md-12
-        .portlet.light.portlet-fit.portlet-form.bordered
+        .portlet.light.portlet-fit.portlet-form.bordered.app-role
             .portlet-title
                 .caption
                     i.icon-settings.font-dark
@@ -59,7 +59,7 @@ h3.page-title
                         label.btn.btn-transparent.dark.btn-outline.btn-circle.btn-sm
                             input#option2.toggle(type='radio', name='options')
                             | Settings
-            .portlet-body
+            .portlet-body.role-add
                 // BEGIN FORM
                 form#form_sample_3.form-horizontal(action='#')
                     .form-body
@@ -88,7 +88,12 @@ h3.page-title
                                         | 是否启用
                                         span.required *
                                     .col-md-4
-                                        input.form-control(type='text', name='name', data-required='1' placeholder="是否启用")
+                                        switch#enabled.green.small(name='enabled', ng-model="enabled" on='启用', off='禁用')
+                                .form-group
+                                    label.control-label.col-md-2
+                                        | 角色组
+                                    .col-md-4
+                                        select.form-control(ng-model="role.groupInfo" ng-options="groupItem.groupId as groupItem.groupName for groupItem in roleGroups")
                                 .form-group
                                     label.control-label.col-md-2
                                         | 角色描述
@@ -97,6 +102,6 @@ h3.page-title
                         .form-actions
                             .row
                                 .col-md-12
-                                    button.btn.default.pull-right(type='button') 取消
-                                    button.btn.green.pull-right(type='submit') 新增角色
+                                    button.btn.green(type='button' ng-click="add();") 新增角色
+                                    a.btn.default(href="#/role/list") 返回
 

@@ -22,6 +22,11 @@ public class RoleController {
     @Autowired
     public RoleService roleService;
 
+    /**
+     * 添加角色
+     * @param role
+     * @return
+     */
     @RequestMapping(method = RequestMethod.GET,value="add")
     public JsonResult add(@RequestBody Role role){
         return JsonResult.success(roleService.addRole(role));
@@ -45,7 +50,14 @@ public class RoleController {
         return roleService.getGroupRoles();
     }
 
-
+    /**
+     * 获取角色分组信息
+     * @return
+     */
+    @RequestMapping("getRoleGroups")
+    public JsonResult getRoleGroups(){
+        return roleService.getRoleGroups();
+    }
 
     /**
      * 更新角色

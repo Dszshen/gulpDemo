@@ -94,6 +94,23 @@ public class RoleService extends BaseService{
     }
 
     /**
+     * 获取角色组信息
+     * @return
+     */
+    public JsonResult getRoleGroups(){
+        List list = roleDao.getRoleGroups();
+        List groupsList = new ArrayList();
+        for(int i=0;i<list.size();i++){
+            Object[] obj = (Object[])list.get(i);
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("groupId",obj[0]);
+            jsonObject.put("groupName",obj[1]);
+            groupsList.add(jsonObject);
+        }
+        return JsonResult.success(groupsList);
+    }
+
+    /**
      * 更新角色信息
      * @param role
      * @return

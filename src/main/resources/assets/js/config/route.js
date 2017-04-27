@@ -110,11 +110,10 @@ XXAPP.config(['$stateProvider', '$urlRouterProvider', 'NotificationProvider', '$
   state('role.list', '/list', 'RoleListController', '/pages/role/list.html', false, {pageTitle: '角色列表'}, {
     deps: ['$ocLazyLoad', function ($ocLazyLoad) {
       return $ocLazyLoad.load([{
-        name: 'roleManage',
+        name: 'roleList',
         insertBefore: '#ng_load_plugins_before',
         files: [
           CONTEXT + '/assets/libs/angular-ui-switch/angular-ui-switch.css',
-          CONTEXT + '/assets/libs/angular-ui-switch/angular-ui-switch.js',
           CONTEXT + '/assets/libs/DataTables/datatables.min.css',
           CONTEXT + '/assets/libs/DataTables/plugins/bootstrap/datatables.bootstrap.css',
           CONTEXT + '/assets/libs/DataTables/datatables.all.min.js',
@@ -124,7 +123,17 @@ XXAPP.config(['$stateProvider', '$urlRouterProvider', 'NotificationProvider', '$
       }]);
     }]
   });
-  state('role.add', '/add', 'RoleAddController', '/pages/role/add.html', false, {pageTitle: '增加角色'});
+  state('role.add', '/add', 'RoleAddController', '/pages/role/add.html', false, {pageTitle: '增加角色'},{
+    deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+      return $ocLazyLoad.load([{
+        name: 'addRole',
+        insertBefore: '#ng_load_plugins_before',
+        files: [
+          CONTEXT + '/assets/libs/angular-ui-switch/angular-ui-switch.css'
+        ]
+      }]);
+    }]
+  });
   state('role.detail', '/detail', 'RoleDetailController', '/pages/role/detail.html', false, {pageTitle: '角色详情'});
 
 
