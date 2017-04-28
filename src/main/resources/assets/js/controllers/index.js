@@ -1,5 +1,5 @@
 XXAPP.controller('IndexController', ['$rootScope', '$scope', '$http', '$timeout',function($rootScope, $scope, $http, $timeout) {
-    $scope.$on('$viewContentLoaded', function() {   
+    $scope.$on('$viewContentLoaded', function() {
         // initialize core components
         App.initAjax();
     });

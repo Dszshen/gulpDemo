@@ -14,8 +14,8 @@ import java.util.Date;
 public class Role {
 
     @Id
-    @GenericGenerator(name = "generator", strategy = "uuid")
-    @GeneratedValue(generator = "generator")
+    //@GenericGenerator(name = "generator", strategy = "uuid")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="id")
     private String id;
     private String en;

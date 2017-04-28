@@ -3,6 +3,7 @@ package com.bs3.manage.service.system;
 import com.alibaba.fastjson.JSONObject;
 import com.bs3.manage.bean.Role;
 import com.bs3.manage.common.util.JsonResult;
+import com.bs3.manage.common.util.JsonobjectToBean;
 import com.bs3.manage.dao.RoleDao;
 import com.bs3.manage.service.BaseService;
 import com.mongodb.util.JSON;
@@ -90,6 +91,7 @@ public class RoleService extends BaseService{
      * @return
      */
     public Role addRole(Role role){
+        role.setCreateTime(new Date());
         return roleDao.saveAndFlush(role);
     }
 
@@ -115,8 +117,8 @@ public class RoleService extends BaseService{
      * @param role
      * @return
      */
-    public Integer updateRole(JSONObject role){
-        List<String> fields = new ArrayList<String>();
+    public JsonResult updateRole(JSONObject role){
+        /*List<String> fields = new ArrayList<String>();
         fields.add("id");
         fields.add("en");
         fields.add("cn");
@@ -134,8 +136,18 @@ public class RoleService extends BaseService{
         }
         opStr=opStr.substring(0,opStr.length()-1);
         sql = "UPDATE auth_role SET "+opStr+" WHERE id='"+role.getString("id")+"'";
-        Object[] opParams = arrayList.toArray();
-        return update(sql,opParams);
+        Object[] opParams = arrayList.toArray();*/
+        Integer res = roleDao.updateRole(role.getInteger("id"),
+                role.getString("cn"),
+                role.getString("en"),
+                role.getInteger("state"),
+                role.getString("description"),
+                new Date(),
+                role.getInteger("state").equals(0)?new Date():null,
+                role.getString("roleGroup"),
+                role.getString("roleGroupDesc")
+                );
+        return JsonResult.success(res);
     }
 
     /**

@@ -61,7 +61,7 @@ table样式
       }
     }
   }
-  .role-add{
+  .role-add,.role-update{
     .switch {
       width: 66px;
       background: rgb(154, 160, 154);
@@ -78,6 +78,30 @@ table样式
       border-color: rgb(100, 189, 99);
       small {
         left:36px;
+      }
+    }
+
+    .roles-list{
+      border:1px solid #eee;
+      padding:15px 20px;
+      ul{
+        margin:0;
+        padding:0;
+        li{
+          list-style: none;
+          float: left;
+          margin-left:20px;
+          font-size: 16px;
+        }
+        li:first-child{
+          margin-left:0;
+        }
+      }
+
+      ul.curr-roles{
+        li{
+          color: #e85302;
+        }
       }
     }
   }

@@ -103,7 +103,7 @@ h3.page-title
                     tbody
                         tr.odd.gradeX(ng-repeat="role in roles")
                             td
-                                input.checkboxes(type='checkbox')
+                                input.checkboxes(type='checkbox' ng-model="role.checked")
                             td  {{role.cn}}
                             td  {{role.en}}
                             td  {{role.createTime | date:'yyyy-MM-dd HH:mm:ss'}}
@@ -116,7 +116,7 @@ h3.page-title
                                 button.btn.btn-xs.btn-success(ng-click="addPermission();") 配置权限
                             td
                                 .table-op-wrap
-                                    button.btn.btn-xs.btn-success(type="button" ng-click="edit();") 编辑
+                                    button.btn.btn-xs.btn-success(type="button" ng-click="edit(role);") 编辑
                                     button.btn.btn-xs.btn-danger(type="button" ng-click="del();") 删除
 // END MAIN CONTENT
 // BEGIN MAIN JS

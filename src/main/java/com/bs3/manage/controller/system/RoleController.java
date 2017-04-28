@@ -1,9 +1,9 @@
 package com.bs3.manage.controller.system;
 
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.bs3.manage.bean.Role;
 import com.bs3.manage.common.util.JsonResult;
+import com.bs3.manage.common.util.JsonobjectToBean;
 import com.bs3.manage.service.system.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,13 +23,31 @@ public class RoleController {
     public RoleService roleService;
 
     /**
+     * 根据id获取角色信息
+     * @param roleId
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET)
+    public JsonResult get(@RequestParam String roleId){
+        return JsonResult.success(roleService.getRoleById(roleId));
+    }
+
+    /**
      * 添加角色
      * @param role
      * @return
      */
-    @RequestMapping(method = RequestMethod.GET,value="add")
-    public JsonResult add(@RequestBody Role role){
-        return JsonResult.success(roleService.addRole(role));
+    @RequestMapping(method = RequestMethod.POST,value="add")
+    public JsonResult add(@RequestBody JSONObject role){
+        try {
+            Role role1 = (Role) JsonobjectToBean.fromJsonToBean(role,Role.class);
+            return JsonResult.success(roleService.addRole(role1));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return JsonResult.failure("json转java类失败！");
+        }
+        //roleService.addRole(role);
+        //return JsonResult.failure("程序出错！");
     }
 
     /**
@@ -66,7 +84,7 @@ public class RoleController {
      */
     @RequestMapping("update")
     public JsonResult updateRole(@RequestBody JSONObject role){
-        return JsonResult.success(roleService.updateRole(role));
+        return roleService.updateRole(role);
     }
 
     /**
