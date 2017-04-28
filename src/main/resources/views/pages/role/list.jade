@@ -87,16 +87,16 @@ h3.page-title
                                         a(href='javascript:;')
                                             i.fa.fa-file-excel-o
                                             |  导出为Excel
-                table#tableList.table.table-striped.table-bordered.table-hover.table-checkable.order-column
+                table#sample_1.table.table-striped.table-bordered.table-hover.table-header-fixed.dataTable.no-footer(role='grid', aria-describedby='sample_1_info')
                     thead
                         tr
-                            th
+                            //th
                                 input.group-checkable(type='checkbox', data-set='#tableList .checkboxes')
                             th  名称
                             th  英文名称
                             th  生成时间
                             th  描述
-                            //th  角色更新时间
+                            //th  角色更新时间1
                             //th  角色禁用时间
                             th  状态
                             th  所在组
@@ -104,7 +104,7 @@ h3.page-title
                             th  操作
                     tbody
                         tr.odd.gradeX(ng-repeat="role in roles")
-                            td
+                            //td
                                 input.checkboxes(type='checkbox' ng-model="role.checked")
                             td  {{role.cn}}
                             td  {{role.en}}
