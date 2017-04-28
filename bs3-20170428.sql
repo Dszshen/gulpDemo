@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50716
 File Encoding         : 65001
 
-Date: 2017-04-27 18:23:37
+Date: 2017-04-28 18:11:29
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -96,19 +96,21 @@ CREATE TABLE `auth_role` (
   `roleGroup` varchar(20) DEFAULT NULL COMMENT '角色组',
   `roleGroupDesc` varchar(60) DEFAULT NULL COMMENT '角色组描述',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of auth_role
 -- ----------------------------
-INSERT INTO `auth_role` VALUES ('1', 'ADMIN', '管理角色1', '1', '超级管理员，拥有至高无上的权利', '2016-07-04 15:27:27', '2016-07-04 15:27:30', '2016-07-04 15:27:32', 'manage', '管理角色');
-INSERT INTO `auth_role` VALUES ('2', 'USER', '管理角色2', '1', '普通用户', '2016-07-18 15:27:57', '2016-07-04 15:28:02', null, 'manage', '管理角色');
+INSERT INTO `auth_role` VALUES ('1', 'Super111', '管理角色Super000', '1', '超级管理员，拥有至高无上的权利888', '2016-07-04 15:27:27', '2017-04-28 17:56:31', null, 'manage', '管理角色');
+INSERT INTO `auth_role` VALUES ('2', 'USER', '管理角色2', '1', '普通用户', '2016-07-18 15:27:57', '2016-07-04 15:28:02', null, 'buyer', '购买角色');
 INSERT INTO `auth_role` VALUES ('3', 'COMPANY', '管理角色3', '1', '企业用户', '2016-07-04 15:29:14', '2016-07-04 15:29:16', null, 'manage', '管理角色');
 INSERT INTO `auth_role` VALUES ('4', 'role1', '用户角色1', '0', null, null, null, null, 'user', '用户角色');
 INSERT INTO `auth_role` VALUES ('5', 'role2', '用户角色2', '1', 'description', '2017-04-22 21:13:35', null, null, 'user', '用户角色');
 INSERT INTO `auth_role` VALUES ('6', 'role3', '用户角色3', '1', 'description', '2017-04-22 21:15:35', null, null, 'user', '用户角色');
-INSERT INTO `auth_role` VALUES ('7', 'role4', '用户角色4', '1', 'description', '2017-04-22 21:15:35', null, null, 'user', '用户角色');
-INSERT INTO `auth_role` VALUES ('8', 'role4', '其他角色1', '1', 'description', '2017-04-22 21:15:35', '2017-04-22 22:45:37', '2017-04-22 22:45:43', 'other', '其他角色');
+INSERT INTO `auth_role` VALUES ('7', 'role4', '用户角色4', '0', 'description', '2017-04-22 21:15:35', '2017-04-28 17:39:36', '2017-04-28 17:39:36', 'user', '用户角色');
+INSERT INTO `auth_role` VALUES ('8', 'role4', '其他角色1', '0', 'description', '2017-04-22 21:15:35', '2017-04-28 17:34:59', '2017-04-28 17:34:59', 'other', '其他角色');
+INSERT INTO `auth_role` VALUES ('12', 'bbb', 'aaa', '1', 'ccc', '2017-04-28 14:20:24', null, null, 'manage', '管理角色');
+INSERT INTO `auth_role` VALUES ('13', 'bbb', 'aaa', '1', 'ccc', '2017-04-28 14:23:17', null, null, 'buyer', '购买角色');
 
 -- ----------------------------
 -- Table structure for auth_role_permission
@@ -157,7 +159,7 @@ CREATE TABLE `auth_user_role` (
 -- ----------------------------
 -- Records of auth_user_role
 -- ----------------------------
-INSERT INTO `auth_user_role` VALUES ('1', '1', '', '0', 'manage,user,other');
+INSERT INTO `auth_user_role` VALUES ('1', '1', '13,5', '0', 'manage');
 
 -- ----------------------------
 -- Table structure for company_users
