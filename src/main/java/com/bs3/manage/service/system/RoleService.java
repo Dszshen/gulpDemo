@@ -38,38 +38,31 @@ public class RoleService extends BaseService{
 
     /**
      * 按照角色组获取分组角色
+     * @param forbid 是否包含禁用的角色信息（no/yes）
      * @return
      */
-    public JsonResult getGroupRoles(){
-        List<Role> list = roleDao.findAll();
-        String roleGroupFlag = "",roleGroupName="";
-        JSONObject rolesGroup = new JSONObject();
-        List<Role> roleList = new ArrayList<Role>();
+    public JsonResult getGroupRoles(String forbid){
+        //获取所有的分组
+        List list = roleDao.getRoleGroups();
         List rolesGroupResult = new ArrayList();
         for(int i=0;i<list.size();i++){
-            if(i==0){
-                roleGroupFlag = list.get(i).getRoleGroup();
-                roleGroupName = list.get(i).getRoleGroupDesc();
+            JSONObject rolesGroup = new JSONObject();
+            Object[] groupInfo = (Object[])list.get(i);
+            List<Role> rolesOfGroup = roleDao.getRolesByGroup(groupInfo[0].toString());
+            if(StringUtils.isNotBlank(forbid)&&forbid.equals("yes")){
+                List<Role> rolesOfGroupObj = new ArrayList<Role>();
+                //过滤掉禁用的角色
+                for(Role role:rolesOfGroup){
+                    if(role.getState()==1){
+                        rolesOfGroupObj.add(role);
+                    }
+                }
+                rolesOfGroup = rolesOfGroupObj;
             }
-
-            if(list.get(i).getRoleGroup().equals(roleGroupFlag)){
-                roleList.add(list.get(i));
-            }else{
-                rolesGroup.put("roleGroup",roleGroupFlag);
-                rolesGroup.put("roleGroupName",roleGroupName);
-                rolesGroup.put("items",roleList);
-                rolesGroupResult.add(rolesGroup);
-                roleList = new ArrayList<Role>();
-                roleList.add(list.get(i));
-                roleGroupFlag = list.get(i).getRoleGroup();
-                roleGroupName = list.get(i).getRoleGroupDesc();
-                rolesGroup = new JSONObject();
-            }
-
-            if((i+1)==list.size()){
-                rolesGroup.put("roleGroup",roleGroupFlag);
-                rolesGroup.put("roleGroupName",roleGroupName);
-                rolesGroup.put("items",roleList);
+            if(rolesOfGroup.size()>0){
+                rolesGroup.put("roleGroup",groupInfo[0]);
+                rolesGroup.put("roleGroupName",groupInfo[1]);
+                rolesGroup.put("items",rolesOfGroup);
                 rolesGroupResult.add(rolesGroup);
             }
         }
@@ -118,25 +111,6 @@ public class RoleService extends BaseService{
      * @return
      */
     public JsonResult updateRole(JSONObject role){
-        /*List<String> fields = new ArrayList<String>();
-        fields.add("id");
-        fields.add("en");
-        fields.add("cn");
-        fields.add("state");
-        fields.add("description");
-        fields.add("updateTime");
-        String sql = "";
-        String opStr = "";
-        ArrayList<String> arrayList = new ArrayList<String>();
-        for (int i=0;i<fields.size();i++){
-            if((i+1)!=fields.size()){
-                opStr+=fields.get(i+1).toString()+"=?,";
-                arrayList.add(i,role.getString(fields.get(i+1).toString()));
-            }
-        }
-        opStr=opStr.substring(0,opStr.length()-1);
-        sql = "UPDATE auth_role SET "+opStr+" WHERE id='"+role.getString("id")+"'";
-        Object[] opParams = arrayList.toArray();*/
         Integer res = roleDao.updateRole(role.getInteger("id"),
                 role.getString("cn"),
                 role.getString("en"),

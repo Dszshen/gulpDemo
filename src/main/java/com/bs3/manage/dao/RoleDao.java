@@ -25,6 +25,10 @@ public interface RoleDao extends JpaRepository<Role, String>, JpaSpecificationEx
     @Query(value="SELECT roleGroup,roleGroupDesc FROM auth_role GROUP BY roleGroup",nativeQuery = true)
     List getRoleGroups();
 
+
+    @Query("SELECT r FROM Role r WHERE roleGroup=:roleGroup")
+    List<Role> getRolesByGroup(@Param("roleGroup") String roleGroup);
+
     /**
      * 更新角色
      *

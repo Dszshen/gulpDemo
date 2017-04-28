@@ -35,8 +35,9 @@ XXAPP.controller('RoleListController', ['$rootScope', '$scope', '$http', '$uibMo
         });
 
         addRoleModal.result.then(function (data) {
-          //获取data
-          //console.log(data);
+          angular.forEach(data,function(val,key,obj){
+            role[key] = val;
+          });
           console.info("角色info-->：",data);
         }, function () {
           //$log.info('Modal dismissed at: ' + new Date());

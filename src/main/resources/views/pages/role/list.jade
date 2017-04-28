@@ -92,12 +92,14 @@ h3.page-title
                         tr
                             th
                                 input.group-checkable(type='checkbox', data-set='#tableList .checkboxes')
-                            th  角色名称
-                            th  角色英文名称
-                            th  角色生成时间
-                            th  角色更新时间
-                            th  角色禁用时间
-                            th  角色状态
+                            th  名称
+                            th  英文名称
+                            th  生成时间
+                            th  描述
+                            //th  角色更新时间
+                            //th  角色禁用时间
+                            th  状态
+                            th  所在组
                             th  配置权限
                             th  操作
                     tbody
@@ -107,11 +109,12 @@ h3.page-title
                             td  {{role.cn}}
                             td  {{role.en}}
                             td  {{role.createTime | date:'yyyy-MM-dd HH:mm:ss'}}
-                            td  {{role.updateTime | date:'yyyy-MM-dd HH:mm:ss'}}
-                            td  {{role.forbidTime | date:'yyyy-MM-dd HH:mm:ss'}}
+                            td  {{role.description}}
+                            //td  {{role.updateTime | date:'yyyy-MM-dd HH:mm:ss'}}
+                            //td  {{role.forbidTime | date:'yyyy-MM-dd HH:mm:ss'}}
                             td
                                 switch#enabled.green.small(name='enabled', ng-model='role.state', on='启用', off='禁用')
-
+                            td  {{role.roleGroupDesc}}
                             td.center
                                 button.btn.btn-xs.btn-success(ng-click="addPermission();") 配置权限
                             td

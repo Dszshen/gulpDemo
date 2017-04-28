@@ -1,6 +1,7 @@
-XXAPP.controller('RoleUpdateCtrl', ['$rootScope','$scope', '$http','$state','$uibModalInstance','roleInfo', function ($rootScope,$scope, $http,$state,$uibModalInstance,roleInfo) {
-  $scope.closeModal = function () {
-    $uibModalInstance.close($scope.roleManage);
+XXAPP.controller('RoleUpdateCtrl', ['$rootScope','$scope', '$http','$state','$uibModalInstance','Notification','roleInfo',
+function ($rootScope,$scope, $http,$state,$uibModalInstance,Notification,roleInfo) {
+  $scope.closeModal = function (data) {
+    $uibModalInstance.close(data);
   };
   console.log(roleInfo);
   $scope.role = {
@@ -45,14 +46,16 @@ XXAPP.controller('RoleUpdateCtrl', ['$rootScope','$scope', '$http','$state','$ui
       params.roleGroupDesc=$scope.role.groupInfo.groupName;
     }
 
-    console.log(params);
+    //console.log(params);
 
     $http({
       method:'post',
       url:'role/update',
       data:angular.toJson(params)
     }).success(function (resp) {
-      console.log(resp);
+      //console.log(resp);
+      Notification.success({title: '角色更新', message: "角色更新成功", positionY: 'top', positionX: 'center'});
+      $scope.closeModal(params);
     });
   };
 

@@ -29,7 +29,8 @@ XXAPP.controller('UserListController',['$rootScope', '$scope','$state','$uibModa
                     var deferred = $q.defer();
                     $http({
                         method:'get',
-                        url:'role/rolesGroupList?t='+new Date().getTime()
+                        url:'role/rolesGroupList',
+                        params:{forbid:'yes'}
                     }).then(function (resp, status, headers, config) {
                         deferred.resolve(resp);
                     },function(resp, status, headers, config) {

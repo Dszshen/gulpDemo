@@ -60,12 +60,13 @@ public class RoleController {
     }
 
     /**
-     * 获取分组角色信息
+     * 角色分组后的分组角色信息
+     * @param forbid 是否包含禁用的角色信息（no/yes）
      * @return
      */
-    @RequestMapping("rolesGroupList")
-    public JsonResult rolesGroupList(){
-        return roleService.getGroupRoles();
+    @RequestMapping(method = RequestMethod.GET,value="rolesGroupList")
+    public JsonResult rolesGroupList(@RequestParam(required = false) String forbid){
+        return roleService.getGroupRoles(forbid);
     }
 
     /**
