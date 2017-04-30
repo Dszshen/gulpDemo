@@ -74,8 +74,8 @@ XXAPP.controller('UserRoleAddCtrl', ['$rootScope', '$scope', '$state', '$uibModa
     };
 
 
-    $scope.closeModal = function () {
-      $uibModalInstance.close($scope.roleManage);
+    $scope.closeModal = function (data) {
+      $uibModalInstance.close(data);
     };
 
     //获取角色列表
@@ -119,11 +119,11 @@ XXAPP.controller('UserRoleAddCtrl', ['$rootScope', '$scope', '$state', '$uibModa
         method:'post',
         url:'role/updateRoleOfUser',
         data:angular.toJson(rolesParams)
-      }).success(function (resp) {
-        if(resp.flag==="success") {
+      }).then(function (resp) {
+        if(resp.data.flag==="success") {
           Notification.success({title: '设置用户角色', message: "设置用户角色成功", positionY: 'top', positionX: 'center'});
           //关闭模态框
-          $scope.closeModal();
+          $scope.closeModal("guanbi");
         }
       });
 

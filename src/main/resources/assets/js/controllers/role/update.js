@@ -52,7 +52,7 @@ function ($rootScope,$scope, $http,$state,$uibModalInstance,Notification,roleInf
       method:'post',
       url:'role/update',
       data:angular.toJson(params)
-    }).success(function (resp) {
+    }).then(function (resp) {
       //console.log(resp);
       Notification.success({title: '角色更新', message: "角色更新成功", positionY: 'top', positionX: 'center'});
       $scope.closeModal(params);
