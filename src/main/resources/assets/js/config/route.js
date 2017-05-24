@@ -53,6 +53,9 @@ XXAPP.config(['$stateProvider', '$urlRouterProvider', 'NotificationProvider', '$
     return {};
   };
 
+  state('demo', '/demo', '', '<ui-view></ui-view>', true);
+  state('demo.drag', '/drag', 'DemoDragCtrl', '/demos/drag.html', false, {pageTitle: '拖拽demo'});
+
   state('index', '/index', 'IndexController', '/pages/index.html', false, {pageTitle: '欢迎页'}, {
     deps: ['$ocLazyLoad', function ($ocLazyLoad) {
       return $ocLazyLoad.load({
