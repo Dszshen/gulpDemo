@@ -28,9 +28,9 @@ public class WeixinService {
 
     public boolean saveMessage(Message message) {
         //boolean success = weixinMpMessageDao.insert(message) == 1;
-        synchronized (this) {
-            notify();
-        }
+        //synchronized (this) {
+            //notify();
+        //}
         //LOGGER.debug("notify mp message response process.");
         return true;
     }
