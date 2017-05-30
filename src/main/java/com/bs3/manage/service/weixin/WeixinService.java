@@ -1,10 +1,12 @@
 package com.bs3.manage.service.weixin;
 
-import com.belerweb.social.weixin.api.Weixin;
 import com.belerweb.social.weixin.bean.Message;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import java.util.Arrays;
 
 /**
  * Created by Administrator on 2017/5/25 0025.
@@ -12,8 +14,13 @@ import javax.annotation.Resource;
 @Service
 public class WeixinService {
 
-    @Resource
-    private Weixin weixin;
+
+    @Value("${weixin.token}")
+    private String token;
+    @Value("${weixin.appID}")
+    private String appID;
+    @Value("${weixin.appSecret}")
+    private String appSecret;
 
     /**
      * 验证微信来源的有效性
@@ -23,7 +30,11 @@ public class WeixinService {
      * @return
      */
     public boolean validate(String signature, String timestamp, String nonce) {
-        return weixin.validate(signature, timestamp, nonce);
+        System.out.println("token------------>:"+token);
+        String[] chars = new String[]{token, timestamp, nonce};
+        Arrays.sort(chars);
+        String sha1 = DigestUtils.shaHex(StringUtils.join(chars));
+        return sha1.equals(signature);
     }
 
     public boolean saveMessage(Message message) {

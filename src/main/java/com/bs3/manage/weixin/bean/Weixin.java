@@ -1,21 +1,31 @@
 package com.bs3.manage.weixin.bean;
 
+import com.belerweb.social.bean.Error;
+import com.belerweb.social.bean.Result;
+import com.belerweb.social.exception.SocialException;
+import com.belerweb.social.weixin.api.*;
+import com.belerweb.social.weixin.api.Group;
+import com.belerweb.social.weixin.api.Media;
+import com.belerweb.social.weixin.api.Menu;
+import com.belerweb.social.weixin.api.User;
+import com.belerweb.social.weixin.bean.*;
 import com.bs3.manage.weixin.SDK;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang.StringUtils;
+import org.apache.http.NameValuePair;
+import org.apache.http.entity.StringEntity;
+import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by zhangbin on 2017/5/27 0027.
  */
 public final class Weixin extends SDK{
-    private String appId;
-    private String secret;
-    private String redirectUri;
-    private String token;
-   /* private OAuth2 oAuth2;
-    private User user;
-    private Group group;
-    private Media media;
-    private Menu menu;
-    private AccessToken accessToken;
-    private Date accessTokenTime;*/
+
 
 }
