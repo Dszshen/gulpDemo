@@ -70,6 +70,18 @@
             <version>${httpcore.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpmime</artifactId>
+            <version>4.5.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient-osgi</artifactId>
+            <version>4.5.3</version>
+        </dependency>
+
 
 
         <!--阿里巴巴数据库连接池-->
@@ -312,13 +324,11 @@
             <version>2.5</version>
         </dependency>
 
-
-
-        <!--<dependency>
+        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
-        </dependency>-->
+        </dependency>
 
         <dependency>
             <groupId>commons-lang</groupId>

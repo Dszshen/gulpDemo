@@ -1,9 +1,10 @@
 package com.bs3.manage.bean.social;
 
-import org.json.JSONObject;
+
+import com.alibaba.fastjson.JSONObject;
 
 /**
- * Created by Administrator on 2017/5/27 0027.
+ * Created by zhangbin on 2017/5/27 0027.
  */
 public abstract class JsonBean {
     private JSONObject jsonObject;
